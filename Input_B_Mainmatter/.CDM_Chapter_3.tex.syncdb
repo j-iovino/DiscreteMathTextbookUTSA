@@ -1,0 +1,1 @@
+{"key":"build_command","value":["latexmk","-pdf","-f","-g","-bibtex","-deps","-synctex=1","-interaction=nonstopmode","-output-directory=/tmp/63fb1267a7e4707e8ebae07bbc0e4aef58b4f08c","CDM_Chapter_3.tex"]}

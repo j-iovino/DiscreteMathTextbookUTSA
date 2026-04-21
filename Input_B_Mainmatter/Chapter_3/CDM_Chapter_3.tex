@@ -1,0 +1,371 @@
+
+\chapter{Limits of structures}
+
+
+Recall from \ref{N:Large sets} that if $\mathscr{F}$ is a filter on a nonempty set $I$, then the elements of $\mathscr{F}$ are called \emph{$\mathscr{F}$-large} subsets of $I$. A property of elements of $I$ is said to hold for \emph{almost every $i\in I$} or \emph{almost everywhere} in $I \pmod{\mathscr{F}}$ if the property holds for an $\mathscr{F}$-large subset of $I$.
+
+Recall also that if $(G_i)_{i\in I}$ is an indexed family of sets, then the \emph{cartesian product} of the family $(G_i)_{i\in I}$, denoted $\prod_{i\in I}G_i$, is defined as
+\[
+\prod_{i\in I} G_i = \{ (a_i)_{i\in I} \mid \text{$a_i\in G_i$ for all $i \in I$}\}.
+\]
+Fix an indexed family $(G_i)_{i\in I}$ of sets and an ultrafilter $\SU$ as above.
+For any elements $a= (a_i)_{i\in I}$ and $b= (b_i)_{i\in I}$ in the cartesian product $\prod_{i\in I} G_i$, define a binary relation $\sim$ by
+\[
+a\sim b 
+\quad\text{if and only if}\quad
+\text{$a_i=b_i$ for almost every $i\in I \pmod{\mathscr{U}}$,}
+\]
+ i.e., 
+ \[
+ a\sim b 
+\quad\text{if and only if}\quad
+\{i\in I \colon a_i=b_i \}\in\SU.
+\]
+
+
+
+\begin{exercise}
+\begin{enumerate}[(a)]
+\item
+Prove that $\sim$ is an equivalence relation on the set $I$. 
+\item
+Do we need for $\SU$ to be an ultrafilter, or does a filter suffice for $\sim$ to be an equivalence relation?
+\end{enumerate}
+\end{exercise}
+
+
+\begin{definition}
+\label{D:ultraproduct of sets}
+If $(G_i)_{i\in I}$ is an indexed family of sets and $\SU$ is an ultrafilter on the index set $I$, then the set
+\[
+\prod_{i\in I} G_i/\sim
+\]
+of equivalence classes of $\prod_{i\in I} G_i$ under the equivalence relation $\sim$ is called the  \emph{$\SU$-ultraproduct}  of the family $(G_i)_{i\in I}$.  It is denoted
+\[
+\prod_{\SU} G_i
+\]
+\end{definition}
+
+\section{Graph limits}
+
+Fix an indexed  family $(\SG_i)_{i\in I}$  of graphs, where $\SG_i=(G_i,R_i)$ for all $i\in I$, and an  ultrafilter filter $\SU$.
+For any elements $a= (a_i)_{i\in I}$ and $b= (b_i)_{i\in I}$ in the cartesian product $\prod_{i\in I} G_i$, define a binary relation $R_{\SU}$ by
+\[
+a R_{\SU} b 
+\quad\text{if and only if}\quad
+\text{$a_i R_i b_i$ for almost every $i\in I \pmod{\mathscr{U}}$.}
+\]
+
+
+
+\begin{exercise}
+Prove that the relation $R_{\SU}$ defined above  is well-defined, that is, if $a R_{\SU} b$ and $a\sim a', b\sim b'$, then $a' R_{\SU} b'$.
+\end{exercise}
+
+
+The following is the most important definition of this chapter, and one of the central definitions of the course.
+
+\begin{definition}
+\label{D:ultraproduct of graphs}
+If $(\SG_i)_{i\in I}$ is an indexed family of graphs, where $\SG_i=(G_i,R_i)$ for all $i\in I$, and $\SU$ is an ultrafilter on the index set $I$, then the graph
+\[
+\left(\prod_{\SU}G_i, R_{\SU}\right)
+\]
+is called the  \emph{$\SU$-limit}  of the family $(\SG_i)_{i\in I}$.  It is denoted
+\[
+\lim_{\SU} \SG_i.
+\]
+\end{definition}
+
+\section{The Transfer Principle for graphs}
+
+Let $x, x', x''\dots, y, y', y'',\dots, z, z', z''\dots$ be a fixed countable set of variables. An \emph{atomic expression} is any expression of the form
+\[
+xRy
+\]
+or
+\[
+x=y,
+\]
+where $x$ and $y$ are any of the variables from our fixed list. 
+
+
+\begin{definition}
+Starting with the atomic expressions, we can form more complex expressions, known as \emph{first-order formulas}, by any finite number of applications of the following recursive rules:
+
+\begin{enumerate}
+\item
+Any atomic expression is a first-order formula.
+\item
+If $\alpha$ and $\beta$ are first-order formulas, then the expressions
+\begin{itemize}
+\item
+$\neg\alpha$
+\item
+$(\alpha\land \beta)$
+\item
+$(\alpha\lor \beta)$
+\end{itemize}
+are first-order formulas. Note that we don't need $(\alpha\lor \beta)$ since we can regard it as an abbreviation of $\neg(\neg\alpha\lor \neg\beta)$.
+Similarly, we regard $(\alpha\to \beta)$ as an abbreviation of $(\neg\alpha\lor \beta)$.
+\item
+If $\alpha$ is a first-order formula and $x$ is a variable, then the expressions
+\begin{itemize}
+\item
+$\forall x \alpha$
+\item
+$\exists x \alpha$
+\end{itemize}
+are first-order formulas. Note that we don't need $\exists x \alpha$ since we can regard it as an abbreviation of $\neg\forall x \neg\alpha$. 
+\end{enumerate}
+\end{definition}
+
+
+Note that a first-order formula is a  of finite length, and therefore it contains only finitely many variables. 
+
+\begin{definition}
+\label{D:sentence}
+If $\alpha$ is a first-order formula such that all the variables of $\alpha$ are under the scope of a quantifier ($\forall$ or $\exists$), we say that $\alpha$ is a \emph{sentence}.
+\end{definition}
+
+\begin{remark}
+Note that if $\alpha$ is a sentence and $\SG$ is any graph, then either $\alpha$ is true in $\SG$ or $\alpha$ is false in $\SG$. 
+\end{remark}
+
+
+\begin{notation}
+If $\alpha$ is true in $\SG$, we write
+\[
+G\models \alpha.
+\]
+\end{notation}
+
+\begin{examples} \hfill
+\begin{enumerate}
+\item
+If $(G,R)$ is a graph, then $R$ is a linear order on $G$ if and only if
+
+\begin{align*}
+(G,R)\models  &\forall x (x R x) \land\\
+&\forall x \forall y (x R y \wedge y R x \rightarrow x = y)\land\\
+&\forall x \forall y \forall z (x R y \wedge y R z \rightarrow x R z)\land\\
+&\forall x \forall y (x R y \vee y R x).
+\end{align*}
+\item
+If $(G,R)$ is a graph, $(G,R)$ contains a partial order of 50 elements  if and only if $(G,R)\models\alpha$, where $\alpha$ is the following first-order sentence:
+\[
+\exists x_1 \exists x_2 \cdots \exists x_{50} \;
+\Bigg[
+    \underbrace{\bigwedge_{i < j\le 50} \neg(x_i = x_j)}_{\text{$x_1,\dots, x_{50}$ are distinct}}
+    \;\wedge\;
+    \underbrace{
+        \forall x \Bigl( 
+            \bigl( \bigvee_{i \le 50} x = x_i \bigr)
+            \rightarrow x R x
+        \Bigr)
+    }_{\text{reflexivity on the set } \{x_1,\ldots,x_{50}\}}
+    \;\wedge\;
+\]
+\[
+    \underbrace{
+        \forall x \forall y \Bigl(
+            \bigl( \bigvee_{i \le 50} x = x_i \bigr)
+            \wedge
+            \bigl( \bigvee_{i \le 50} y = x_i \bigr)
+            \rightarrow
+            \bigl( (x R y \wedge y R x) \rightarrow x = y \bigr)
+        \Bigr)
+    }_{\text{antisymmetry}}
+    \;\wedge\;
+\]
+\[
+    \underbrace{
+        \forall x \forall y \forall z \Bigl(
+            \bigl( \bigvee_{i \le 50} x = x_i \bigr)
+            \wedge
+            \bigl( \bigvee_{i \le 50} y = x_i \bigr)
+            \wedge
+            \bigl( \bigvee_{i \le 50} z = x_i \bigr)
+            \rightarrow
+            \bigl( (x R y \wedge y R z) \rightarrow x R z \bigr)
+        \Bigr)
+    }_{\text{transitivity}}
+\Bigg].
+\]
+\item
+If $(G,R)$ is a graph and $n\in\mathbb{N}$, then $G$  has a monochromatic subset of $n$ elements if and only if $(G,R)\models\alpha$, where $\alpha$ is the following first-order sentence:
+\[
+\exists x_1 \exists x_2 \cdots \exists x_n \;
+\Bigg[
+    \underbrace{
+        \bigwedge_{i < j \le n} \neg(x_i = x_j)
+    }_{\text{$x_1,\dots, x_n$ are distinct}}
+    \;\wedge\;
+    \underbrace{
+        \forall x \forall y \Bigl(
+            \bigl( \bigvee_{i < j \le n} x = x_i \bigr)
+            \wedge
+            \bigl( y = x_j \bigr)
+            \rightarrow R(x, y)
+        \Bigr)
+    }_{\text{all the pairs in $\{x_1,\dots, x_n\}$ are incident}}
+    \;\vee\;
+\]
+\[
+    \underbrace{
+        \forall x \forall y \Bigl(
+            \bigl( \bigvee_{i < j \le n} x = x_i \bigr)
+            \wedge
+            \bigl( y = x_j \bigr)
+            \rightarrow \neg R(x, y)
+        \Bigr)
+    }_{\text{none of the pairs in $\{x_1,\dots, x_n\}$ are incident}}
+\Bigg].
+\]
+\end{enumerate}
+\end{examples} 
+
+
+\begin{theorem}[The Transfer Principle for graph limits]
+Let $(\SG_i)_{i\in I}$ be an indexed family of graphs, let  $\SU$ be an ultrafilter on the index set $I$, and let $\lim_{\SU} \SG_i$ denote the $\SU$-limit of  $(\SG_i)_{i\in I}$ (see Definition~\ref{D:ultraproduct of graphs}). 
+Then, for any first-order sentence $\alpha$, we have 
+\[
+\lim_{\SU} \SG_i \models \alpha
+\quad\text{if and only if}\qquad
+\text{$\SG_i\models \alpha$ for almost every $i\in I \pmod{\mathscr{U}}$.}
+\]
+\end{theorem}
+
+We will prove the Transfer Principle as a corollary of a stronger theorem (see Theorem~\ref{T:Transfer theorem}). However, before engaging in the proof of the theorem, let us focus on an important application.
+
+\subsection{Back to Ramsey's theorem}
+In Chapter \ref{C:Ramsey}, we proved the infinitary version of Ramsey's theorem (see~\ref{T:Ramsey infinitary}). However, we did not prove the classical finitary version~\ref{T:Ramsey classical}. We now show that the Transfer Principle for graph limits allows us to obtain the finitary version in a few lines from the infinitary one. 
+
+\begin{theorem}[Ramsey's theorem]
+For every $n \in \mathbb{N}$, there exists a positive integer $R(n)$ such that if we color $K_{R(n)}$ into two colors, say ``black" and ``white",  then there is a subgraph of $K_{R(n)}$ isomorphic to $K_n$ such that either all edges of this smaller graph are black, or all edges of this graph are white.
+\end{theorem}
+
+\begin{proof}
+Assume that the theorem does not hold true, and fix $n \in \mathbb{N}$ for which $R(n)$ doesn't exist. This means that, for each $N \in \mathbb{N}$ we can fix a a graph $\SG_N=(G_N, R_N)$ of size $> N$ that has  no monochromatic subset of size $n$. Fix a non-principal ultrafilter $\mathscr{U}$ on $\mathbb{N}$. Let $\alpha$ be the sentence of Examples \label{E:Ramsey first-order} that asserts the existence of a monochromatic subgraph of size $n$. Then $\SG_N\models \neg\alpha$.  Let $\lim_{\SU} \SG_N$ denote the $\SU$-limit of  $(\SG_N)_{N\in\mathbb{N}}$. Then, by the Transfer Principle for graph limits, $\lim_{\SU} \SG_i\models\neg\alpha$. But this contradicts  the infinitary version of Ramsey's theorem (see~\ref{T:Ramsey infinitary}) since $\lim_{\SU} \SG_N$  is an infinite graph.
+\end{proof}
+
+\begin{exercise}
+For every $m, n \in \mathbb{N}$, there exists $R(m,n)$ such that if we color $K_{R(m,n)}$ into two colors, ``black" and ``white", then there is a subgraph of $K_{R(m,n)}$ isomorphic to $K_m$ all of whose edges are black, or subgraph of $K_{R(m,n)}$ isomorphic to $K_n$ all of whose edges are white.
+\end{exercise}
+
+
+\section{General statement and proof of the Transfer Principle for graph limits}
+
+Recall (see Definition~\ref{D:Sentence}) that a sentence is a first-order formula where all the variables are under the scope of a quantifier. If $\alpha$ is not a sentence, then those variables in $\alpha$ that are not under the scope of a quantifier are said to occur \emph{free} in $\alpha$. If all the free variables that occur in $\alpha$ are in the set $\{x_1,\dots, x_n\}$, we write $\alpha$ as $\alpha(x_1,\dots, x_n)$. For example, if $\alpha$ is the formula $\exists y(xRy)$, then we may write $\alpha$ as $\alpha(x)$.
+
+
+As we indicated in Remark~\ref{R:sentence}, if $\alpha$ is a sentence and $\SG$ is any graph, then either $\SG\models \alpha$ or $\SG\not\models \alpha$ . However, if $\alpha$ is not a sentence, i.e., we cannot say whether or not $\SG\models \alpha$. To see an example of this, consider the formula $\alpha(x)$ defined as  $\exists y(xRy)$ and the graph $\SG=(G,R)$ where $G=\{a, b, c\}$ and $R=(a, b)$. Then, we could say that $\SG\models \alpha$ if we interpret the variable $x$ as $a$, and $\SG\not\models \alpha$ if we interpret the variable $x$ as $c$. In general, if $\alpha$ includes free variables that are free, to determine whether $G\models \alpha$, we need to interpret the free occurrences of free variables in $\alpha$ as elements of $\SG$.
+
+\begin{notation}
+Let $\alpha(x_1,\dots, x_n)$ be a first-order formula with free variables in the set $\{x_1,\dots, x_n\}$ and let $\SG=(G,R)$ be a graph. If $\alpha_1, \dots, a_n$ are elements of $G$, we write 
+\[
+\SG \models \alpha[a_1,\dots, a_n]
+\]
+If  $\alpha(x_1,\dots, x_n)$ is true in $\SG$ when $x_k$ is interpreted as $a_k$, for $k=1,\dots, n$.
+\end{notation}
+
+Now we can state and prove the Transfer Principle for graph limits.
+
+
+\begin{theorem}[The Transfer Principle for graphs]
+\label{T:Transfer theorem}
+
+Let $(\SG_i)_{i\in I}$ be an indexed family of graphs, let  $\SU$ be an ultrafilter on the index set $I$, and let $\lim_{\SU} \SG_i$ denote the $\SU$-limit of  $(\SG_i)_{i\in I}$.
+Then, if $\alpha(x_1,\dots, x_n)$ is a first-order sentence and $a_1,\dots, a_n$ are elements of  $\lim_{\SU} \SG_i$, represented by families $a_k=(a_k(i))_{i\in I}$ for $k=1,\dots, n$, then
+
+\[
+\begin{gathered}\tag{*}
+\lim_{\SU} \SG_i \models \alpha[a_1,\dots, a_n]\\
+\quad\text{if and only if}\qquad\\
+\text{$\SG_i\models \alpha[a_1(i),\dots, a_n(i)] $ for almost every $i\in I \pmod{\mathscr{U}}$.}
+\end{gathered}
+\]
+\end{theorem}
+
+In the proof, we will invoke the following exercise:
+
+\begin{exercise}
+\label{E:Lemma Los}
+Let $\mathscr{U}$ be an ultrafilter on $I$, an indexed set. If $A,B\subseteq I$, then
+\begin{enumerate}
+\item $A \cap B \in \mathscr{U}$ if and only if $A \in \mathscr{U}$ and $B \in \mathscr{U}$.
+\item $A \cup B \in \mathscr{U}$ if and only if $A \in \mathscr{U}$ or $B \in \mathscr{U}$.
+\item $A^\mathsf{c} \in \mathscr{U}$ if and only if $A \not\in \mathscr{U}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}[Proof of Theorem~\ref{T:Transfer theorem}]
+We prove the equivalence $(*)$ by induction on the complexity of $\alpha$. When $\alpha$ is an atomic formula, the equivalence holds by the very definition of $\lim_{\SU} \SG_i$ (see Definition~\ref{D:ultraproduct of graphs}). We now assume, by induction, that the equivalence  $(*)$  holds for $\alpha$ and $\beta$, and we prove it for $(\alpha\land\beta)$ and $\neg\alpha$.
+
+
+
+First, we suppose, as induction hypothesis, that  $(*)$  holds for $\alpha(x_1,\dots, x_n)$ and $\beta(x_1,\dots, x_n)$ in order to prove it for  $(\alpha\land\beta)(x_1,\dots, x_n)$. Let
+
+\begin{align*}
+A&=\{i\in I \colon \SG_i\models \alpha[a_1(i),\dots, a_n(i)] \},\\
+B&= \{i\in I \colon \SG_i\models \beta[a_1(i),\dots, a_n(i)] \}. 
+\end{align*}
+
+It follows immediately from the definition of $\models$ that
+\[
+A\cap B=\{i\in I \colon \SG_i\models (\alpha\land \beta)[a_1(i),\dots, a_n(i)] \}.
+\]
+
+Hence,
+
+\begin{align*}
+&\lim_{\SU} \SG_i \models (\alpha\land \beta) [a_1,\dots, a_n]  &\\
+\text{iff \quad} &\text{$\lim_{\SU} \SG_i \models \alpha [a_1,\dots, a_n]$ and $\lim_{\SU} \SG_i \models \beta [a_1,\dots, a_n]$ } &\text{by definition of $\models$}\\
+\text{iff \quad} &\text{$A, B \in\SU$} &\text{by induction hypothesis}\\
+\text{iff \quad} &\text{$A \cap B \in\SU$} &\text{by Exercise~\ref{E:Lemma Los}}\\
+\text{iff \quad} &\text{$\SG_i \models (\alpha\land \beta)[a_1(i),\dots, a_n(i)] $, for almost every $i\in I \pmod{\mathscr{U}}$.} & \\
+ \end{align*}
+ 
+ The proof for the case $\neg\alpha(x_1,\dots, x_n)$ is similar. Suppose that $(*)$ holds for $\alpha(x_1,\dots, x_n)$. Evidently,
+\[
+A^\text{c}=\{i\in I \colon \SG_i\not\models\alpha[a_1(i),\dots, a_n(i)] \}.
+\]
+ Hence, 
+\begin{align*}
+&\lim_{\SU} \SG_i \models \neg\alpha [a_1,\dots, a_n]  &\\
+\text{iff \quad} &\text{$\lim_{\SU} \SG_i \not \models \alpha [a_1,\dots, a_n]$} &\text{by definition of $\models$}\\
+\text{iff \quad} &\text{$A \notin\SU$} &\text{by induction hypothesis}\\
+\text{iff \quad} &\text{$A^c \in\SU$} &\text{by Exercise~\ref{E:Lemma Los}}\\
+\text{iff \quad} &\text{$\SG_i \models \neg\alpha[a_1(i),\dots, a_n(i)] $, for almost every $i\in I \pmod{\mathscr{U}}$.} & \\
+ \end{align*}
+ 
+ The case when $\alpha$ is of the form $\exists y \beta(x_1,\dots, x_n y)$ is left as an exercise. 
+\end{proof}
+
+\begin{exercise}
+Finish the proof of Theorem~\ref{T:Transfer theorem}. [Advice: Treat each of the two directions separately.]
+\end{exercise}
+
+
+\begin{exercise}
+\begin{enumerate}[(a)]
+\item
+Exhibit a sequence $(G_n,R_n)_{n\in\mathbb{N}}$ of graphs and an ultrafilter $\SU$ such that $(G_n,R_n)$ is a well-ordered set for each $n\in \mathbb{N}$, but $\lim_{\SU}(G_n,R_n)$ is not well-ordered. 
+\item
+Can you write a first-order sentence $\alpha$ such that $(G,R)\models \alpha$ if and only if $(G,R)$ is a well-ordered set?
+\end{enumerate}
+\end{exercise}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

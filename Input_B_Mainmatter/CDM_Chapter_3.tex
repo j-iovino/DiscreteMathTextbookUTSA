@@ -1,0 +1,36 @@
+\chapter{Limits of structures}
+
+
+\section{Preliminaries}
+
+Recall from \label{N:Large sets} that if $\mathscr{F}$ is a filter on a nonempty set $I$, then the elements of $\mathscr{F}$ are called \emph{$\mathscr{F}$-large}. A property of elements of $I$ is said to hold for \emph{almost every $i\in I$} or \emph{almost everywhere} in $I \pmod{\mathscr{F}}$ if the property holds for an $\mathscr{F}$-large subset of $I$.
+
+Recall also that if $(G_i)_{i\in I}$ is an index family of sets, then the \emph{cartesian product} of the family $(G_i)_{i\in I}$, denoted $\prod_{i\in I}G_i$, is defined as
+\[
+\prod_{i\in I} G_i = \{ (a_i)_{i\in I} \mid \text{$a_i\in G_i$ for all $i \in I$}\}.
+\]
+Fix a family $(G_i)_{i\in I}$ of sets and an an ultrafilter filter $\SU$ as above.
+Elements $a= (a_i)_{i\in I}$ and $b= (b_i)_{i\in I}$ in the product, define
+\[
+a\sim b 
+\quad\text{if and only if}\quad
+\text{$a_i=b_i$ almost everywhere $\pmod{\mathscr{U}}$,}
+\]
+ i.e., 
+ \[
+ a\sim b 
+\quad\text{if and only if}\quad
+\{i\in I \colon a_i=b_i \}\in\SU.
+\]
+
+
+
+\begin{exercise}
+Prove that $\sim$ is an equivalence relation on the set $I$. Do we need for $\SU$ to be an ultrafilter, or does a filter suffice for $\sim$ to be an equivalence relation?
+\end{exercise}
+
+\begin{definition}
+Recall also that if $(G_i)_{i\in I}$ is an index family of sets and $\SU$ is an ultrafilter on the index set $I$, then the \emph{$\SU$-ultrafilter} of the family $(G_i)_{i\in I}$, denoted $\prod_{\SU}G_i$ is the set $\prod_{i\in I}G_i/\sim$ of equivalence classes  under $\sim$.
+\end{definition}
+
+

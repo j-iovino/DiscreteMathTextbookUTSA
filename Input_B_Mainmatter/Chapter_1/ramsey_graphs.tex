@@ -1,0 +1,318 @@
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{tkz-euclide}
+\usepackage{xcolor}
+\usetikzlibrary{calc}
+
+\pgfmathsetseed{20250920} % reproducibility
+
+% --- Purples
+\definecolor{LP}{HTML}{E9D5FF} % Light Purple
+\definecolor{DP}{HTML}{3B007A} % Deep Purple
+
+% --- Color choosers for Figs 1–4 Grid points
+\newcommand{\randcoin}{
+  \pgfmathparse{rnd<0.5?"red":"blue"}\edef\col{\pgfmathresult}%
+}
+\newcommand{\allred}{\def\col{red}}
+\newcommand{\allblue}{\def\col{blue}}
+\newcommand{\randSpectrum}{%
+  \pgfmathtruncatemacro{\p}{round(100*rnd)}%
+  \edef\col{red!\p!blue}%
+}
+
+% --- Figure 5: LIGHT at (n1,n1) -> DEEP at (n25,n25)  (comment only; 25x25 uses N-version below)
+\newcommand{\originToTipPurple}{%
+  \pgfmathsetmacro{\s}{((\i-1)+(\j-1))/18} % 0 at (1,1), 1 at (10,10)
+  \pgfmathsetmacro{\t}{pow(\s,1.2)}        % optional contrast; tweak 1.0–1.6
+  \pgfmathtruncatemacro{\p}{round(100*(1-\t))}
+  \edef\col{LP!\p!DP}%
+}
+
+% --- Axis labelers (10x10)
+\newcommand{\AxisLabelsNumeric}{%
+  \foreach \x in {1,...,10} \node[below] at (\x,0.5) {\x};
+  \foreach \y in {1,...,10} \node[left]  at (0.5,\y) {\y};
+}
+\newcommand{\AxisLabelsNsub}{%
+  \foreach \x in {1,...,10} \node[below] at (\x,0.5) {$n_{\x}$};
+  \foreach \y in {1,...,10} \node[left]  at (0.5,\y) {$n_{\y}$};
+}
+
+% --- Reusable 10x10 panel
+\newcommand{\RamseyPanel}[3]{%
+  \begin{tikzpicture}[scale=0.75]
+    % Axes
+    \draw[->] (0.5,0.5) -- (10.6,0.5) node[right] {$x$};
+    \draw[->] (0.5,0.5) -- (0.5,10.6) node[above] {$y$};
+    #2 % axis labels
+
+    % Strict upper triangle
+    \begin{scope}
+      \clip (0.5,0.5) rectangle (10.5,10.5);
+      \fill[white] (0.5,0.5) -- (10.6,0.5) -- (0.5,10.6) -- cycle;
+
+      \foreach \i in {1,...,9}{
+        \foreach \j in {\numexpr\i+1\relax,...,10}{
+          #3
+          \fill[\col] (\i,\j) circle (3.5pt);
+        }
+      }
+    \end{scope}
+
+    % Caption
+    \node[font=\bfseries] at (5.7,-0.6) {#1};
+  \end{tikzpicture}
+}
+
+% --- Standalone purple arrow legend (center of Page 2 row)
+\newcommand{\ArrowLegendStandalone}{%
+  \begin{tikzpicture}[scale=1]
+    \def\W{10}   % arrow width (tail at -\W/2, tip at +\W/2)
+    \def\H{1.2}  % arrow nominal height
+    \def\S{220}  % number of strips (higher = smoother)
+
+    \begin{scope}
+      % Arrow clip
+      \path[clip]
+        (-\W/2,0) -- ++(\W*0.72,0) -- ++(0,-\H*0.18) --
+        ++(\W*0.28,\H*0.50) -- ++(-\W*0.28,\H*0.50) --
+        ++(0,-\H*0.18) -- ++(-\W*0.72,0) -- cycle;
+
+      % Progressive DP→LP (as in your current file)
+      \pgfmathsetmacro{\w}{\W/\S}
+      \foreach \k in {0,...,\S}{
+        \pgfmathsetmacro{\xnorm}{\k/\S}
+        \pgfmathsetmacro{\gamma}{pow(\xnorm,1.2)}        % progression
+        \pgfmathtruncatemacro{\p}{round(100*(1-\gamma))} % reverse order
+        \path[fill=LP!\p!DP,draw=none]
+          (-\W/2+\k*\w,-2*\H) rectangle ++(\w,4*\H);
+      }
+    \end{scope}
+
+    % Outline and labels
+    \draw
+      (-\W/2,0) -- ++(\W*0.72,0) -- ++(0,-\H*0.18) --
+      ++(\W*0.28,\H*0.50) -- ++(-\W*0.28,\H*0.50) --
+      ++(0,-\H*0.18) -- ++(-\W*0.72,0) -- cycle;
+
+    \node[below] at (-\W/2,-\H/2) {Light};
+    \node[below] at ( \W/2,-\H/2) {Deep};
+    \node[above,yshift=8pt] at (0,\H/2) {Transition};
+  \end{tikzpicture}
+}
+
+% --- Arrow panel for 2×2 (same shape as legend; half red / half blue fill)
+\newcommand{\ArrowPanel}{%
+  \begin{tikzpicture}[scale=0.75]
+    % keep same bounding box, but no axes
+    \path[use as bounding box] (0.5,0.5) rectangle (10.6,10.6);
+
+    % >>> NEW: header line above the arrow inside this panel
+    \node[font=\bfseries] at (5.55,9.6)
+      {Replace $(1,2,3,\ldots)$ with $(n_{1},n_{2},n_{3},\ldots)$};
+
+    \begin{scope}
+      \clip (0.5,0.5) rectangle (10.6,10.6);
+
+      % Center the arrow shape inside the panel and reuse the same polygon
+      \begin{scope}[shift={(5.55,5.55)}] % roughly the center of the panel
+        \def\W{8.5}
+        \def\H{2.0}
+
+        % Clip to arrow
+        \begin{scope}
+          \path[clip]
+            (-\W/2,0) -- ++(\W*0.72,0) -- ++(0,-\H*0.18) --
+            ++(\W*0.28,\H*0.50) -- ++(-\W*0.28,\H*0.50) --
+            ++(0,-\H*0.18) -- ++(-\W*0.72,0) -- cycle;
+
+          % Left half red, right half blue
+          \path[fill=red,draw=none]  (-\W/2,-2*\H) rectangle (0, 2*\H);
+          \path[fill=blue,draw=none] (0,-2*\H)   rectangle (\W/2,2*\H);
+        \end{scope}
+
+        % Outline
+        \draw
+          (-\W/2,0) -- ++(\W*0.72,0) -- ++(0,-\H*0.18) --
+          ++(\W*0.28,\H*0.50) -- ++(-\W*0.28,\H*0.50) --
+          ++(0,-\H*0.18) -- ++(-\W*0.72,0) -- cycle;
+      \end{scope}
+    \end{scope}
+
+    % Caption
+    \node[font=\bfseries] at (5.7,-0.6) {Infinite Increasing subsequence};
+  \end{tikzpicture}
+}
+
+
+% =========================================================
+% === Helpers for 25x25 Figures 4 & 5 (1×3 layout)     ===
+% =========================================================
+
+% Grid size controller for general N (we'll set N=25)
+\newcommand{\setGridN}[1]{%
+  \def\N{#1}%
+  \pgfmathsetmacro{\Den}{2*(#1-1)}% for (i-1+j-1) normalization up to 2*(N-1)
+}
+
+% Purple gradient normalized to \N (Light -> Deep along origin->tip)
+\newcommand{\originToTipPurpleN}{%
+  \pgfmathsetmacro{\s}{min(1,max(0,((\i-1)+(\j-1))/\Den))} % clamp to [0,1]
+  \pgfmathsetmacro{\t}{pow(\s,1.2)}          % contrast tweak
+  \pgfmathtruncatemacro{\p}{round(100*(1-\t))}
+  \edef\col{LP!\p!DP}%
+}
+
+
+% Red→Blue horizontal bar legend (used INSIDE Figure 4)
+\newcommand{\ColorbarRB}[5]{% (#1,#2)=LL, width=#3, height=#4
+  \begin{scope}
+    \pgfmathsetmacro{\w}{#3/100}
+    \foreach \k in {0,...,100}{
+    \pgfmathtruncatemacro{\p}{\k}
+  % Blue (left) -> Red (right), matching labels
+  \path[fill=blue!\p!red,draw=none]
+    (#1+\k*\w,#2) rectangle ++(\w,#4);
+}
+
+    \draw (#1,#2) rectangle ++(#3,#4);
+    % Leave your labels as-is (they’ll now match the colors):
+    % Left label:
+    \node[below] at (#1,#2) {Blue = 0};
+    % Right label:
+    \node[below] at (#1+#3,#2) {Red = 1};
+  \end{scope}
+}
+
+% Legend: Red (left) -> Blue (right), labels: Red=0 (left), Blue=1 (right)
+\newcommand{\LegendRB}[4]{% (#1,#2)=LL, width=#3, height=#4
+  \begin{scope}
+    \pgfmathsetmacro{\w}{#3/100}
+    \foreach \k in {0,...,100}{
+      \pgfmathtruncatemacro{\p}{\k}
+      \path[fill=red!\p!blue,draw=none]
+        (#1+\k*\w,#2) rectangle ++(\w,#4);
+    }
+    \draw (#1,#2) rectangle ++(#3,#4);
+    \node[below] at (#1,#2) {Red = 0};
+    \node[below] at (#1+#3,#2) {Blue = 1};
+  \end{scope}
+}
+
+% Legend: Blue (left) -> Red (right), labels: Blue=0 (left), Red=1 (right)
+\newcommand{\ColorbarBR}[4]{% (#1,#2)=LL, width=#3, height=#4
+  \begin{scope}
+    \pgfmathsetmacro{\w}{#3/100}
+    \foreach \k in {0,...,100}{
+      \pgfmathtruncatemacro{\p}{\k}
+      \path[fill=blue!\p!red,draw=none]
+        (#1+\k*\w,#2) rectangle ++(\w,#4);
+    }
+    \draw (#1,#2) rectangle ++(#3,#4);
+    \node[below] at (#1,#2) {Red = 0};
+    \node[below] at (#1+#3,#2) {Blue = 1};
+  \end{scope}
+}
+
+
+% Figure 4 (25x25, red→blue spectrum WITH legend inside)
+\newcommand{\FigFourWithLegend}{%
+  \setGridN{25}%
+  \begin{tikzpicture}[scale=0.55]
+    % Axes
+    \draw[->] (0.5,0.5) -- (25.85,0.5) node[right] {$x$};
+    \draw[->] (0.5,0.5) -- (0.5,25.85) node[above] {$y$};
+    \foreach \x in {5,10,15,20,25} \node[below] at (\x,0.5) {\x};
+    \foreach \y in {5,10,15,20,25} \node[left] at (0.5,\y) {\y};
+
+    % Strict upper triangle
+    \begin{scope}
+      \clip (0.5,0.5) rectangle (25.6,25.6);
+      \fill[white] (0.5,0.5) -- (25.6,0.5) -- (0.5,25.6) -- cycle;
+
+      \foreach \i in {1,...,24}{
+        \foreach \j in {\numexpr\i+1\relax,...,25}{
+          \randSpectrum
+          \fill[\col] (\i,\j) circle (4pt);
+        }
+      }
+    \end{scope}
+
+    % Caption
+    \node[font=\bfseries] at (13.5,-1.2) {Figure 4: Random spectrum red$\to$blue (i<j)};
+
+% Legend inside the panel (bottom-right)
+% Legend inside the panel (bottom-right)
+\ColorbarBR{16.5}{2}{8.5}{0.4}
+
+  \end{tikzpicture}
+}
+
+
+\newcommand{\FigFive}{%
+  \setGridN{25}%
+  \begin{tikzpicture}[scale=0.55]
+    % Axes
+    \draw[->] (0.5,0.5) -- (25.85,0.5) node[right] {$x$};
+    \draw[->] (0.5,0.5) -- (0.5,25.85) node[above] {$y$};
+    \foreach \x in {5,10,15,20,25} \node[below] at (\x,0.5) {$n_{\x}$};
+    \foreach \y in {5,10,15,20,25} \node[left]  at (0.5,\y) {$n_{\y}$};
+
+    % Strict upper triangle
+    \begin{scope}
+      \clip (0.5,0.5) rectangle (25.6,25.6);
+      \fill[white] (0.5,0.5) -- (25.6,0.5) -- (0.5,25.6) -- cycle;
+
+      \foreach \i in {1,...,24}{
+        \foreach \j in {\numexpr\i+1\relax,...,25}{
+          \originToTipPurpleN
+          \fill[\col] (\i,\j) circle (4pt);
+        }
+      }
+    \end{scope}
+
+    % Caption
+    \node[font=\bfseries] at (13.5,-1.2) {Figure 5: Light$\to$Deep Purple origin$\to$tip (i<j)};
+  \end{tikzpicture}
+}
+
+
+\begin{document}
+
+% ===================
+% == Page 1: 2×2   ==
+% ===================
+\begin{tikzpicture}
+
+  % Top row
+  \node (TL) at (0,0) {\RamseyPanel{Figure 1: Random red/blue (i<j)}{\AxisLabelsNumeric}{\randcoin}};
+  \node (TR) at (11,0) {\ArrowPanel};
+
+  % Bottom row
+  \node (BL) at (0,-11) {\RamseyPanel{Figure 2: All blue (i<j)}{\AxisLabelsNsub}{\allblue}};
+  \node (BR) at (11,-11) {\RamseyPanel{Figure 3: All red (i<j)}{\AxisLabelsNsub}{\allred}};
+
+  % "OR" centered between the two bottom boxes
+  \node[font=\bfseries\large] at (5.5,-11) {OR};
+\end{tikzpicture}
+
+\newpage
+
+% =========================
+% == Page 2: 1×3 (row)   ==
+% =========================
+\begin{tikzpicture}
+  \node at (0,0)  {\FigFourWithLegend};     % Left: Figure 4 (with legend)
+
+  % Header note above the middle arrow
+  \node[font=\bfseries] at (17,3.1)
+    {Replace $(1,2,3,\ldots)$ with $(n_{1},n_{2},n_{3},\ldots)$};
+
+  \node at (17,0) {\ArrowLegendStandalone}; % Middle: purple arrow legend
+\node at (34,0) {\FigFive};
+
+\end{tikzpicture}
+
+\end{document}
+
+

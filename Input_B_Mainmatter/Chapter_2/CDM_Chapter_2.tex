@@ -1,0 +1,917 @@
+\chapter{Foundations}
+
+
+\section{Alphabets and Words}
+
+
+Recall that a set $A$ is \emph{countable} or \emph{enumerable} if there exists a surjective function $f:\BbN \to A$. The surjectivity of $f$ means that
+\[
+A=\{ f(0), f(1), f(2), \dots \}.
+\]
+We call $f$ an \emph{enumeration} of $A$.
+A set is \emph{uncountable} if it is not countable.
+
+
+\begin{proposition}
+\label{P:countable union is countable}
+If 
+\[
+A_0, A_1, \dots, A_n,\dots  \qquad n\in\BbN
+\]
+are countable sets, then the union
+\[
+\bigcup_{n\in\BbN} A_n
+\]
+is countable.
+\end{proposition}
+
+
+\begin{proof} 
+For each $n\in \BbN$, let $f_n:\BbN \to A_n$  be an enumeration of  $A_n$.
+Thus,
+\begin{align*}
+A_0=&\{f_0(0), f_0(1), f_0(2), \dots\}\\
+A_1=&\{f_1(0), f_1(1), f_1(2), \dots\}\\
+A_2=&\{f_2(0), f_2(1), f_2(2), \dots\}\\
+&\vdots
+\end{align*}
+
+
+Define a function 
+\[
+g:\BbN \to \bigcup_{n\in \BbN}A_n
+\]
+ as follows. Start with $g(0)=f_0(0)$; then let $g(1),g(2)$ list all the elements of the form $f_i(j)$ such that $i+j=1$; then  let $g(3),g(4),g(5)$ list all the elements of the form $f_i(j)$ such that $i+j=2$; and so on. Thus, the function $g$ is clearly surjective.
+\end{proof}
+
+\begin{proposition}
+If $A$ and $B$ are countable sets, then $A\times B$ is countable.
+\end{proposition}
+
+\begin{proof}
+This is immediate from Proposition~\ref{P:countable union is countable} since if $f,g$ are enumerations of $A$ and $B$, respectively, then
+\[
+A\times B=\bigcup_{n\in\BbN} \{(f(m),g(n))\colon m\in \BbN\}.
+\]
+\end{proof}
+
+\begin{corollary}
+\label{C:words of fixed length}
+If $A_1,\dots, A_k$ are countable, then $A_1\times\dots\times A_k$ is countable.
+\end{corollary}
+
+\begin{proof}
+Immediate from the preceding proposition and induction.
+\end{proof}
+
+Fix a set $A$, and let's think of $A$ as an alphabet (or set of symbols) that we will use to form words. Mathematically,  for $n\in \BbN$, the words of length $n$ formed with symbols out of the alphabet $A$ are defined  as the elements of the set
+\[
+A^n = \underbrace{A\times \dots \times A}_{n\ \text{times}}.
+\]
+Thus, if $A$ is countable, then by Corollary \ref{C:words of fixed length}, the number of words of length $n$ formed with symbols out of the alphabet $A$ is countable. Moreover, by Proposition~\ref{P:countable union is countable}, the number of words of arbitrary finite length formed with symbols from  the alphabet $A$, 
+\[
+\bigcup_{n\in\BbN} A^n,
+\]
+is countable as well. 
+
+We have proved the following important result:
+
+\begin{corollary}
+\label{C:words of finite length}
+If $A$ is a countable alphabet, then the number of words of finite length formed with symbols out of  $A$ is countable.
+\end{corollary}
+
+Now let us switch our attention to words of infinite length. If $A$ is an alphabet, a word of countably infinite length formed from the alphabet $A$ is defined as an element of the set
+\[
+A^{\BbN} = \hspace{-24pt} \underbrace{A\times A\times \dots }_{\text{countably infinitely many times}} \hspace{-24pt}.
+\]
+
+
+In sharp contrast with Corollary \ref{C:words of finite length}, we have the following theorem:
+
+\begin{theorem}
+\label{T:words of infinite length}
+Let $A$ be an alphabet with at least two symbols. Then, the set of words of infinite length formed from the alphabet $A$ is uncountable.
+\end{theorem}
+
+
+\begin{proof}
+It suffices to consider the case when $A$ consists of only two symbols, let's call them 0 and 1.  We show that
+\[
+\{0,1\}^{\BbN} =\underbrace{\{0,1\}\times \{0,1\}\times\dots }_{\text{countably many times}}.
+\]
+is uncountable. Note that $\{0,1\}^{\BbN}$ consists of all the infinite sequences of 0's and 1's, i.e.,
+\[
+\tag{*}
+\{0,1\}^{\BbN} =\{\, (a_n)_{n\in\BbN} \colon  \text{For each $n\in\BbN$, $a_n\in\{0,1\}$} \, \}.
+\]
+Suppose, by way of contradiction, that $\{0,1\}^{\BbN}$ is countable, and let $f$ be an enumeration of  $\{0,1\}^{\BbN}$; i.e., 
+\[
+\{0,1\}^{\BbN} =\{ f(0), f(1), f(2), \dots \}.
+\]
+By $(*)$, for each $m\in \BbN$ there exists a sequence $(a_n^m)_{n\in\BbN}\in \{0,1\}^{\BbN}$ such that
+\[
+\tag{**}
+f(m) = (a_n^m)_{n\in\BbN}.
+\]
+Define a sequence $(a_n^*)_{n\in\BbN}\in \{0,1\}^{\BbN}$ by
+\[
+a_n^*=
+\begin{cases}
+0,  &\text{if $a_n^n=1$},\\
+1,  &\text{if  $a_n^n=0$}.
+\end{cases}
+\]
+Then the sequence $(a_n^*)_{n\in\BbN}$ is in $\{0,1\}^{\BbN}$, but by $(**)$, it is not of the form $f(m)$ for any $m\in\BbN$, contradicting the assumption that $f$ is surjective. 
+
+\end{proof}
+
+
+Let us reflect on what the last two results (namely, Corollary~\ref{C:words of finite length} and Theorem~\ref{T:words of infinite length}) show together. Corollary~\ref{C:words of finite length} shows that the set of finite strings of 0's and 1's  is countable, and Theorem~\ref{T:words of infinite length} shows that the set of infinite strings of 0's and 1's is uncountable.
+A finite string of 0's and 1's can be thought of as a computer program, or as a rational number written in binary form. An infinite string of 0's and 1's can be thought of as  an irrational number written in binary form. Thus, the set of computer programs and the set of all rational numbers are countable, while the set of irrational numbers is uncountable. 
+
+To summarize, the size of the set of irrational numbers is much larger than the size of the set of rational numbers. It is then natural to ask: What is the difference between the two different sizes? As we will discuss  in Section~\ref{S:ordinals-cardinals}, this question is the famous \emph{Continuum Hypothesis} (the very first of David Hilbert's famous list of open problems). It arose in the 20th century with the set-theoretic formalization of mathematics, and today it is known that, stunningly, it cannot be answered by the standard axioms of mathematics.
+
+
+\begin{exercises}\hfill
+
+\begin{enumerate}
+\item
+Prove the following version of the Pigeonhole Principle:
+
+\begin{fact}[Pigeonhole Principle (countable/uncountable version)]
+ If every pigeon must be given a pigeonhole, but the number of pigeonholes is countable and the number of pigeons is uncountable, then at least one pigeonhole corresponds to an uncountable number of pigeons. 
+\end{fact}
+
+
+\item
+Use Corollary~\ref{C:words of finite length} and Theorem~\ref{T:words of infinite length} to determine which of the following sets are countable:
+\begin{enumerate}
+\item
+The set of all colorings of $K_n$, for a fixed $n\in\BbN$ into two colors.
+\item
+The set of all colorings of $K_n$, for all  $n\in\BbN$ into two colors.
+\item
+The set of all colorings of $K_{\BbN}$ into two colors.
+\end{enumerate}
+
+
+\item
+For $k\in \BbN$, let $p_k$ denote the $k$th prime number (so $p_1=2$, $p_2=3$, $p_3=5$, etc).
+Every integer $n\ge2$ can be written uniquely as
+\[
+n=p_1^{e_1}\cdots p_k^{e_k},
+\]
+where $e_1,\dots, e_k$ are nonnegative integers, $p_k>0$,  and no prime larger than $p_k$ divides $n$. 
+Thus, $n$ can be seen as encoding the sequence $(e_1,\dots, e_k)$.
+Use this to give a \emph{direct proof} of Corollary~\ref{C:words of finite length} without invoking  any of the lemmas proved in this section.
+\end{enumerate}
+\end{exercises}
+
+\section{Well-Ordered Sets, Transfinite Induction, and Ordinal and Cardinal Numbers}
+
+\subsection{Well-Ordered Sets and Transfinite Induction \nopunct} 
+
+
+\begin{definition}
+Let $(A,\le)$ be a partially ordered set. If $S$ is a subset of $A$, we say that $S$ has a \emph{least} or \emph{minimum}  if there exists $m\in A$ such that 
+\[
+m\in S
+\quad\text{and}\quad
+\forall x\in S \; (m\le x).
+\]
+Note that (by the antisymmetry of the relation $\le$) if such an element $m$ exists, it must be unique; we denote it as $\min (S)$.
+
+We will say that $(A,\le)$ is a \emph{well-ordered set} if every nonempty subset of $A$ has a least element under $\leq$.
+\end{definition}
+
+
+
+
+\begin{remarks}
+\begin{enumerate}
+\item
+Every well-ordered set is linearly ordered, but the converse is not true (e.g., the interval $(0,1)$ is linearly ordered but not well-ordered).
+\item
+Every well-ordered set has a minimum element, but the converse is not true (e.g., the interval $[0,1]$ is linearly ordered but not well-ordered).
+\end{enumerate}
+\end{remarks}
+
+
+\begin{exercises}\hfill
+\label{E:well-order}
+\begin{enumerate}
+\item
+\label{E:initial segment}
+Given a partial order $(A,\leq)$ and an element $a\in A$, define the set of \emph{predecessors of $a$} as
+\[
+\operatorname{pred}(a)= \{\, x\in A \colon x<a\,\}.
+\]
+Prove that $(A,\leq)$ is well-ordered if and only if $(\operatorname{pred}(a),\le)$ is well-ordered for every $a\in A$.
+\item
+Let $(A,\leq)$ and $(B,\trianglelefteq)$ be well-ordered sets. Define an order $\preceq$ on $A\times B$ as follows: If $(a,b), (a',b')\in A\times B$, then
+\[
+(a,b) \preceq (a',b')
+\quad\text{if and only if}\quad
+\text{$a< a'$, or $a=a'$ and $b\trianglelefteq b'$}.
+\]
+Prove that $(A\times B,\preceq)$ is a well-ordered set.
+\end{enumerate}
+\end{exercises}
+
+
+\begin{proposition}
+A nonempty partially ordered set $(A,\le)$ is well-ordered if and only if there is no infinite descending chain
+\[
+a_0>a_1>a_2>\dots
+\]
+in $A$.
+\end{proposition}
+
+\begin{proof}
+Suppose that   $(A,\le)$ is well-ordered and $A$ contains an infinite descending chain as above. Then the set $\{S_n\colon n\in \BbN\}$ is a nonempty subset of $A$ with no smallest element, contradicting the well-order assumption on   $(A,\le)$.
+
+Conversely, suppose that $A$ is nonempty and $(A,\le)$ is not well-ordered. Since $A$ is nonempty, fix $a_0\in A$. Since $A$ has no smallest element, then there exists $a_1<a_0$. Now, since $A$ has no smallest element, the element $a_1$ cannot be the minimum of $A$ either, so there must be $a_2<a_1$ in $A$. Iterating this process recursively, we find an infinite descending chain $a_0>a_1>a_2>\dots$ in $A$.
+\end{proof}
+
+
+What makes well-ordered sets important in mathematics is the following fundamental principle:
+
+\begin{theorem}[Principle of Transfinite Induction]
+\label{T:induction}
+Suppose that   $(A,\le)$ is well-ordered. Then, in order to prove that every element of $A$ satisfies a given property $P$, it suffices to prove the following condition:
+\[
+\tag{IH}
+\text{If $a\in A$ and every $x<a$ satisfies $P$, then $a$ satisfies $P$.}
+\]
+\end{theorem}
+
+
+\begin{proof}
+By contrapositive, suppose that $(A,\le)$ is well-ordered, (IH) holds, and not every element of $A$ satisfies $P$. Then the set of elements of $A$ not satisfying $P$ is nonempty, so by well-ordering, it has has a minimum element; let's call this element $a$. By the minimality of $a$, every $x<a$ satisfies $P$.  But $a$ does not. Thus, (IH) is contradicted.
+\end{proof}
+
+\subsection{Ordinal and Cardinal Numbers \nopunct} \phantom{period} 
+\label{S:ordinals-cardinals}
+
+
+
+The ordinals are standard examples of well-ordered sets. They can also be seen as ``extended numbers.''
+
+The ordinals are defined recursively as follows.  The smallest ordinal is 0, which is formally defined as the empty set. The next smallest ordinal is 1, which is defined as $\{0\}$.  After 0 and 1 comes 2, which is defined as $\{0,1\}$. In general, $\{n+1\}$ is defined as $\{0,\dots, n\}$. Formally, we define
+
+\begin{itemize}
+\item
+$0=\emptyset$
+\item
+$n+1=n\cup\{n\}$.
+\end{itemize}
+
+These are all finite. In fact, these are called the \emph{finite ordinals}. They are well-ordered sets  in a natural way. 
+
+
+Note that if $m,n$ are finite ordinals, then
+\[
+m<n 
+\quad\text{if and only if} \quad
+m\in n.
+\]
+In other words, the well-ordering relation is the membership relation $\in$.
+
+There is no reason to stop at the finite ordinals. The first infinite ordinal is 
+\[
+\omega=\{0, 1, 2, \dots\}.
+\]
+Note that $\omega$ is well-ordered by Exercise~\ref{E:initial segment}. Formally, $\omega $ is defined as the union of all the preceding ordinals. 
+
+So now we have a (well-ordered) chain of ordinal numbers:
+\[
+0, 1, 2, \dots,  \omega.
+\]
+However, there is no reason to stop at $\omega$. We can mimic what we did with the finite ordinals and define
+\[
+\omega+1=\omega\cup\{\omega\} =\{0, 1, 2, \dots,  \omega\}.
+\]
+More general for any ordinal, $\alpha$, we can define the \emph{successor} of $\alpha$ as follows:
+
+\begin{definition}
+If $\alpha$ is an ordinal, the \emph{successor} of $\alpha$ is
+\[
+\alpha+1=\alpha\cup\{\alpha\}.
+\]
+\end{definition}
+Notice that, by Exercise~\ref{E:initial segment},  $\alpha+1$ is well-ordered if $\alpha$ is well-ordered. Thus we now have
+\[
+0, 1, 2, \dots,  \omega, \omega+1,\omega+2,\omega+3,\dots 
+\]
+But again, there is no reason to stop here. We can now define
+\[
+\omega+\omega=\bigcup_{n<\omega} \omega+n.
+\]
+Note that $\omega+\omega$ is well-ordered by Exercise~\ref{E:initial segment}. So, again, we have a chain
+\[
+0, 1, 2, \dots,  \omega, \omega+1,\omega+2,\omega+3,\dots \omega+\omega, \omega+\omega+1,\omega+\omega+2,\dots,
+\]
+and yes: We also have
+\[
+\omega+\omega+\omega=\bigcup_{n<\omega} \omega+\omega+ n.
+\]
+All of these sets are well-ordered by the relation $\in$.
+
+
+Note that the ordinals $\omega$, $\omega+\omega$, $\omega+\omega+\omega$  do not have immediate predecessors. Ordinals with no immediate predecessor are called \emph{limit ordinals}. The formal definition is as follows:
+
+
+\begin{definition}
+An ordinal $\alpha$ is said to be a \emph{successor ordinal} if $\alpha$ has an immediate predecessor, i.e.,  there exists an ordinal $\beta<\alpha$ such that $\alpha=\beta+1$. An ordinal that is not a successor ordinal is called a \emph{limit ordinal}.
+\end{definition}
+
+Note that the first limit ordinal is $\omega$. 
+
+We haven't really given a formal definition of the concept of ``ordinal.'' The formal definition is as follows:
+
+\begin{definition}
+\begin{enumerate}
+\item
+$0$ is an ordinal;
+\item
+If $\alpha$ is an ordinal, then $\alpha+1=\alpha\cup\{\alpha\}$ is an ordinal;
+\item
+%If $I$ is any set and $\alpha_i$ is an ordinal for each $i\in I$, then $\bigcup_{i\in I}\alpha_i$ is an ordinal.
+A union of any chain of ordinals is an ordinal.
+\end{enumerate}
+\end{definition}
+
+
+
+
+Since ordinals are defined recursively, by Theorem~\ref{T:induction}, we can define ordinal addition, multiplication, and exponentiation reursively as follows.
+
+
+Fix an ordinal $\alpha$, and by induction on $\beta$ we define $\alpha+\beta$, $\alpha\cdot\beta$, and $\alpha^\beta$ through the following definitions (note that the definition of addition is based on the definition of successor given above): 
+
+\textbf{Ordinal addition}
+\begin{itemize}
+\item
+$\alpha+0=\alpha$,
+\item
+$\alpha+(\beta+1)=(\alpha+\beta)+1$,
+\item
+If $\beta$ is a limit ordinal,
+\[
+\alpha+\beta=\bigcup_{\xi<\beta}\alpha+\xi.
+\]
+\end{itemize}
+
+\textbf{Ordinal multiplication}
+\begin{itemize}
+\item
+$\alpha\cdot 0=0$,
+\item
+$\alpha\cdot(\beta+1)=(\alpha\cdot\beta)+\alpha$,
+\item
+If $\beta$ is a limit ordinal,
+\[
+\alpha\cdot\beta=\bigcup_{\xi<\beta}\alpha\cdot\xi.
+\]
+\end{itemize}
+
+\textbf{Ordinal exponentiation}
+\begin{itemize}
+\item
+$\alpha^0=1$,
+\item
+$\alpha^{\beta+1}=\alpha^\beta\cdot\alpha$,
+\item
+If $\beta$ is a limit ordinal,
+\[
+\alpha^\beta=\bigcup_{\xi<\beta}\alpha^\xi.
+\]
+\end{itemize}
+
+
+\begin{exercise}
+Prove that ordinal addition and multiplication are not commutative;  more precisely, exhibit 
+\begin{enumerate}
+\item
+Ordinals $\alpha,\beta$ such that $\alpha+\beta\neq \beta+\alpha$.
+\item
+Ordinals $\alpha,\beta$ such that $\alpha\cdot\beta\neq \beta\cdot\alpha$.
+\end{enumerate}
+\end{exercise}
+
+Recall that two sets $A$ and $B$ are said to have the same cardinality if there is a bijective function between them.
+
+Note that, since a countable union of countable sets is countable, all of the ordinals 
+\[
+0, 1, 2, \dots \omega, \omega+1,\omega+2,\dots \omega+\omega,\dots \omega+\omega+\omega, \dots \omega^\omega,\dots
+\]
+are countable. However,  the axioms of set theory (which fall outside the scope of this course) ensure that there is a least ordinal, called $\omega_1$, such that there is no bijective correspondence between $\omega_1$ and any of its predecessors. In other words, the cardinality of $\omega_1$ is strictly larger than the cardinality of any ordinal $\alpha<\omega_1$. Similarly, there is an ordinal $\omega_2$ of cardinality strictly larger than that of $\omega_1$. In general, we define
+
+\begin{itemize}
+\item
+ $\omega_0=\omega$, and 
+ \item
+ For any ordinal $\alpha$, 
+ \begin{align*}
+ \omega_\alpha = &\text{ the least ordinal of cardinality larger}\\
+& \text{ than the cardinality of $\omega_\beta$, for all $\beta<\alpha$.}
+ \end{align*}
+ \end{itemize}
+ 
+
+In other words, the ordinals of the form $\omega_\alpha$ are those where a ``step up" in cardinality occurs. Not surprisingly, these cardinalities are special, so there is a particular name and nomenclature reserved for them:
+
+
+\begin{definition}
+For each ordinal $\alpha$, we let
+\[
+\aleph_\alpha =\text{The set $\omega_\alpha$}.
+\]
+In other words, $\aleph_\alpha$ is a name we give to the ordinal $\omega_\alpha$ after we strip it of its well-order relation and think of it not as a well-ordered set, but rather as a set - giving measure of size for infinite sets.
+If $A$ is an arbitrary set and there exists a bijection between $A$ and $\aleph_\alpha$ (=$\omega_\alpha$), we write
+\[
+|A|=\aleph_\alpha.
+\]
+If $A, B$ are sets and $|A|=\aleph_\alpha=|B|$, we simply write $|A|=|B|$ and say that $A$ and $B$ are \emph{equipotent}.
+\end{definition}
+
+
+The following is one of the many equivalent forms of  the famous Axiom of Choice from set theory:
+
+\begin{fact}[The Axiom of Choice (AC)]
+\label{F:AC}
+For every infinite set $A$ there exists an ordinal $\alpha$ such that $|A|=\aleph_\alpha$ i.e.,  the cardinality of $A$ is $\aleph_\alpha$. 
+\end{fact}
+
+Kurt Gödel (1937) and Paul J. Cohen (1963) proved that this axiom cannot be proved or disproved from the standard  axioms of set theory.%
+\footnote{Gödel proved that AC cannot be proved to be false from the axioms of set theory, and Cohen proved that that AC cannot be proved to be true from said axioms.}
+So, it is regarded as a special axiom.
+
+
+Now since $\aleph_\alpha$ is nothing but $\omega_\alpha$, and the latter is a well-ordered set, then Fact~\ref{F:AC} says that any set whatsoever can be put into bijective correspondence with a well-ordered set. Therefore, every set can be well-ordered. This is the famous Well-Ordering Principle:
+
+
+\begin{fact}[The Well-Ordering Principle (WOP)]
+\label{F:WOP}
+For every set $A$ there exists a binary relation $\le$ on $A$ such that $(A,\le )$ is a well-ordered set.
+\end{fact}
+
+\begin{remarks}
+
+\begin{enumerate}
+\item
+We have just observed that (AC) implies (WOP). The opposite implication is also true, because if $A$ is any set and $\le$ is a well-ordering relation on $A$, then by Exercise~\label{E:well order isomorphic to ordinal}, $(A,\le )$ is isomorphic to an ordinal, i.e., there exists an ordinal $\alpha$ such that $(A,\le )$ is isomorphic to $(\alpha,<)$. But, then one can take the smallest such $\alpha$, and such $\alpha$ by definition must be a cardinal. Thus, $A$ is equipotent to a cardinal. 
+
+\item
+A useful, and rather surprising,  consequence of Fact~\ref{F:WOP} is that, by \ref{T:induction} do induction proofs on any set.
+\end{enumerate}
+
+\end{remarks}
+
+We know (by Theorem~\ref{T:words of infinite length}) that the real line, $\mathbb{R}$, is uncountable i.e., $|\BbR|>\aleph_0$. But then, what is $|\BbR|$? Is it $\aleph_1$? Or maybe  $\aleph_2$? Or maybe something much bigger, say, $\aleph_\omega$? 
+Georg Cantor developed  the theory of ordinal and cardinal numbers in the late 19th century in order  to settle this question (motivated by his investigations in analysis).
+He believed that $|\BbR|=\aleph_1$, i.e., the size of the real line is the smallest uncountable cardinality. This became known as Cantor's Continuum Hypothesis.  
+Cantor spent the rest of his life unsuccessfully trying to prove it. His inability to devise a solution led to increasingly frequent bouts  of depression, and he died in a sanatorium in 1918. However, his groundbreaking theories of transfinite ordinal and cardinal numbers transformed mathematics profoundly (it was claimed that the number of theorems proved between 1900 and 1940 was larger than the number of theorems proved between Archimedes and 1900), and became a cornerstone of the mathematics of the new century. In the words of Hilbert, the most influential mathematician of the 20th century, Cantorian set theory brought mathematicians into ``paradise.''  Naturally, Cantor's Continuum Hypothesis  became the very first problem in Hilbert's  famous list of open problems, which would shape the course of mathematics during the next 100 years and into our time. 
+
+The question is profound: What is the cardinality of the real line?  
+
+In 1937, Kurt Gödel constructed universes of mathematics where the Continuum Hypothesis is true (that is, the cardinality of the continuum is the smallest uncountable cardinality), and in 1963, Paul J. Cohen constructed universes of mathematics where it is false. Thus, Cantor's Continuum Hypothesis cannot be proved or disproved from the standard axioms of set theory.  Cohen won the Fields Medal and the National Medal of Science for his achievement, but the true size of the set of real numbers remains one of the great mysteries of mathematics.
+
+
+\begin{exercise}
+\label{E:well order isomorphic to ordinal}
+Prove that for every well-ordered set $(A,\le)$ there is an ordinal $\alpha$ such that $(A,<)$ is isomorphic to $(\alpha,\in)$. [\emph{Hint}: Recall the definition of $\operatorname{pred}(a)$ from Exercise~\ref{E:well-order}. Prove that for every $a\in A$ there exists an ordinal $\alpha_a$ and an isomorphism $f_a$ between $(\operatorname{pred}(a),<)$ and $(\alpha,\in)$ such that for all $b,c\in \operatorname{pred}(a)$, $b<c\Rightarrow f_a(b)\subseteq f_a(c)$.]
+\end{exercise}
+
+
+\section{Topological Spaces}
+\label{S:topology}
+
+
+\begin{definition}
+\label{D:topological space}
+    A \emph{topological space} is a structure $(X, \mathscr{N}_x)_{x\in X}$  that consists of a set $X$ and, for each point $x\in X$, a collection $\mathscr{N}_x$ of subsets of $X$ that satisfy the following properties:
+
+    \begin{enumerate}
+        \item $x\in U$ for every $U\in \mathscr{N}_x$;
+        \item If $U,V\in \mathscr{N}_x$, then there exists $W\in \mathscr{N}_x$ such that $W\subseteq U\cap V$;
+        \item For every $U\in \mathscr{N}_x$ and every $y\in U$, there exists $V_y\in \mathscr{N}_y$ such that $V_y\subseteq U$.
+        
+    \end{enumerate}
+\end{definition}
+
+
+
+
+Next we introduce an immediate result from the previous definition. The reader should note that Property (3) and the next proposition are equivalent.
+
+\begin{proposition}
+\label{P:basic nhoods are open}
+    Let $(X, \mathscr{N}_x)_{x\in X}$ be a topological space. For every $U\in \mathscr{N}_x$ and every $y\in U$, there exists $V_y\in \mathscr{N}_y$ such that \[U=\bigcup\limits_{y\in U}V_y\text{.}\]
+\end{proposition}
+
+\begin{proof}
+  Fix a point $x\in X$, and let $U\in \mathscr{N}_x$ be given.
+  By Property (3) above, we have that for every $y\in U$, there is some $V_y\in \mathscr{N}_y$ such that $V_y\subseteq U$.
+  Thus, the union of all such $V_y$ is contained in $U$.
+  Also, by Property (1), we see that for every $y\in U$, we have $y\in V_y\subseteq \bigcup\limits_{y\in U}V_y$. Thus, $U=\bigcup\limits_{y\in U}V_y$.
+\end{proof}
+
+\begin{definition}
+  Let $( X, \mathscr{N}_x)_{x\in X}$ be a topological space.
+
+  For each $x\in X$, we refer to $\mathscr{N}_x$ as the \emph{neighborhood base} for $x$. 
+  The indexed family $(\mathscr{N}_x)_{x\in X}$ is called a \emph{local neighborhood base} on $X$.
+  For all $x\in X$, each set $U\in \mathscr{N}_x$ is called a \emph{basic neighborhood} of $x$. A \emph{neighborhood} of $x$ is any superset of a basic neighborhood of $x$.
+    
+\end{definition}
+
+\begin{definition}
+  A set $O\subseteq X$ is called \emph{open} if for every $x\in O$, there exists $V_x\in \mathscr{N}_x$ such that 
+  \[
+  O=\bigcup\limits_{x\in O}V_x\text{.}
+  \]
+  
+  A set $C\subseteq X$ is called \emph{closed} if $X\setminus C$ is open. Note that $C$ is closed if for every $x\in X$, and every basic neighborhood of $x$ that intersects $C$, then $x\in C$.
+\end{definition}
+
+Note that, by Proposition~\ref{P:basic nhoods are open}, a subset of $X$ is open if and only it is a union of basic neighborhoods.
+
+\begin{proposition}
+\label{P:properties of open sets}
+
+    In any topological space $(X, \mathscr{N}_x)_{x\in X}$, the following properties hold:
+
+    \begin{enumerate}
+        \item Both $\emptyset$ and $X$ are open subsets of $X$ (and evidently also closed);
+        \item Any union of open subsets of $X$ is open;
+        \item Any finite intersection of open subsets of $X$ is open.
+        
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+
+\leavevmode
+
+\begin{enumerate}
+\item The empty set is open since any condition that must be satisfied by the points in $\emptyset$ is true vacuously. The set $X$ itself is open since, for each point $x\in X$, we may choose $V_x\in \mathscr{N}_x$ arbitrarily so that $X=\bigcup\limits_{x\in X}V_x$.
+
+\item Given any open subsets $(O_i)_{i\in I}$ of $X$, we have that each $O_i$ is a union of basic neighborhoods. Thus, the union $\bigcup\limits_{i\in I}O_i$ is a larger union of basic neighborhoods, and hence also an open subset of $X$.
+
+\item If $O_1$ and $O_2$ are open subsets of $X$, then for each $x\in O_1\cap O_2$, there are $U,V\in \mathscr{N}_x$ such that $U\subseteq O_1$ and $V\subseteq O_2$. By Property (2) of Definition~\ref{D:topological space}, there's $W_x\in \mathscr{N}_x$ such that \[W_x\subseteq U\cap V\subseteq O_1\cap O_2\text{.}\] Thus, $O_1\cap O_2$ is the union of all such $W_x\in \mathscr{N}_x$ that satisfy $W_x\subseteq O_1\cap O_2$ as $x$ ranges over $O_1\cap O_2$.
+\end{enumerate}
+\end{proof}
+
+Note that an infinite intersection of open sets is not necessarily open, as will be shown in Example \ref{E:basic topological spaces}(a).
+
+\begin{definition}
+Let $(X, \mathscr{N}_x)_{x\in X}$ be a topological space.
+
+The \emph{topology} $\mathscr{T}$ on $X$ generated by the local neighborhood base $(\mathscr{N}_x)_{x\in X}$  is the collection of all open subsets of $X$; that is, 
+\[
+\mathscr{T}= 
+\{ O\subseteq X \colon O \text{ is open}\}\text{.}
+\]
+\end{definition}
+
+Note that two different local neighborhood bases on $X$ can generate the same topology. For instance, examples (a) and (b) below generate the same topology on $\mathbb R$.
+
+\begin{example} Basic examples
+\label{E:basic topological spaces}
+
+\begin{enumerate}[(a)]
+
+\item Let $X=\mathbb{R}$, and for each $x\in \mathbb{R}$,  let $\mathscr{N}_x=\{(x-\varepsilon , x+\varepsilon):\varepsilon >0\}$.
+
+We will show that there is an infinite intersection of open subsets of $X$ that is not open. Take, for instance, the infinite intersection \[\bigcap\limits_{n\in \mathbb{N}}(0,1+\frac{1}{n})=(0,1]\text{.}\]
+This interval is not open since there is no basic neighborhood $(1-\varepsilon,1+\varepsilon)$ of $1\in X$ that is contained in $(0,1]$.
+
+\item Let $X=\mathbb{R}$, and for each $x\in \mathbb{R}$,  let $\mathscr{N}_x=\{(\alpha , \beta) \colon \alpha<x<\beta, \alpha,\beta\in\mathbb{R} \}$.
+
+\item Let $X=\mathbb{R}^2$, and for each $x\in \mathbb{R}^2$, let $\mathscr{N}_x$ consist of the set of all open disks about $x$ of radius $\varepsilon$ for all $\varepsilon >0$.
+
+\item Let $X$ be any set, and for each $x\in X$, let $\mathscr{N}_x = \{\{x\}\}$; i.e., the only basic neighborhood of $x$ is the singleton $\{x\}$. The resulting topology is called the \emph{discrete} topology on $X$.
+
+Note that, in this topological space, every subset of $X$ is open (since every set is a union of singletons). Hence, every subset is closed as well.
+
+\item Let $X$ be any set, and for each $x\in X$, let $\mathscr{N}_x = \{X\}$. The resulting topology is called the \emph{trivial} (or \emph{indiscrete}) topology on $X$. Note that, in this topological space, only two subsets are open; namely, $\emptyset$ and $X$.
+
+\end{enumerate}
+
+\end{example}
+
+\begin{exercise}
+Let $(A,\le)$ be  a linearly ordered set (see Definition~\ref{D:posets} and the exercises that follow it). For $a,b\in A$ with $a<b$, define the \emph{open interval} $(a, b)$ by
+\[
+(a, b)=\{x\in A \colon a<x<b\}.
+\]
+Now for $x\in A$, define 
+\[
+\mathscr{N}_x = \left\{ \,  (a, b) \colon a<x<b \, \right\}.
+\]
+\begin{enumerate}[(a)]
+\item
+Prove that $(A, \mathscr{N}_x )_{x\in A}$ is a topological space, i.e., show that $\mathscr{N}_x$ satisfies properties (1)--(3) of the definition of topological space, for all $x\in A$.(Definition~\ref{D:topological space}).
+\item
+Suppose above that we replace ``linearly ordered'' by ``partially ordered.'' Is $(A, \mathscr{N}_x )_{x\in A}$ a topological space? Why or why not?
+\item
+Suppose that we define
+\[
+\mathscr{N}_x = \left\{ \, [x, b) \colon x<b  \, \right\}.
+\]
+Is $(A, \mathscr{N}_x )_{x\in A}$ a topological space?  Why or why not?
+\end{enumerate}
+\end{exercise}
+
+
+\begin{exercises}\hfill
+
+
+\begin{enumerate}
+
+\item
+For any given set $A$, let  $\BbR^A$ denote the set of all functions from $A$ into $\BbR$. We define a topology on $\BbR^A$.  To this effect, fix $f\in\BbR^A$ in order to define a set $\mathscr{N}_f$ of basic neighborhoods of $f$. 
+
+Given $x_1,\dots,x_n \in A$ and $\varepsilon > 0$, define
+\[
+V_f(x_1,\dots, x_n,\varepsilon)= 
+\left\{g\in \BbR^A \colon | g(x_i)-f(x_i) |<\epsilon \text{ for all } i\in \{ 1,\dots, n\} \right\}.
+\]
+Define now
+\[
+\mathscr{N}_f = \left\{ V_f(x_1,\dots, x_n,\varepsilon) \colon \varepsilon >0, x_1,\dots,x_n\in A, n\in\mathbb{N} \right\}.
+\]
+Prove that  $(\BbR^A, \mathscr{N}_f )_{f\in \BbR^A}$ is a topological space, i.e., show that $\mathscr{N}_f$ satisfies properties (1)--(3) of the definition of topological space (Definition~\ref{D:topological space}).
+
+
+\item 
+ Let $(X, \mathscr{N}_x )_{x\in X }$ be a topological space, let $A$ be a set, and denote by  $X^A$ the set of all functions from $A$ into $X$. Define a topology on $X^A$ as follows.  Given $f\in X^A$,    $x_1,\dots,x_n \in A $ and  $V_1\dots, V_n\subseteq X$ such that $V_i\in \mathscr{N}_{f(x_i)}$ for  $i\in \{ 1,\dots, n\}$, define
+\[
+V_f(x_1,\dots, x_n,V_1,\dots, V_n)= 
+\left\{g\in X^A \colon g(x_i)\in V_{f(x_i)}  
+\text{ for all } i\in \{ 1,\dots, n\} \right\}.
+\]
+Then define 
+\[
+\mathscr{N}_f = \left\{ V_f(x_1,\dots, x_n,V_1,\dots, V_n) \colon \text{$V_i\in \mathscr{N}_{f(x_i)}$ for  $i\in \{ 1,\dots, n\}$} \right\}.
+\]
+Prove that  $(X^A, \mathscr{N}_f )_{f\in X^A}$ is a topological space, i.e., show that $\mathscr{N}_f$ satisfies properties (1)--(3) of the definition of topological space (Definition~\ref{D:topological space}).
+
+\end{enumerate}
+
+\end{exercises}
+
+
+\section{Topological Limits}
+
+We now transition to discuss the notion of limit in a topological space. Fix a topological space $(X,\mathscr{N}_x)_{x\in X}$ and an indexed family $(a_i)_{i\in I}$ in $X$. We want to express what it means for $(a_i)_{i\in I}$ to converge to a point $c\in X$. Intuitively, this means that $(a_i)_{i\in I}$ \emph{clusters} around a point $c\in X$; that is, for every basic neighborhood $V_c\in \mathscr{N}_c$, there exists a ``large'' $L\subseteq I$ such that $\{a_i \colon i\in L\}\subseteq V_c$. To clarify what is meant by ``large,'' we proceed by defining the notion of filter, which may be thought of as a collection of all the ``large'' subsets $L$ of $I$.
+
+\begin{definition}
+\label{D: filter}
+
+Fix a nonempty set $I$. A \emph{filter} on $I$ is a collection $\mathscr{F}$ of subsets of $I$ that satisfy the following properties:
+
+\begin{enumerate}
+        \item $\emptyset\not\in\mathscr{F}$ and $I\in \mathscr{F}$;
+        \item If $A\in\mathscr{F}$ and $B\supseteq A$, then $B\in\mathscr{F}$;
+        \item If $A,B\in \mathscr{F}$, then $A\cap B\in\mathscr{F}$.
+        
+    \end{enumerate}
+\end{definition}
+
+Similarly, we may define the notion of ``small'' in the following way.
+
+\begin{definition}
+\label{D: ideal}
+
+Fix a nonempty set $I$. An \emph{ideal} on $I$ is a collection $\mathscr{J}$ of subsets of $I$ that satisfy the following properties:
+
+\begin{enumerate}
+        \item $\emptyset\in\mathscr{J}$ and $I\not\in \mathscr{J}$;
+        \item If $A\in\mathscr{J}$ and $B\subseteq A$, then $B\in\mathscr{J}$;
+        \item If $A,B\in \mathscr{J}$, then $A\cup B\in\mathscr{J}$.
+        
+    \end{enumerate}
+
+\end{definition}
+
+Observe that given a filter $\mathscr{F}$ on a nonempty set $I$, we can define an ideal $\mathscr{J}$ on $I$ by \[\mathscr{J}=\{I\setminus A \colon A\in\mathscr{F}\}\text{.}\]
+Similarly, given an ideal $\mathscr{J}$ on $I$, we see that \[\mathscr{F} = \{I\setminus A \colon A\in \mathscr{J}\}\] is a filter on $I$.
+
+\begin{notation}
+\label{N:Large sets}
+If $\mathscr{F}$ is a filter on a nonempty set $I$, then the elements of $\mathscr{F}$ are called \emph{$\mathscr{F}$-large}. A property of elements of $I$ is said to hold for \emph{almost every $i\in I$} or \emph{almost everywhere} in $I \pmod{\mathscr{F}}$ if the property holds for an $\mathscr{F}$-large subset of $I$.
+\end{notation}
+
+We are now ready to define the notion of convergence.
+
+\begin{definition}
+Let $(X, \mathscr{N}_x)_{x\in X}$ be a topological space, and let $(a_i)_{i\in I}$ be an indexed family of elements in $X$. If $\mathscr{F}$ is a filter on $I$, we say $a_i$ \emph{converges} to a point $c\in X$ with respect to $\mathscr{F}$, denoted $a_i\overset{\mathscr{F}}\to c$, if and only if for every $V_c\in\mathscr{N}_c$, we have $\{i \colon a_i\in V_c\}\in\mathscr{F}$.
+
+
+We call $c$ an \emph{$\mathscr{F}$-limit} of $(a_i)_{i\in I}$ if and only if $(a_i)_{i\in I}$ converges to $c$ with respect to $\mathscr{F}$.
+
+\end{definition}
+
+In the context of a sequence of real numbers, this is the definition we are familiar with. Consider Example \ref{E:basic topological spaces}(a); namely, the topological space $(\mathbb{R},\mathscr{N}_x)_{x\in \mathbb{R}}$ where $\mathscr{N}_x = \{(x-\varepsilon,x+\varepsilon) \colon \varepsilon>0\}$. Let $I=\mathbb{N}$, and let $\mathscr{F}$ consist of all cofinite subsets of $\mathbb{N}$. Then, if $(a_n)_{n\in \mathbb{N}}$ is a sequence of real numbers, we see that $a_n \overset{\mathscr{F}}\to c$ if and only if for every $V_c\in\mathscr{N}_c$, we have $a_n\in V_c$ for all but finitely many $n\in\mathbb{N}$; that is, for all $\varepsilon >0$, there exists  $N\in\mathbb{N}$ such that for all $n>N$, we have $a_n\in(c-\varepsilon,c+\varepsilon)$.
+
+\begin{definition}
+The filter that consists of all cofinite subsets of any nonempty set $I$ is called the \emph{Fr\'echet filter on $I$}.
+\end{definition}
+
+Recall that, in the topological space $(\mathbb{R},\mathscr{N}_x)_{x\in \mathbb{R}}$ mentioned above, limits are unique. However, this is not true in every topological space. Consider the indiscrete topology discussed in Example~\ref{E:basic topological spaces}(e); namely, given any set $X$, the indiscrete topology on $X$ is the set $\mathscr{T}=\{\emptyset, X\}$. Given any indexed family $(a_i)_{i\in I}$ in $X$ and any filter $\mathscr{F}$ on $I$, since $X$ is the only basic neighborhood of any point in $X$ and \[\{i\colon a_i\in X\}=I\in\mathscr{F}\text{,}\] it follows that every point in $X$ is a limit of $(a_i)_{i\in I}$.
+
+Thus, a new question arises: What property must a topological space have to ensure that every limit is unique?
+This question leads us to the following definition.
+
+\begin{definition}
+A topological space $(X,\mathscr{N}_x)_{x\in X}$ is called \emph{Hausdorff} if any two distinct points in $X$ can be separated by disjoint neighborhoods; i.e., if $x,y\in X$ such that $x\not =y$, then there exist basic neighborhoods $V_x\in\mathscr{N}_x$ and $V_y\in\mathscr{N}_y$ such that $V_x\cap V_y=\emptyset$.
+\end{definition}
+
+\begin{proposition}
+\label{P:Hausdorff->unique limits}
+Let $(X,\mathscr{N}_x)_{x\in X}$ be a Hausdorff topological space, let $(a_i)_{i\in I}$ be an indexed family in $X$, and let $\mathscr{F}$ be a filter on $I$.
+If $a_i\overset{\mathscr{F}}\to c$ and $a_i\overset{\mathscr{F}}\to d$, then $c=d$.
+\end{proposition}
+
+\begin{proof}
+Suppose, on the contrary, that 
+\begin{align*}
+a_i\overset{\mathscr{F}}\to c \text{,}\\
+a_i\overset{\mathscr{F}}\to d\text{,}
+\end{align*}
+and $c\not=d$. Since $(X,\mathscr{N}_x)_{x\in X}$ is Hausdorff, we can separate $c$ and $d$ by disjoint neighborhoods, say, $U$ and $V$. Then we have
+\begin{align*}
+A&=\{i \colon a_i\in U\}\in\mathscr{F} \text{ and}\\
+B&=\{i \colon a_i\in V\}\in\mathscr{F}\text{,}
+\end{align*}
+so by Property (3) of Definition~\ref{D: filter}, we have $A\cap B=\emptyset\in \mathscr{F}$, which contradicts Property (1). We conclude $c=d$.
+\end{proof}
+
+
+The converse of Proposition~\ref{P:Hausdorff->unique limits} is also true. Although it is not needed for the material in these notes, it can be proved easily, so we have included a proof in Proposition~\ref{P:unique limits->Hausdorff}
+
+\begin{notation}
+In case $\mathscr{F}$-limits are unique in a topological space $(X,\mathscr{N}_x)_{x\in X}$ and an indexed family $(a_i)_{i\in I}$ in $X$ converges to $c\in X$, we write 
+\[
+c=\mathscr{F}\lim a_i \quad \text{or} \quad c= \lim\limits_{i,\mathscr{F}}a_i \text{.}
+\]
+\end{notation}
+
+
+\subsection{Principal Ultrafilters \nopunct}
+
+
+\begin{definition}
+An \emph{ultrafilter} $\mathscr{U}$ on a nonempty set $I$ is a filter on $I$ such that for every $A\subseteq I$, either $A\in \mathscr{U}$ or $I\setminus A\in \mathscr{U}$.
+\end{definition}
+
+Filters can also be seen as generalized measures. An ultrafilter $\mathscr{U}$ on a set $I$ divides the subsets of $I$ into two categories: $\mathscr{U}$-large and $\mathscr{U}$-small --- the large subsets of $I$ are those in $\mathscr{U}$, and the small subsets of $I$ are those whose complement is in $\mathscr{U}$. Thus, ultrafilters are ``complete'' measures in the sense that every set is measurable. Filters, in contrast, need not be complete in this sense: For an arbitrary filter $\mathscr{F}$ on a set $I$, there may be subsets of $I$ that are neither $\mathscr{F}$-large nor $\mathscr{F}$-small (for instance, for the Fr\'{e}chet filter on $\mathbb N$, any subset of $\mathbb N$ that is neither finite nor cofinite --- e.g., the set of even numbers --- is neither $\mathscr{F}$-large nor $\mathscr{F}$-small.)
+
+
+\begin{example} Principal Ultrafilters
+
+Fix a nonempty set $I$ and an element $a\in I$. Define 
+\[
+\mathscr{U}_a=\{A\subseteq I \colon a\in A\}.
+\]
+Note that $\mathscr{U}_a$ is an ultrafilter on the set $I$. Any ultrafilter defined in this way is called a \emph{principal} (or ``trivial'' or ``fixed'') ultrafilter. More precisely, $\mathscr{U}_a$ is called the principal ultrafilter on $I$ \emph{generated by $a$}.
+\end{example}
+
+The preceding example suggests that ultrafilters represent an abstract notion of ``point." Principal ultrafilters are ``hard" points, while nonprincipal ultrafilters are ``soft" points. 
+
+\begin{exercise}
+Prove that if $I$ is finite, then every ultrafiter on $I$ is principal.
+\end{exercise}
+
+
+
+
+\subsection{Nonprincipal Ultrafilters \nopunct}
+
+
+\begin{proposition}
+An ultrafilter $\mathscr{U}$ on a set $I$ is principal if and only if $\mathscr{U}$ contains a finite subset of $I$.
+\end{proposition}
+
+\begin{proof}
+If $\mathscr{U}$ is principal, then $\mathscr{U}$ contains a finite set; namely, the singleton that generates it. Suppose, conversely, that $\mathscr{U}$ is nonprincipal. We prove, by induction on $n$, that $\mathscr{U}$ cannot contain $n$-element subsets of $I$ for $n=1, 2,\dots$. The case $n=1$ is given by the definition of nonprincipal.  Suppose that $\mathscr{U}$ contains a set $\{a_1,\dots, a_n\}$, where $a_1,\dots, a_n$ are distinct elements of $I$. Since, by the non nonprincipality assumption, we cannot have $\{a_1\}\in \mathscr{U}$, we must have $I\setminus \{a_1\}\in \mathscr{U}$. But then, since $\mathscr{U}$ is closed under finite intersections, $\mathscr{U}$ must contain $(I\setminus \{a_1\})\cap\{a_1,\dots, a_n\}=\{a_2,\dots, a_n\}$, which contradicts the induction assumption.
+\end{proof}
+
+The preceding proposition can be re-stated as follows:
+
+\begin{proposition}
+\label{P:nonprincipality and Frechet}
+An ultrafilter $\mathscr{U}$ on an infinite set $I$ is nonprincipal if and only if it extends the Fr\'echet filter on $I$.
+\end{proposition}
+
+In light of the preceding proposition, to prove that nonprincipal ultrafilters exist, we only have to prove that the Fr\'echet filter on $I$ can be extended to an ultrafilter. The following propositions show that, indeed,  any collection of subsets of $I$ that has the finite intersection property can be extended to an ultrafilter; see, in particular, Corollaries~\ref{C:ultrafilter theorem} and~\ref{C:nonprincipal ultrafilters exist}.
+
+\begin{definition}
+\label{D:fip}
+A collection $\mathscr{B}$ of subsets of $I$ has the \emph{finite intersection property} (or is \emph{finitely consistent}) if whenever $A_1,\dots, A_n\in\mathscr{B}$, we have 
+\[
+A_1\cap\dots\cap A_n\neq \emptyset \text{.}
+\]
+\end{definition}
+
+
+The finite intersection property is ubiquitous in mathematics. Mathematicians often refer to it as ``f.i.p."
+
+\begin{proposition}
+\label{P:filter generated by a base}
+Every collection of subsets of $I$ that has the finite intersection property can be extended to a filter on $I$.
+\end{proposition}
+
+\begin{proof}
+Let $\mathscr{B}$ be a collection of subsets of $I$ with the finite intersection property. Without loss of generality, we can assume that $\mathscr{B}$ is closed under finite intersections. But then, once we have assumed this, to extend $\mathscr{B}$ to a filter, we only have to close it under supersets; in other words, the collection
+\[
+\mathscr{F}=\{A\subseteq I \colon A\supseteq B 
+\text{ for some $B\in \mathscr{B}$} \}
+\]
+is clearly a filter on $I$.
+\end{proof}
+
+Due to the preceding proposition, any collection $\mathscr{B}$ of subsets of $I$ with the finite intersection property is often called a \emph{base} for a filter (or a \emph{filter base}) on $I$. The filter $\mathscr{F}$ constructed in the proof of the Proposition~\ref{P:filter generated by a base} is called the filter \emph{generated} by $\mathscr{B}$.
+
+Now we want to improve Proposition~\ref{P:filter generated by a base} by showing that every filter can be extended to an ultrafilter on $I$.
+
+\begin{proposition}
+\label{P:ultrafilter lemma}
+Let $\mathscr{F}$ be a filter on a set $I$. Then,  for every $A\subseteq I$, there exists a filter $\mathscr{F}'\supseteq \mathscr{F}$ on $I$ such that either $A\in \mathscr{F}'$ or $I\setminus A \in \mathscr{F}'$
+\end{proposition}
+
+\begin{proof}
+Fix a set $A\subseteq I$. By Proposition~\ref{P:filter generated by a base}, it suffices to verify that either $\mathscr{F}\cup\{A\}$ or $\mathscr{F}\cup\{I\setminus A\}$ has the finite intersection property. But this is immediate because if $\mathscr{F}\cup\{A\}$ fails to have the finite intersection property, it is because there exist $A_1,\dots, A_n\in \mathscr{F}$ such that
+$A_1 \cap\dots \cap A_n\cap A=\emptyset$, and this means that 
+$I\setminus A\supseteq A_1 \cap\dots \cap A_n$,
+which implies that $\mathscr{F}\cup\{I\setminus A\}$ has the finite intersection property.
+\end{proof}
+
+
+\begin{corollary}[{The Ultrafilter Theorem [A. Tarski, 1930]}]
+\label{C:ultrafilter theorem}
+Every filter on a set $I$ can be extended to an ultrafilter on $I$.
+\end{corollary}
+
+\begin{proof}
+Fix a filter $\SF$ on $I$,  let $\alpha=|\SP(I)|$ and let $(A_\xi)_{\xi<\alpha}$ be a list of all the subsets of $I$. By induction, we construct an increasing chain 
+\[
+\SF=\SF_0\subseteq \SF_1\subseteq \dots\subseteq \SF_\xi\subseteq \dots\qquad (\xi\le\alpha)
+\]
+of filters in $I$  such that:
+\begin{enumerate}
+\item If $\xi = \zeta +1$, then 
+\[
+A_\zeta\in \SF_\xi
+\quad\text{or}\quad
+I\setminus A_\zeta\in \SF_\xi;
+\]
+\item If $\xi\le\alpha$ is a nonzero limit ordinal, then
+\[
+\SF_\xi = \bigcup_{\zeta <\xi} \SF_\zeta\text{.}
+\]
+\end{enumerate}
+
+The construction is as follows. Fix $\xi<\alpha$ and that $\SF_\zeta$ has been defined for all $\zeta<\xi$. 
+
+If $\xi$ is a successor ordinal, say $\xi=\zeta+1$, by Proposition~\ref{P:ultrafilter lemma},
+either $\SF_\zeta \cup \{A_\zeta\}$ or $\SF_\zeta \cup \{I\setminus A_\zeta\}$ has the finite intersection property (it is possible that both sets have the f.i.p.).
+We pick one of these sets that has the finite intersection property, and let $\SF_\xi$ be a filter extending it. 
+
+If $\xi$ is a limit ordinal, we simply let $\SF_\xi = \bigcup_{\zeta<\xi}\SF_\zeta$. Since $(\SF_\zeta)_{\zeta<\xi}$ is an increasing chain of filters, it is easy to see that $\SF_\xi$ is closed under finite intersections and supersets (for if $A,B\in \SF_\xi$, then $A$ and $B$ are in some member of the chain), and does not contain the empty set, i.e., $\SF_\xi$ is a filter. 
+
+By construction, $\SF_\alpha$ is an ultrafilter containing $\SF_0=\SF$.
+
+\end{proof}
+
+\begin{corollary}
+\label{C:nonprincipal ultrafilters exist}
+Nonprincipal ultrafilters exist on any infinite set.
+\end{corollary}
+
+\begin{proof}
+Let $I$ be an infinite set. By Proposition \ref{P:ultrafilter lemma}, the Fr\'echet filter on $I$ can be extended to an ultrafilter. By Proposition~\ref{P:nonprincipality and Frechet}, such an ultrafilter must be nonprincipal. 
+\end{proof}
+
+\begin{corollary}
+\label{C:base extended to ultrafilter}
+Let $\SB$ be a family of subsets of $I$ with the finite intersection property. Then there exists an ultrafilter $\SU$ on $I$ such that every set in $\SB$ is $\SU$-large.
+\end{corollary}
+
+\begin{proof}
+By Proposition~\ref{P:filter generated by a base} and Corollary~\ref{C:ultrafilter theorem}.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
