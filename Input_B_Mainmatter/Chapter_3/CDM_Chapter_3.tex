@@ -1,371 +1,418 @@
+\chapter{Finding Patterns in Large Networks (or Why Complete Chaos Is Impossible)}
+\label{C:Ramsey}
 
-\chapter{Limits of structures}
+\section{Ramsey's Theorem (The Classical Version)}
 
+The following is regarded as the most important principle of discrete mathematics.
 
-Recall from \ref{N:Large sets} that if $\mathscr{F}$ is a filter on a nonempty set $I$, then the elements of $\mathscr{F}$ are called \emph{$\mathscr{F}$-large} subsets of $I$. A property of elements of $I$ is said to hold for \emph{almost every $i\in I$} or \emph{almost everywhere} in $I \pmod{\mathscr{F}}$ if the property holds for an $\mathscr{F}$-large subset of $I$.
+\begin{theorem}[Pigeonhole Principle (general form)]
+\label{T:Pigeonhole Principle}
+If $A, B$ are sets such that the cardinality of $A$ is strictly greater than the cardinality of $B$, then no function from $A$ into $B$ can be injective.
+\end{theorem}
 
-Recall also that if $(G_i)_{i\in I}$ is an indexed family of sets, then the \emph{cartesian product} of the family $(G_i)_{i\in I}$, denoted $\prod_{i\in I}G_i$, is defined as
-\[
-\prod_{i\in I} G_i = \{ (a_i)_{i\in I} \mid \text{$a_i\in G_i$ for all $i \in I$}\}.
-\]
-Fix an indexed family $(G_i)_{i\in I}$ of sets and an ultrafilter $\SU$ as above.
-For any elements $a= (a_i)_{i\in I}$ and $b= (b_i)_{i\in I}$ in the cartesian product $\prod_{i\in I} G_i$, define a binary relation $\sim$ by
-\[
-a\sim b 
-\quad\text{if and only if}\quad
-\text{$a_i=b_i$ for almost every $i\in I \pmod{\mathscr{U}}$,}
-\]
- i.e., 
- \[
- a\sim b 
-\quad\text{if and only if}\quad
-\{i\in I \colon a_i=b_i \}\in\SU.
-\]
+This principle is proved formally using the axioms of set theory, so we will not prove it here, and instead, we shall take it as a given fact. It should be intuitively clear.
 
+The pigeonhole principle is informally stated in terms of pigeons and pigeonholes: If every pigeon must be given a pigeonhole, but there are more pigeons than pigeonholes, then at least one pigeonhole corresponds to more than one pigeon. 
+
+An immediate corollary of Theorem~\ref{T:Pigeonhole Principle} is the following:
+
+\begin{theorem}[Pigeonhole Principle (infinite form)]
+\label{T:Infinite Pigeonhole Principle}
+If $A$  is infinite and $B$ is finite, then there is $b\in B$ such that $f^{-1}(b)$ is infinite.
+\end{theorem}
 
 
 \begin{exercise}
-\begin{enumerate}[(a)]
-\item
-Prove that $\sim$ is an equivalence relation on the set $I$. 
-\item
-Do we need for $\SU$ to be an ultrafilter, or does a filter suffice for $\sim$ to be an equivalence relation?
-\end{enumerate}
+Prove the preceding theorem.
 \end{exercise}
 
 
-\begin{definition}
-\label{D:ultraproduct of sets}
-If $(G_i)_{i\in I}$ is an indexed family of sets and $\SU$ is an ultrafilter on the index set $I$, then the set
-\[
-\prod_{i\in I} G_i/\sim
-\]
-of equivalence classes of $\prod_{i\in I} G_i$ under the equivalence relation $\sim$ is called the  \emph{$\SU$-ultraproduct}  of the family $(G_i)_{i\in I}$.  It is denoted
-\[
-\prod_{\SU} G_i
-\]
-\end{definition}
-
-\section{Graph limits}
-
-Fix an indexed  family $(\SG_i)_{i\in I}$  of graphs, where $\SG_i=(G_i,R_i)$ for all $i\in I$, and an  ultrafilter filter $\SU$.
-For any elements $a= (a_i)_{i\in I}$ and $b= (b_i)_{i\in I}$ in the cartesian product $\prod_{i\in I} G_i$, define a binary relation $R_{\SU}$ by
-\[
-a R_{\SU} b 
-\quad\text{if and only if}\quad
-\text{$a_i R_i b_i$ for almost every $i\in I \pmod{\mathscr{U}}$.}
-\]
+In this section, we start to study multidimensional versions of the pigeonhole principle. To state them, we will need the notion of \emph{graph}.
 
 
 
-\begin{exercise}
-Prove that the relation $R_{\SU}$ defined above  is well-defined, that is, if $a R_{\SU} b$ and $a\sim a', b\sim b'$, then $a' R_{\SU} b'$.
-\end{exercise}
 
+Intuitively, a graph is a pictorial representation of a network, i.e., a collection points, along with line segments connecting some of those points. The points represent the nodes of our network, and a line segment connecting two given points represents an interconnection of the network between the nodes represented by those two points. The interconnections between points of a graph may be directional, in which case the graph is said to be a \emph{directed} graph, and the line segments are pictured as arrows. A directed graph represents flow: an arrow from point $a$ to point $b$  represents network flow from the node $a$ to the node $b$ (for example, if $a$ and $b$ represent cities, an arrow from $a$ to $b$  can be used to represent flow of information, flow of electricity, or flow of traffic from city $a$ to city $b$). If a graph is non-directed (which is the default case), a line segment between point $a$ and point $b$ represents a nondirectional connection between $a$ and $b$ (for example, if $a$ and $b$ represent persons, a nondirectional edge between $a$ and $b$ can be used to represent that $a$ and $b$ are acquaintances, or that they attended the same high school). Historically, graph theory was considered to be a subarea of geometry; for this reason, the points of a graph $\SG$ are historically referred to as the \emph{vertices} of $\SG$, and the line segments connecting points of $\SG$ are called \emph{edges} of $\SG$.
 
-The following is the most important definition of this chapter, and one of the central definitions of the course.
+\begin{center} $ \begin{array}{cc}
+\begin{tikzpicture}[every node/.style={circle, draw, minimum size=8mm}]
+  \node (a) at (0,0) {A};
+  \node (b) at (2,1) {B};
+  \node (c) at (2,-1) {C};
+  \node (d) at (4,0) {D};
 
-\begin{definition}
-\label{D:ultraproduct of graphs}
-If $(\SG_i)_{i\in I}$ is an indexed family of graphs, where $\SG_i=(G_i,R_i)$ for all $i\in I$, and $\SU$ is an ultrafilter on the index set $I$, then the graph
-\[
-\left(\prod_{\SU}G_i, R_{\SU}\right)
-\]
-is called the  \emph{$\SU$-limit}  of the family $(\SG_i)_{i\in I}$.  It is denoted
-\[
-\lim_{\SU} \SG_i.
-\]
-\end{definition}
+  \draw (a) -- (b);
+  \draw (a) -- (c);
+  \draw (b) -- (d);
+  \draw (c) -- (d);
+\end{tikzpicture}
+&
+% Directed graph
+\begin{tikzpicture}[every node/.style={circle, draw, minimum size=8mm}]
+  \node (a) at (0,0) {A};
+  \node (b) at (2,1) {B};
+  \node (c) at (2,-1) {C};
+  \node (d) at (4,0) {D};
 
-\section{The Transfer Principle for graphs}
+  \draw[->] (a) -- (b);
+  \draw[->] (a) -- (c);
+  \draw[->] (b) -- (d);
+  \draw[->] (c) -- (d);
+\end{tikzpicture}
+\\
+\text{Undirected Graph} & \text{Directed Graph}
+\end{array} $ \end{center}
 
-Let $x, x', x''\dots, y, y', y'',\dots, z, z', z''\dots$ be a fixed countable set of variables. An \emph{atomic expression} is any expression of the form
-\[
-xRy
-\]
-or
-\[
-x=y,
-\]
-where $x$ and $y$ are any of the variables from our fixed list. 
-
+The formal definition of graph is as follows:
 
 \begin{definition}
-Starting with the atomic expressions, we can form more complex expressions, known as \emph{first-order formulas}, by any finite number of applications of the following recursive rules:
+A \emph{directed graph} is a structure of the form $\SG=(G,R)$, where $G$ is a set called the set of \emph{vertices} (or \emph{nodes}) of $\SG$ and $R$ is a binary relation on $G$ called the \emph{adjacency relation} of $\SG$. The elements of the adjacency relation $R$ are called the \emph{edges} of $\SG$. Thus, the edges of $\SG$ connect vertices of $\SG$. If $\SG=(G,R)$ is a directed graph, two vertices $a, b$ of $\SG$ are \emph{incident} if $a\mathrel{R}b$, i.e., if they are connected by an edge of $\SG$.
 
-\begin{enumerate}
-\item
-Any atomic expression is a first-order formula.
-\item
-If $\alpha$ and $\beta$ are first-order formulas, then the expressions
-\begin{itemize}
-\item
-$\neg\alpha$
-\item
-$(\alpha\land \beta)$
-\item
-$(\alpha\lor \beta)$
-\end{itemize}
-are first-order formulas. Note that we don't need $(\alpha\lor \beta)$ since we can regard it as an abbreviation of $\neg(\neg\alpha\lor \neg\beta)$.
-Similarly, we regard $(\alpha\to \beta)$ as an abbreviation of $(\neg\alpha\lor \beta)$.
-\item
-If $\alpha$ is a first-order formula and $x$ is a variable, then the expressions
-\begin{itemize}
-\item
-$\forall x \alpha$
-\item
-$\exists x \alpha$
-\end{itemize}
-are first-order formulas. Note that we don't need $\exists x \alpha$ since we can regard it as an abbreviation of $\neg\forall x \neg\alpha$. 
-\end{enumerate}
+When the adjacency relation $R$ is symmetric and antireflexive, we call $\SG$ simply a \emph{graph} (in other words, we drop the word ``directed''). 
+
+If $\SG=(G,R)$ is a graph, a \emph{subgraph} of $\SG$ is any graph of the form  $\SG_0=(G_0,R_0)$, where $G_0\subseteq G$ and $R_0$ is the restriction of $R$ to $G_0$.
+
+A graph $\SG$ is \emph{complete} if any two vertices of $\SG$ are incident (i.e., any two vertices of $\SG$ are connected by an edge of $\SG$). If $n$ is a positive integer and $G=\{1,\dots, n\}$, the complete graph  $\SG=(G,R)$ is denoted $K_n$. In other words, $K_n$ is the complete graph on $n$ points.
+
 \end{definition}
 
 
-Note that a first-order formula is a  of finite length, and therefore it contains only finitely many variables. 
+\begin{center} $ \begin{array}{ccc}
+    \begin{tikzpicture}[every node/.style={circle, draw, minimum size=8mm}]
+        \node (a) at (0,0) {A};
+        \node (b) at (2,0) {B};
+        \draw (a)--(b);
+    \end{tikzpicture}
+&
+    \begin{tikzpicture}[every node/.style={circle, draw, minimum size=8mm}]
+        \node (a) at (90:1.5) {A};
+        \node (b) at (210:1.5) {B};
+        \node (c) at (330:1.5) {C};
+        \draw (a)--(b);
+        \draw (b)--(c);
+        \draw (c)--(a);
+    \end{tikzpicture}
+&
+    \begin{tikzpicture}[every node/.style={circle, draw, minimum size=6mm}]
+        \node (a) at (90:1.3) {A};
+        \node (b) at (0:1.3) {B};
+        \node (c) at (270:1.3) {C};
+        \node (d) at (180:1.3) {D};
+        \draw (a)--(b);
+        \draw (a)--(c);
+        \draw (a)--(d);
+        \draw (b)--(c);
+        \draw (b)--(d);
+        \draw (c)--(d);
+    \end{tikzpicture}
+\\
+   K_2 & K_3 & K_4
+\end{array} $ \end{center}
+
+The graph $K_{\BbN}$ contains the integers $0, 1, 2, \dots$ as vertices, with every pair $(m,n)$ of distinct integers  connected by and edge. Since the incidence relation is symmetric, it is useful to identify $K_{\BbN}$ with the set of all pairs of integers $(m,n)$ satisfying $m<n$. This identification is standard in the mathematical literature.
+
+
+\[
+\begin{bmatrix}
+\vdots &\vdots &\vdots &\vdots & \cdots \\
+(0,4) &(1,4) &(2,4) &(3,4) &\\
+(0,3) &(1,3) &(2,3) & &\\
+(0,2) &(1,2)  & & &\\
+(0,1) & & &\\
+        & & & &\\
+\end{bmatrix}
+\]
+
 
 \begin{definition}
-\label{D:sentence}
-If $\alpha$ is a first-order formula such that all the variables of $\alpha$ are under the scope of a quantifier ($\forall$ or $\exists$), we say that $\alpha$ is a \emph{sentence}.
+Given a graph  $\SG=(G,R)$, a \emph{coloring} of $\SG$ is a function $f$ that to each edge of $G$ assigns an element of a set $C$, which, in this context, we call a set of \emph{colors}. If the set $C$ has $m$ elements, we say that $f$ is a coloring of $\SG$ into $m$ colors. If $f$ is a given coloring of $\SG$, a subgraph  $\SG_0=(G_0,R_0)$ of $\SG$ is said to be \emph{monochromatic} under $f$ if the restriction of $f$ to $R_0$ is constant, i.e., if $f$ assigns the same color to all the edges of $\SG_0$.
 \end{definition}
 
-\begin{remark}
-Note that if $\alpha$ is a sentence and $\SG$ is any graph, then either $\alpha$ is true in $\SG$ or $\alpha$ is false in $\SG$. 
-\end{remark}
+
+In general, a coloring of a set $A$ into $m$ colors, say, Color 1,\dots , Color $m$, is a function 
+$f \colon A\to \{\text{Color 1},\dots, \text{Color $m$}\}$. This induces a partition of the set $A$ into $m$ mutually disjoint classes, namely, $f^{-1}(\text{Color 1}),\dots, f^{-1}(\text{Color $m$})$. Thus, any coloring function $f$, as above, partitions the set $A$ into equivalence classes, and each ``color'' in the range of $f$ provides a mathematical way to place a label on one of the classes.  
 
 
-\begin{notation}
-If $\alpha$ is true in $\SG$, we write
-\[
-G\models \alpha.
-\]
+\begin{theorem}[Ramsey's theorem, classical version]
+\label{T:Ramsey classical}
+For every pair of positive integers $m,n$, there exists a least positive integer $R_m(n)$ satisfying the following property: For every coloring $f$ of the complete graph $K_{R_m(n)}$ into $m$ many colors, there is a copy of $K_n$ inside $K_{R_m(n)}$ that is monochromatic under $f$.
+\end{theorem}
+
+
+\begin{notation} 
+To simplify notation, if the number $m$ of colors is 2, we denote $R_m(n)$ simply as $R(n)$.
 \end{notation}
 
-\begin{examples} \hfill
+A popular interpretation of the existence of $R(n)$ is the following: Given any $n$, there exists $R(n)$ such that every party of $R(n)$  people contains a set of $n$ individuals who are either mutual acquaintances  or complete strangers.
+
+
+Theorem~\ref{T:Ramsey classical}, proved by F. P. Ramsey (not to be confused with Michael Ramsey, his brother, who was the Archbishop of Canterbury, or with Arthur Ramsey, his father, who was a prominent mathematician and president of Magdalene College)~\cite{Ramsey:1929}, has given rise to a very active line of research in mathematics known as \emph{Ramsey theory} (or \emph{partition theory}), in which the goal is to prove that if a given structure (not only a graph, but say, a group, a matrix algebra, or a Banach space) is sufficiently large, then we are guaranteed to find in it a substructure (respectively, a subgroup, a subalgebra, or a subspace)  that is ``organized'' within the original structure in a recognizable way. 
+
+\begin{examples}\hfill
 \begin{enumerate}
 \item
-If $(G,R)$ is a graph, then $R$ is a linear order on $G$ if and only if
+$R(2)=2$. This is immediate from the definitions.
 
-\begin{align*}
-(G,R)\models  &\forall x (x R x) \land\\
-&\forall x \forall y (x R y \wedge y R x \rightarrow x = y)\land\\
-&\forall x \forall y \forall z (x R y \wedge y R z \rightarrow x R z)\land\\
-&\forall x \forall y (x R y \vee y R x).
-\end{align*}
 \item
-If $(G,R)$ is a graph, $(G,R)$ contains a partial order of 50 elements  if and only if $(G,R)\models\alpha$, where $\alpha$ is the following first-order sentence:
-\[
-\exists x_1 \exists x_2 \cdots \exists x_{50} \;
-\Bigg[
-    \underbrace{\bigwedge_{i < j\le 50} \neg(x_i = x_j)}_{\text{$x_1,\dots, x_{50}$ are distinct}}
-    \;\wedge\;
-    \underbrace{
-        \forall x \Bigl( 
-            \bigl( \bigvee_{i \le 50} x = x_i \bigr)
-            \rightarrow x R x
-        \Bigr)
-    }_{\text{reflexivity on the set } \{x_1,\ldots,x_{50}\}}
-    \;\wedge\;
-\]
-\[
-    \underbrace{
-        \forall x \forall y \Bigl(
-            \bigl( \bigvee_{i \le 50} x = x_i \bigr)
-            \wedge
-            \bigl( \bigvee_{i \le 50} y = x_i \bigr)
-            \rightarrow
-            \bigl( (x R y \wedge y R x) \rightarrow x = y \bigr)
-        \Bigr)
-    }_{\text{antisymmetry}}
-    \;\wedge\;
-\]
-\[
-    \underbrace{
-        \forall x \forall y \forall z \Bigl(
-            \bigl( \bigvee_{i \le 50} x = x_i \bigr)
-            \wedge
-            \bigl( \bigvee_{i \le 50} y = x_i \bigr)
-            \wedge
-            \bigl( \bigvee_{i \le 50} z = x_i \bigr)
-            \rightarrow
-            \bigl( (x R y \wedge y R z) \rightarrow x R z \bigr)
-        \Bigr)
-    }_{\text{transitivity}}
-\Bigg].
-\]
+$R(3)>5$. To show this, it suffices to exhibit a coloring of $K_5$ into two colors, say Red and Green, that contains no all-Red triangle or all-Green triangle. To begin, organize the five vertices of $K_5$ as a pentagon, with all five sides of the pentagon colored Red, and every other edge of $K_5$ colored Green. It is immediate that this configuration contains no  all-Red triangle or all-Green triangle.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+  % positions on a pentagon
+  \foreach \i/\lab in {0/0,1/1,2/2,3/3,4/4}{
+    \node[vtx] (v\i) at ({90-72*\i}:1.6) {\lab};
+  }
+  \foreach \i in {0,...,4}{
+    \pgfmathtruncatemacro{\j}{mod(\i+1,5)}
+    \draw[ered] (v\i) -- (v\j);
+  }
+  \foreach \i in {0,...,4}{
+    \pgfmathtruncatemacro{\j}{mod(\i+2,5)}
+    \draw[egreen] (v\i) -- (v\j);
+  }
+\end{tikzpicture}
+%\caption{$K_5$ colored with red pentagon edges and green diagonals. No all-red or all-green triangle appears, proving $R(3)\!>\!5$.}
+\end{figure}
+
 \item
-If $(G,R)$ is a graph and $n\in\mathbb{N}$, then $G$  has a monochromatic subset of $n$ elements if and only if $(G,R)\models\alpha$, where $\alpha$ is the following first-order sentence:
-\[
-\exists x_1 \exists x_2 \cdots \exists x_n \;
-\Bigg[
-    \underbrace{
-        \bigwedge_{i < j \le n} \neg(x_i = x_j)
-    }_{\text{$x_1,\dots, x_n$ are distinct}}
-    \;\wedge\;
-    \underbrace{
-        \forall x \forall y \Bigl(
-            \bigl( \bigvee_{i < j \le n} x = x_i \bigr)
-            \wedge
-            \bigl( y = x_j \bigr)
-            \rightarrow R(x, y)
-        \Bigr)
-    }_{\text{all the pairs in $\{x_1,\dots, x_n\}$ are incident}}
-    \;\vee\;
-\]
-\[
-    \underbrace{
-        \forall x \forall y \Bigl(
-            \bigl( \bigvee_{i < j \le n} x = x_i \bigr)
-            \wedge
-            \bigl( y = x_j \bigr)
-            \rightarrow \neg R(x, y)
-        \Bigr)
-    }_{\text{none of the pairs in $\{x_1,\dots, x_n\}$ are incident}}
-\Bigg].
-\]
+$R(3)=6$. To show this, it suffices to  show that every coloring of $K_6$ into colors, let's say, Red and Green, must contain an all-Red triangle or an all-Green triangle. To see this, organize the five vertices of $K_5$ as a hexagon and fix one of its vertices. Let's call this vertex $v$. By definition of $K_5$, there are 5 vertices incident to $v$. By the pigeonhole principle, three of them are the same color. Call these edges $e_1, e_2, e_3$, and, without loss of generality, assume that all of them are colored Red. We now consider two cases. If two of these red edges are connected by a red edge (Case 1), then we have found a red triangle. If not (Case 2), then the three vertices of $e_1, e_2, e_3$ not incident to $v$ form a green triangle. In either case, we have a monochromatic triangle.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+  \foreach \i/\lab in {0/$v$,1/1,2/2,3/3,4/4,5/5}{
+    \node[vtx] (u\i) at ({90-60*\i}:1.9) {\lab};
+  }
+
+  \draw[ered]   (u0) -- (u1);
+  \draw[ered]   (u0) -- (u2);
+  \draw[ered]   (u0) -- (u3);
+  \draw[egreen] (u0) -- (u4);
+  \draw[egreen] (u0) -- (u5);
+  \draw[egreen] (u1) -- (u2);
+  \draw[egreen] (u2) -- (u3);
+  \draw[egreen] (u1) -- (u3);
+  \foreach \a/\b in {1/4,1/5,2/4,2/5,3/4,3/5,4/5}{
+    \draw[black!20] (u\a) -- (u\b);
+  }
+\end{tikzpicture}
+%\caption{In any 2-coloring of $K_6$, pick a vertex $v$. By the pigeonhole principle, $v$ has $\ge 3$ incident edges of one color. If two of those neighbors are connected by a red edge, we have a red triangle; otherwise those three neighbors form a green triangle. Hence $R(3)=6$.}
+\end{figure}
+
+\item
+$R(4)=18$. The proof of this is similar to the preceding proof, but the number of cases to  be considered is much larger.
+
+\item
+For $n>5$, the Ramsey numbers $R(n)$ are increasingly computationally expensive to find. At the time of writing (fall semester, 2025), $R(5)$ is still unknown; all we know is that it lies between 43 and 46. The lower bound of 43 was obtained in 1989 by Geoffrey Exoo, and to this day, it is still the best~\cite{Exoo:1989}. An upper bound of 53 was obtained in 1992 by Brendan D. McKay and Stanislaw P. Radziszowski~\cite{McKay-Radziszowski:1992}, and in a recent breakthrough (2024), it was improved by  Vigleik Angelveit and Brendan McKay to 46~\cite{Angeltveit-McKay}. The proofs of these results contain a heavy interplay between combinatorial graph theory and computational mathematics, so they fall outside the scope of our course.
 \end{enumerate}
 \end{examples} 
 
+\section{Ramsey's Theorem (An Infinitary Version)}
 
-\begin{theorem}[The Transfer Principle for graph limits]
-Let $(\SG_i)_{i\in I}$ be an indexed family of graphs, let  $\SU$ be an ultrafilter on the index set $I$, and let $\lim_{\SU} \SG_i$ denote the $\SU$-limit of  $(\SG_i)_{i\in I}$ (see Definition~\ref{D:ultraproduct of graphs}). 
-Then, for any first-order sentence $\alpha$, we have 
+
+In order to prove Theorem~\ref{T:Ramsey classical}, we will first prove a simple infinitary version that can be informally stated as follows: ``Every party of infinitely many people contains infinitely many individuals who are either mutual acquaintances  or complete strangers.'' The formal statement is below.
+
+
+\begin{theorem}[Infinitary version of Ramsey's theorem]
+\label{T:Ramsey infinitary}
+Suppose that the set of all pairs $(m,n)$ of positive integers with $m<n$ is partitioned into finitely many classes, or colors, say, Color 1, \dots,  Color $k$. Then there is an infinite  increasing sequence
 \[
-\lim_{\SU} \SG_i \models \alpha
-\quad\text{if and only if}\qquad
-\text{$\SG_i\models \alpha$ for almost every $i\in I \pmod{\mathscr{U}}$.}
+n_0 < n_1 < n_2<\dots < n_k<\dots
 \]
+of positive integers such that all the pairs of the form
+\[
+(n_i, n_j),\qquad
+i<j
+\]
+fall within the same class (color).
 \end{theorem}
 
-We will prove the Transfer Principle as a corollary of a stronger theorem (see Theorem~\ref{T:Transfer theorem}). However, before engaging in the proof of the theorem, let us focus on an important application.
+Before proving Theorem~\ref{T:Ramsey infinitary}, let us observe an application to the theory of partially ordered sets:
 
-\subsection{Back to Ramsey's theorem}
-In Chapter \ref{C:Ramsey}, we proved the infinitary version of Ramsey's theorem (see~\ref{T:Ramsey infinitary}). However, we did not prove the classical finitary version~\ref{T:Ramsey classical}. We now show that the Transfer Principle for graph limits allows us to obtain the finitary version in a few lines from the infinitary one. 
+\begin{example}
+Let $(P,\le)$ be a partially ordered set (see Definition~\ref{D:posets}). 
+Two elements $a, b$ of $P$ are said to be \emph{comparable} if $a\le b$ or $b\le a$. A subset $C\subseteq P$ is called a \emph{chain} if any two elements of $C$ are comparable, and an \emph{antichain} if no two elements of $C$ are comparable. By Theorem~\ref{T:Ramsey infinitary}, every infinite partially ordered set contains either an infinite chain or an infinite antichain.
+\end{example}
 
-\begin{theorem}[Ramsey's theorem]
-For every $n \in \mathbb{N}$, there exists a positive integer $R(n)$ such that if we color $K_{R(n)}$ into two colors, say ``black" and ``white",  then there is a subgraph of $K_{R(n)}$ isomorphic to $K_n$ such that either all edges of this smaller graph are black, or all edges of this graph are white.
+\begin{proof}[Proof of Theorem~\ref{T:Ramsey infinitary}]
+Fix a coloring of all the pairs $(m,n)$ for $m<n$ into finitely many colors.
+By the infinite pigeonhole principle (see \ref{T:Infinite Pigeonhole Principle}), we can fix an increasing sequence
+\[
+n_0 ^0< n_1^0 < n_2^0<\dots < n_k^0<\dots
+\]
+of $(n)_{n\ge 0}$ such that the set of all pairs of the form
+\[
+(n_0 ^{0} ,n_j ^{0}),\qquad
+j>0
+\]
+is monochromatic. Now we can find an increasing  subsequence
+\[
+ n_1^1< n_2^1<n_3^1<\dots < n_k^1<\dots
+\]
+of $(n_j ^{0})_{j\ge 1}$ such that the set of all pairs of the form
+\[
+(n_1 ^{1} ,n_j^1),\qquad
+j>1
+\]
+is monochromatic. We continue this construction recursively: Given a subsequence
+\[
+ n_u^u < n_{u+1}^u<n_{u+2}^u<\dots <n_k^u<\dots
+\]
+of $(n_j ^{u-1})_{j\ge u}$ such that each of the sequences
+\[
+(n_0 ^{0} ,n_j ^{0})_{j>0},
+\dots,
+(n_{u-1}^{u-1} ,n_{j} ^{u-1})_{j>u-1}
+\]
+are monochromatic, we construct a subsequence
+\[
+ n_{u+1}^{u+1}< n_{u+2}^{u+1}<n_{u+3}^{u+1}<\dots < n_k^{u+1}<\dots
+\]
+of $(n_j ^{u})_{j\ge u+1}$ such that each of the sequences
+\[
+(n_0 ^{0} ,n_j ^{0})_{j>0},
+\dots,
+(n_{u-1}^{u-1} ,n_{j} ^{u-1})_{j>u-1},
+(n_{u}^{u} ,n_{j} ^{u})_{j>u},
+\]
+are monochromatic.
+Consider now the ``diagonal'' sequence $(n^*_u)_{u\in \mathbb{N}}$ defined by
+\[
+n^*_u=n_u^u,
+\]
+for all $u\in\BbN$. By construction, for each $u\in\BbN$, the sequence
+\[
+\tag{*}
+(n^*_u, n^*_j)_{j>u}
+\]
+is monochromatic. 
+
+Now, since the number of colors is finite and the number of possible $u\in\BbN$ above is infinite,  we can invoke the infinite pigeonhole principle once again, and then,  by replacing    $(n^*_u)_{u\in \mathbb{N}}$ by an adequate subsequence if necessary, we can assume that all the subsequences  in $(*)$ are the same color, regardless of $u\in\BbN$. This proves the theorem.
+\end{proof}
+
+\begin{figure}[H]
+  % include ONLY page 1 from your standalone PDF and scale it smaller
+  \includegraphics[page=1,width=0.6\textwidth]{./Input_B_Mainmatter/Chapter_3/ramsey_graphs.pdf}
+  \caption{Illustration of the $(i<j)$ upper-triangle graphs with 2 colors.}
+  \label{fig:ramsey-2x2}
+\end{figure}
+
+
+\begin{exercise}
+Prove that for every positive integer $n$ there exists a positive integer $N$ such that every partially ordered set of cardinality $N$ contains either chains or antichains of length $n$.
+\end{exercise}
+
+\begin{exercises}
+\hfill
+\begin{enumerate}
+\item
+Prove that the version of Theorem~\ref{T:Ramsey infinitary} for finite colorings follows easily from the version for two colors. More precisely, prove that Theorem~\ref{T:Ramsey infinitary} as stated follows easily as a corollary from the case $k=2$.
+\item
+We stated and proved Theorem~\ref{T:Ramsey infinitary} for pairs $(m,n)$ with $m<n$. State a version of this theorem for finite $l$-tuples $(m_1,\dots, m_l)$ of length $l\ge 2$, and prove that this apparently stronger version follows easily from the version for $l=2$.
+\item
+Prove that the version of Theorem~\ref{T:Ramsey classical} for finite colorings follows as a corollary of the version for two colors. In other words, prove  Theorem~\ref{T:Ramsey classical} from the particular case $m=2$.
+
+\end{enumerate}
+
+\end{exercises}
+
+\section{Real-Valued Relations and a Real-Valued Version of Ramsey's Theorem}
+\label{S:Real valued}
+
+
+
+\begin{definition}
+\label{D:Relation}
+Let $A$ be a set and $n$ a nonnegative integer. A \emph{$[0,1]$-valued $n$-ary relation} on $A$ is a function $R\colon A^n\to[0,1]$.
+\end{definition}
+
+
+\begin{theorem}[Infinitary version of Ramsey's theorem]
+\label{T:Ramsey real-valued}
+Suppose that $f$ is a function that assigns to every pair $(m,n)$ of positive integers with $m<n$ a ``color'' $f(m,n)\in[0,1]$. Then there exists a sequence 
+\[
+n_0 < n_1 < n_2<\dots < n_k<\dots
+\]
+and a ``limit color'' $c\in[0,1]$ with the property that
+\[
+\lim_{\overset{i,j\to\infty}{i<j}} f(n_i, n_j) =c.
+\]
+The latter means that for every $\epsilon>0$ there exists $N=N(\epsilon)>0$ such that
+\[
+\forall i,j \; (\,N<i<j 
+\quad \Longrightarrow\quad
+f(n_i, n_j)\in(c-\epsilon,c+\epsilon)\,).
+\]
 \end{theorem}
 
 \begin{proof}
-Assume that the theorem does not hold true, and fix $n \in \mathbb{N}$ for which $R(n)$ doesn't exist. This means that, for each $N \in \mathbb{N}$ we can fix a a graph $\SG_N=(G_N, R_N)$ of size $> N$ that has  no monochromatic subset of size $n$. Fix a non-principal ultrafilter $\mathscr{U}$ on $\mathbb{N}$. Let $\alpha$ be the sentence of Examples \label{E:Ramsey first-order} that asserts the existence of a monochromatic subgraph of size $n$. Then $\SG_N\models \neg\alpha$.  Let $\lim_{\SU} \SG_N$ denote the $\SU$-limit of  $(\SG_N)_{N\in\mathbb{N}}$. Then, by the Transfer Principle for graph limits, $\lim_{\SU} \SG_i\models\neg\alpha$. But this contradicts  the infinitary version of Ramsey's theorem (see~\ref{T:Ramsey infinitary}) since $\lim_{\SU} \SG_N$  is an infinite graph.
-\end{proof}
-
-\begin{exercise}
-For every $m, n \in \mathbb{N}$, there exists $R(m,n)$ such that if we color $K_{R(m,n)}$ into two colors, ``black" and ``white", then there is a subgraph of $K_{R(m,n)}$ isomorphic to $K_m$ all of whose edges are black, or subgraph of $K_{R(m,n)}$ isomorphic to $K_n$ all of whose edges are white.
-\end{exercise}
-
-
-\section{General statement and proof of the Transfer Principle for graph limits}
-
-Recall (see Definition~\ref{D:Sentence}) that a sentence is a first-order formula where all the variables are under the scope of a quantifier. If $\alpha$ is not a sentence, then those variables in $\alpha$ that are not under the scope of a quantifier are said to occur \emph{free} in $\alpha$. If all the free variables that occur in $\alpha$ are in the set $\{x_1,\dots, x_n\}$, we write $\alpha$ as $\alpha(x_1,\dots, x_n)$. For example, if $\alpha$ is the formula $\exists y(xRy)$, then we may write $\alpha$ as $\alpha(x)$.
-
-
-As we indicated in Remark~\ref{R:sentence}, if $\alpha$ is a sentence and $\SG$ is any graph, then either $\SG\models \alpha$ or $\SG\not\models \alpha$ . However, if $\alpha$ is not a sentence, i.e., we cannot say whether or not $\SG\models \alpha$. To see an example of this, consider the formula $\alpha(x)$ defined as  $\exists y(xRy)$ and the graph $\SG=(G,R)$ where $G=\{a, b, c\}$ and $R=(a, b)$. Then, we could say that $\SG\models \alpha$ if we interpret the variable $x$ as $a$, and $\SG\not\models \alpha$ if we interpret the variable $x$ as $c$. In general, if $\alpha$ includes free variables that are free, to determine whether $G\models \alpha$, we need to interpret the free occurrences of free variables in $\alpha$ as elements of $\SG$.
-
-\begin{notation}
-Let $\alpha(x_1,\dots, x_n)$ be a first-order formula with free variables in the set $\{x_1,\dots, x_n\}$ and let $\SG=(G,R)$ be a graph. If $\alpha_1, \dots, a_n$ are elements of $G$, we write 
+Fix $f$ as in the statement of Theorem~\ref{T:Ramsey real-valued}. Split the interval $[0,1]$ as a union of two closed subintervals, say, $[0,1]=I\cup J$, with $I$ and $J$ of length $\frac{1}{2}$. By Theorem~\ref{T:Ramsey infinitary}, there exists a sequence
 \[
-\SG \models \alpha[a_1,\dots, a_n]
+n_0^0 < n_1 ^0< n_2^0<\dots < n_k^0<\dots
 \]
-If  $\alpha(x_1,\dots, x_n)$ is true in $\SG$ when $x_k$ is interpreted as $a_k$, for $k=1,\dots, n$.
-\end{notation}
-
-Now we can state and prove the Transfer Principle for graph limits.
-
-
-\begin{theorem}[The Transfer Principle for graphs]
-\label{T:Transfer theorem}
-
-Let $(\SG_i)_{i\in I}$ be an indexed family of graphs, let  $\SU$ be an ultrafilter on the index set $I$, and let $\lim_{\SU} \SG_i$ denote the $\SU$-limit of  $(\SG_i)_{i\in I}$.
-Then, if $\alpha(x_1,\dots, x_n)$ is a first-order sentence and $a_1,\dots, a_n$ are elements of  $\lim_{\SU} \SG_i$, represented by families $a_k=(a_k(i))_{i\in I}$ for $k=1,\dots, n$, then
-
+such that $f(n_i^0, n_j^0)\in I$ for all $i<j$, or  $f(n_i^0, n_j^0)\in J$ for all $i<j$. In the former case, let $I_0=I$ and in the latter case, let $I_0=J$. Now we continue this process recursively:
+For $u=1,2,\dots $, we construct sequences 
 \[
-\begin{gathered}\tag{*}
-\lim_{\SU} \SG_i \models \alpha[a_1,\dots, a_n]\\
-\quad\text{if and only if}\qquad\\
-\text{$\SG_i\models \alpha[a_1(i),\dots, a_n(i)] $ for almost every $i\in I \pmod{\mathscr{U}}$.}
-\end{gathered}
+n_0^u < n_1 ^u< n_2^u<\dots < n_k^u<\dots
 \]
-\end{theorem}
-
-In the proof, we will invoke the following exercise:
-
-\begin{exercise}
-\label{E:Lemma Los}
-Let $\mathscr{U}$ be an ultrafilter on $I$, an indexed set. If $A,B\subseteq I$, then
+and subintervals $I_u$ of the unit interval such that for all $u\in\mathbb{N}$,
 \begin{enumerate}
-\item $A \cap B \in \mathscr{U}$ if and only if $A \in \mathscr{U}$ and $B \in \mathscr{U}$.
-\item $A \cup B \in \mathscr{U}$ if and only if $A \in \mathscr{U}$ or $B \in \mathscr{U}$.
-\item $A^\mathsf{c} \in \mathscr{U}$ if and only if $A \not\in \mathscr{U}$.
+\item
+$(n_j^{u+1})_{j\in\mathbb{N}}$ is a subsequence of $(n_j^u)_{j\in\mathbb{N}}$,
+\item
+$I_{u+1}$ is a subinterval  of $I_u$ of length $\frac{1}{2^{u+1}}$,
+\item
+$f(n_i^u, n_j^u)\in I_u$ for all $i<j$.
 \end{enumerate}
-\end{exercise}
-
-\begin{proof}[Proof of Theorem~\ref{T:Transfer theorem}]
-We prove the equivalence $(*)$ by induction on the complexity of $\alpha$. When $\alpha$ is an atomic formula, the equivalence holds by the very definition of $\lim_{\SU} \SG_i$ (see Definition~\ref{D:ultraproduct of graphs}). We now assume, by induction, that the equivalence  $(*)$  holds for $\alpha$ and $\beta$, and we prove it for $(\alpha\land\beta)$ and $\neg\alpha$.
-
-
-
-First, we suppose, as induction hypothesis, that  $(*)$  holds for $\alpha(x_1,\dots, x_n)$ and $\beta(x_1,\dots, x_n)$ in order to prove it for  $(\alpha\land\beta)(x_1,\dots, x_n)$. Let
-
-\begin{align*}
-A&=\{i\in I \colon \SG_i\models \alpha[a_1(i),\dots, a_n(i)] \},\\
-B&= \{i\in I \colon \SG_i\models \beta[a_1(i),\dots, a_n(i)] \}. 
-\end{align*}
-
-It follows immediately from the definition of $\models$ that
+Let $c\in [0,1]$ be such that
 \[
-A\cap B=\{i\in I \colon \SG_i\models (\alpha\land \beta)[a_1(i),\dots, a_n(i)] \}.
+c\in \bigcap_{u\in\mathbb{N}} I_u,
 \]
-
-Hence,
-
-\begin{align*}
-&\lim_{\SU} \SG_i \models (\alpha\land \beta) [a_1,\dots, a_n]  &\\
-\text{iff \quad} &\text{$\lim_{\SU} \SG_i \models \alpha [a_1,\dots, a_n]$ and $\lim_{\SU} \SG_i \models \beta [a_1,\dots, a_n]$ } &\text{by definition of $\models$}\\
-\text{iff \quad} &\text{$A, B \in\SU$} &\text{by induction hypothesis}\\
-\text{iff \quad} &\text{$A \cap B \in\SU$} &\text{by Exercise~\ref{E:Lemma Los}}\\
-\text{iff \quad} &\text{$\SG_i \models (\alpha\land \beta)[a_1(i),\dots, a_n(i)] $, for almost every $i\in I \pmod{\mathscr{U}}$.} & \\
- \end{align*}
- 
- The proof for the case $\neg\alpha(x_1,\dots, x_n)$ is similar. Suppose that $(*)$ holds for $\alpha(x_1,\dots, x_n)$. Evidently,
+and for each $u\in\mathbb{N}$ , define
 \[
-A^\text{c}=\{i\in I \colon \SG_i\not\models\alpha[a_1(i),\dots, a_n(i)] \}.
+n_k=n_k^k.
 \]
- Hence, 
-\begin{align*}
-&\lim_{\SU} \SG_i \models \neg\alpha [a_1,\dots, a_n]  &\\
-\text{iff \quad} &\text{$\lim_{\SU} \SG_i \not \models \alpha [a_1,\dots, a_n]$} &\text{by definition of $\models$}\\
-\text{iff \quad} &\text{$A \notin\SU$} &\text{by induction hypothesis}\\
-\text{iff \quad} &\text{$A^c \in\SU$} &\text{by Exercise~\ref{E:Lemma Los}}\\
-\text{iff \quad} &\text{$\SG_i \models \neg\alpha[a_1(i),\dots, a_n(i)] $, for almost every $i\in I \pmod{\mathscr{U}}$.} & \\
- \end{align*}
- 
- The case when $\alpha$ is of the form $\exists y \beta(x_1,\dots, x_n y)$ is left as an exercise. 
+Then, $(n_k)_{k\in\mathbb{N}} $ has the desired property.
 \end{proof}
 
-\begin{exercise}
-Finish the proof of Theorem~\ref{T:Transfer theorem}. [Advice: Treat each of the two directions separately.]
-\end{exercise}
+Notice that in the preceding proof, the interval $[0,1]$ can be replaced by any closed interval $[a,b]$.
+
+  % include ONLY page 2 from your standalone PDF and scale it smaller
+\begin{figure}[H]
+  \centering
+  \includegraphics[page=2,width=0.95\textwidth]{./Input_B_Mainmatter/Chapter_3/ramsey_graphs.pdf}
+  \stepcounter{figure}
+  \caption{Illustration of the $(i<j)$ upper-triangle graphs with a spectrum.}
+  \label{fig:ramsey-1x3}
+\end{figure}
 
 
-\begin{exercise}
-\begin{enumerate}[(a)]
+
+
+
+\begin{exercises}\hfill
+\begin{enumerate}
 \item
-Exhibit a sequence $(G_n,R_n)_{n\in\mathbb{N}}$ of graphs and an ultrafilter $\SU$ such that $(G_n,R_n)$ is a well-ordered set for each $n\in \mathbb{N}$, but $\lim_{\SU}(G_n,R_n)$ is not well-ordered. 
+Show through a counterexample that Theorem~\ref{T:Ramsey real-valued} is false if the interval $[0,1]$ is replaced by $\mathbb{R}$.
 \item
-Can you write a first-order sentence $\alpha$ such that $(G,R)\models \alpha$ if and only if $(G,R)$ is a well-ordered set?
+Let $[a_0,b_0], [a_1, b_1], \dots, [a_k, b_k],\dots$ be a countable sequence of closed intervals, and 
+suppose that $f$ is a function that assigns to every pair $(m,n)$ of positive integers with $m<n$ a ``color'' $f(m,n)\in \prod_{u\in\BbN} [a_u,b_u]$. Prove that there exists a sequence 
+\[
+n_0 < n_1 < n_2<\dots < n_k<\dots
+\]
+and a ``limit color''
+\[
+(c_u) \in \prod_{u\in\BbN} [a_u,b_u]
+\]
+with the following property: 
+For every $\epsilon>0$ and every $k\in\mathbb{N}$, there exists $N=N(\epsilon,k)>0$ such that
+\[
+\forall i,j \; (\,N<i<j 
+\quad \Longrightarrow\quad
+f(n_i, n_j)\in(c_u-\epsilon,c_u+\epsilon)\,),
+\]
+for every $u\le k$.
 \end{enumerate}
-\end{exercise}
-
-
-
-
-
-
-
-
-
-
-
-
-
+\end{exercises}
 
