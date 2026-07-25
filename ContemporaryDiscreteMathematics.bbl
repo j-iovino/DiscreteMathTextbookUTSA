@@ -1,0 +1,26 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{Ram29}
+
+\bibitem[AM25]{Angeltveit-McKay}
+Vigleik Angeltveit and Brendan~D. McKay, \emph{$r(5,5)\le 46$}.
+
+\bibitem[Exo89]{Exoo:1989}
+Geoffrey Exoo, \emph{A lower bound for {$R(5,5)$}}, J. Graph Theory \textbf{13}
+  (1989), no.~1, 97--98. \MR{982871}
+
+\bibitem[MR92]{McKay-Radziszowski:1992}
+Brendan~D. McKay and Stanis\l aw~P. Radziszowski, \emph{A new upper bound for
+  the {R}amsey number {$R(5,5)$}}, Australas. J. Combin. \textbf{5} (1992),
+  13--20. \MR{1165791}
+
+\bibitem[Ram29]{Ramsey:1929}
+F.~P. Ramsey, \emph{On a {P}roblem of {F}ormal {L}ogic}, Proc. London Math.
+  Soc. (2) \textbf{30} (1929), no.~4, 264--286.
+
+\end{thebibliography}

@@ -1,0 +1,1 @@
+{"key":"build_command","value":["latexmk","-pdf","-f","-g","-bibtex","-deps","-synctex=1","-interaction=nonstopmode","-output-directory=/tmp/df129f2ee3ef9a868765f3318dfdb58912c4c8b7","Acknowledgements.tex"]}

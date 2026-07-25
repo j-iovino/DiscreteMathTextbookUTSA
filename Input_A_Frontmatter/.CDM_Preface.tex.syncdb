@@ -1,0 +1,1 @@
+{"key":"build_command","value":["latexmk","-pdf","-f","-g","-bibtex","-deps","-synctex=1","-interaction=nonstopmode","-output-directory=/tmp/54a56d438c9dca9151c37ea7ae4f6ffb1cda123c","CDM_Preface.tex"]}
