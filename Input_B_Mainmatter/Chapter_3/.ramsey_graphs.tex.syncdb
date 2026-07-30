@@ -1,1 +1,0 @@
-{"key":"build_command","value":["latexmk","-pdf","-f","-g","-bibtex","-deps","-synctex=1","-interaction=nonstopmode","-output-directory=/tmp/e8a423922f32da61713a85588b073c1a4998cdba","ramsey_graphs.tex"]}

@@ -1,1 +1,0 @@
-{"key":"build_command","value":"latexmk -pdf -f -g -bibtex -deps -synctex=1 -interaction=nonstopmode -output-directory=/tmp/7ee6687d130db7fdb5f4762d4b5d2e26f60b6a42 'ContemporaryDiscreteMathematics.tex'"}

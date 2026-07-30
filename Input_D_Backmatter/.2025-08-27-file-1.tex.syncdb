@@ -1,1 +1,0 @@
-{"key":"build_command","value":["latexmk","-pdf","-f","-g","-bibtex","-deps","-synctex=1","-interaction=nonstopmode","-output-directory=/tmp/2bd62dda2c6df31ecabda3558b574dab853b1698","2025-08-27-file-1.tex"]}

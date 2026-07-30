@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+._*
+
+# LaTeX build byproducts -- regenerated every time the book is compiled,
+# so they don't need to (and shouldn't) be tracked in git.
+*.aux
+*.bbl
+*.blg
+*.idx
+*.ind
+*.ilg
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bcf
+*.run.xml
+*.nav
+*.snm
+*.vrb
+*.thm
+*.brf
+
+# TeXShop / editor sync + chat metadata -- per-file editor state, not
+# part of the book itself.
+.*.syncdb
+*.sage-chat
