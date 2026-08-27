@@ -17,38 +17,37 @@ Symbolically,
 A\times B=\{(a,b) \mid a\in A, b\in B\}.
 \]
 
-In the same way that we defined ordered pairs we can define ordered triples, quadruples, quintuples, and, in genral $n$ tupkles $(a_1,\dots, a_n)$ for any nonnegative integer $n$.
+In the same way that we defined ordered pairs, we can define ordered triples, quadruples, quintuples, and, in general, $n$-tuples $(a_1,\dots, a_n)$ for any nonnegative integer $n$.
 If $A$ is a set, the set of $n$-tuples $(a_1,\dots, a_n)$ with $a_1,\dots, a_n\in A$ is denoted $A^n$.
 
-For this course, we will assume that participants are familiar with the notion of function, the arrow notation $f\colon A\to B$, and the concepts of injective and surjective functions. 
-Nevertheless, we summarize it here. If $,B$ are sets, a function $f:\to B$ is intuitively a ``rule'' that to every $a\in A$ assigns a unique $b\in B$. 
-The notions of ``rule'' and ``assign'' are not mathematically precise, but we con formalize them within the framework of set theory as follows.
-A function $f:A\to B$ is a set of pairs set of ordered pairs $(a,b)$ with $a\in A$ and $b\in B$ (that is, a subset of $A\times B$) 
-For every $a\in A$ there exists  a unique $b\in B$ such that $(a,b)\in f$, i.e.,
+For this course, we will assume that participants are familiar with the notion of function, the arrow notation $f\colon A\to B$, and the concepts of injective and surjective function. 
+Nevertheless, we summarize it here. If $A,B$ are sets, a function $f:A\to B$ is intuitively a ``rule'' that to every $a\in A$ assigns a unique $b\in B$. 
+The words ``rule'' and ``assign'' are not mathematically precise, but we con formalize them within the framework of set theory as follows.
+We define a function $f:A\to B$ as a set of pairs set of ordered pairs $(a,b)$ with $a\in A$ and $b\in B$ (that is, a subset of $A\times B$) 
+such that for  every $a\in A$ there exists  a unique $b\in B$ such that $(a,b)\in f$, i.e.,
 \[
-\forall a (\exists b\in B ((a,b) \in f) \land (\forall b',b'' ((a,b')\in f \land (a,b'')\in f) \to b'=b'')).
+\forall a (\exists b\in B ((a,b) \in f) \land (\forall b',b'' \in B((a,b')\in f \land (a,b'')\in f) \to b'=b'')).
 \]
-In this case, we write $f: A\to B$. 
 The sets $A$ and $B$ are called, respectively, the \emph{domain} and \emph{codoman} of $f$.
 The \emph{range} of $f$ is the set $\{f(a) \mid a\in A \}$.
 For each $a\in A$, the unique $b\in B$ such that $(a,b)\in f$ is called the \emph{image} of $a$, and it is denoted $f(a)$.
  
  
- Given a function If $A_0$ is a subset of $A$, the \emph{direct image} of $A_0$, denoted $f[A]$,  is the set $\{b\in B \mid \exists a\in A_0( f(a)=b) \}$. 
+ Given a function $f:A\to B$ , if $A_0$ is a subset of $A$, the \emph{direct image} of $A_0$, denoted $f[A_0]$,  is the set $\{b\in B \mid \exists a\in A_0( f(a)=b) \}$. 
   If $B_0$ is a subset of $B$, the \emph{inverse image} of $B_0$, denoted $f^{-1}[B_0]$, is the set $\{a\in A \mid f(a)\in B_0\}$. 
   
   A function $f: A\to B$ is \emph{surjective} if $f[A]=B$, that is, if for every $b\in B$ there exists $a\in A$ such that $f(a)=b$, that is, if
   \[
-  \forall b \in B \exists  ((a,b)\in f).
+  \forall b \in B \exists a\in A ((a,b)\in f).
   \]
   
   
- A function $f: A\to B$ is \emph{injective} if distinct points in $A$ have distinct images in $B$; symbollically
+ A function $f: A\to B$ is \emph{injective} if distinct points in $A$ have distinct images in $B$; symbolically, this is written as follows:
    \[
   \forall a, a'\in A  (a \neq a' \to f(a)\neq f(a')).
     \]
 
-This definition is often written in contrapositive form:
+This definition is often written (equivalently) in contrapositive form:
    \[
   \forall a, a'\in A  (f(a) = f(a') \to a =a' ).
     \]
