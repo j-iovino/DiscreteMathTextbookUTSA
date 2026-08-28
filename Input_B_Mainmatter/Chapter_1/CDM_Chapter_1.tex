@@ -51,6 +51,23 @@ This definition is often written (equivalently) in contrapositive form:
    \[
   \forall a, a'\in A  (f(a) = f(a') \to a =a' ).
     \]
+    
+ \begin{exercise}
+ Let $f:A\to B$ be given and let $A_0, B_0$ be subsets of $A,B$ respectively. Determine if the following assertions are true or false.
+ \begin{enumerate}
+ \item
+ $f^{-1}[f[A_0]]\subseteq A_0$.
+  \item
+ $f^{-1}[f[A_0]]\subseteq A_0$.
+  \item
+ $f[f^{-1}[B_0]]\subseteq B_0$.
+ \item
+     \stepcounter{enumi}
+ $f[f^{-1}[B_0]]\subseteq B_0$.
+\item[(\theenumi)*] 
+ For the parts above where your answer was ``false'' determine the exct condition on $f$ that is needed to make the answer ``true''.
+ \end{enumerate}
+ \end{exercise}
 
 We will also assume familiarity with the concepts of generalized union and intersection: 
 Given a  family $\{A_i \mid i\in I\}$ of sets, the \emph{generalized union} $\bigcup_{i\in I} A_i$ and \emph{generalized intersection} $\bigcap_{i\in I} A_i$ are defined, respectively, as follows:
@@ -61,6 +78,25 @@ Given a  family $\{A_i \mid i\in I\}$ of sets, the \emph{generalized union} $\bi
 \bigcap_{i\in I} A_i &=\{x \mid \forall i\in I(x\in A_i)\}.
 \end{align*}
 
+
+    
+ \begin{exercise}
+ Let $f:A\to B$ be given and let$\{A_i \mid i\in I\}, \{B_i \mid i\in I\}$ be indexed families of subsets of $A,B$ respectively. Determine if the following assertions are true or false.
+ \begin{enumerate}
+ \item
+ $f[\bigcup_{i\in I} A_i] \subseteq  \bigcup_{i\in I} f[A_i]$.
+ \item
+ $f[\bigcap_{i\in I} A_i] \subseteq \bigcap_{i\in I} f[A_i]$.
+ \item
+ $f^{-1}[\bigcup_{i\in I} B_i] \subseteq  \bigcup_{i\in I} f^{-1}[B_i]$.
+ \item
+ $f^{-1}[\bigcap_{i\in I}B_i] \supseteq  \bigcap_{i\in I} f^{-1}[B_i]$.
+      \stepcounter{enumi}
+ \item[(\theenumi)*] 
+ For the parts above where your answer was ``false'' determine the exct condition on $f$ that is needed to make the answer ``true''.
+
+ \end{enumerate}
+ \end{exercise}
 
 \section{Relations}
 
