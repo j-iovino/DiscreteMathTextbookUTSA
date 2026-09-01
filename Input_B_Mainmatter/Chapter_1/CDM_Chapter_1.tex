@@ -25,7 +25,7 @@ Another of the fundamental concepts in mathematics is that of \emph{function}.
 For this course, we will assume that participants are familiar with the notion of function, the arrow notation $f\colon A\to B$, and the concepts of injective and surjective function;
 nevertheless, we summarize the main ideas here. If $A,B$ are sets, a function $f:A\to B$ is intuitively a ``rule'' that to every $a\in A$ assigns a unique $b\in B$. 
 The words ``rule'' and ``assign'' are not mathematically precise, but we can formalize them within the framework of set theory as follows.
-We define a function $f:A\to B$ as a set of pairs set of ordered pairs $(a,b)$ with $a\in A$ and $b\in B$ (that is, a subset of $A\times B$) 
+We define a function $f:A\to B$ from $A$ into $B$  as a set of pairs set of ordered pairs $(a,b)$ with $a\in A$ and $b\in B$ (that is, a subset of $A\times B$) 
 such that for  every $a\in A$ there exists  a unique $b\in B$ such that $(a,b)\in f$, i.e.,
 \[
 \forall a (\exists b\in B ((a,b) \in f) \land (\forall b',b'' \in B((a,b')\in f \land (a,b'')\in f) \to b'=b'')).
@@ -33,10 +33,20 @@ such that for  every $a\in A$ there exists  a unique $b\in B$ such that $(a,b)\i
 The sets $A$ and $B$ are called, respectively, the \emph{domain} and \emph{codoman} of $f$.
 The \emph{range} of $f$ is the set $\{f(a) \mid a\in A \}$.
 For each $a\in A$, the unique $b\in B$ such that $(a,b)\in f$ is called the \emph{image} of $a$, and it is denoted $f(a)$.
+
+The set of functions from $A$. into $B$ is denoted $^AB$ or, often, $B^A$.
  
- 
- Given a function $f:A\to B$ , if $A_0$ is a subset of $A$, the \emph{direct image} of $A_0$, denoted $f[A_0]$,  is the set $\{b\in B \mid \exists a\in A_0( f(a)=b) \}$. 
-  If $B_0$ is a subset of $B$, the \emph{inverse image} of $B_0$, denoted $f^{-1}[B_0]$, is the set $\{a\in A \mid f(a)\in B_0\}$. 
+ Given a function $f:A\to B$ , if $A_0$ is a subset of $A$, the \emph{direct image} of $A_0$ is the set 
+ \[
+ f[A_0]=\{b\in B \mid \exists a\in A_0( f(a)=b) \}.
+ \]
+  If $B_0$ is a subset of $B$, the \emph{inverse image} of $B_0$ is the set
+  \[
+ f^{-1}[B_0]= \{a\in A \mid f(a)\in B_0\}.
+  \]
+  
+  Often in the literature, the square brackets ``[''  and ``]'' arereplaced by regular parentheses ``(''  and ``])'. 
+  This may lead to confusion in some contexts, so one must be judicious about it, but it is done often for informality.
   
   A function $f: A\to B$ is \emph{surjective} if $f[A]=B$, that is, if for every $b\in B$ there exists $a\in A$ such that $f(a)=b$, that is, if
   \[
