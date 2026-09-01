@@ -15,7 +15,7 @@ Note that $(a,b)$ is not equal to $(b,a)$ (unless, of course, $a=b$, in which ca
 For given sets $A$ and $B$, the set of all ordered pairs $(a,b)$  with $a\in A$ and $b\in B$ is denoted $A\times B$. 
 Symbolically,
 \[
-A\times B=\{(a,b) \mid a\in A \text{ and } b\in B\}.
+A\times B=\{(a,b) \colon a\in A \text{ and } b\in B\}.
 \]
 
 In the same way that we defined ordered pairs, we can define ordered triples, quadruples, quintuples, and, in general, $n$-tuples $(a_1,\dots, a_n)$ for any nonnegative integer $n$.
@@ -31,18 +31,18 @@ such that for  every $a\in A$ there exists  a unique $b\in B$ such that $(a,b)\i
 \forall a (\exists b\in B ((a,b) \in f) \land (\forall b',b'' \in B((a,b')\in f \land (a,b'')\in f) \to b'=b'')).
 \]
 The sets $A$ and $B$ are called, respectively, the \emph{domain} and \emph{codoman} of $f$.
-The \emph{range} of $f$ is the set $\{f(a) \mid a\in A \}$.
+The \emph{range} of $f$ is the set $\{f(a) \colon a\in A \}$.
 For each $a\in A$, the unique $b\in B$ such that $(a,b)\in f$ is called the \emph{image} of $a$, and it is denoted $f(a)$.
 
 The set of functions from $A$. into $B$ is denoted $^AB$ or, often, $B^A$.
  
  Given a function $f:A\to B$ , if $A_0$ is a subset of $A$, the \emph{direct image} of $A_0$ is the set 
  \[
- f[A_0]=\{b\in B \mid \exists a\in A_0( f(a)=b) \}.
+ f[A_0]=\{b\in B \colon \exists a\in A_0( f(a)=b) \}.
  \]
   If $B_0$ is a subset of $B$, the \emph{inverse image} of $B_0$ is the set
   \[
- f^{-1}[B_0]= \{a\in A \mid f(a)\in B_0\}.
+ f^{-1}[B_0]= \{a\in A \colon f(a)\in B_0\}.
   \]
   
   Often in the literature, the square brackets ``[''  and ``]'' arereplaced by regular parentheses ``(''  and ``])'. 
@@ -102,18 +102,18 @@ This definition is often written (logically equivalently) in contrapositive form
  
 
 We will also assume familiarity with the concepts of generalized union and intersection: 
-Given a  family $\{A_i \mid i\in I\}$ of sets, the \emph{generalized union} $\bigcup_{i\in I} A_i$ and \emph{generalized intersection} $\bigcap_{i\in I} A_i$ are defined, respectively, as follows:
+Given a  family $\{A_i \colon i\in I\}$ of sets, the \emph{generalized union} $\bigcup_{i\in I} A_i$ and \emph{generalized intersection} $\bigcap_{i\in I} A_i$ are defined, respectively, as follows:
 
 
 \begin{align*}
-\bigcup_{i\in I} A_i &=\{x \mid \exists i\in I(x\in A_i)\},\\
-\bigcap_{i\in I} A_i &=\{x \mid \forall i\in I(x\in A_i)\}.
+\bigcup_{i\in I} A_i &=\{x \colon \exists i\in I(x\in A_i)\},\\
+\bigcap_{i\in I} A_i &=\{x \colon \forall i\in I(x\in A_i)\}.
 \end{align*}
 
 
     
  \begin{exercise}
- Let $f:A\to B$ be given and let $\{A_i \mid i\in I\}, \{B_i \mid i\in I\}$ be indexed families of subsets of $A,B$ respectively. Determine if the following assertions are true or false:
+ Let $f:A\to B$ be given and let $\{A_i \colon i\in I\}, \{B_i \colon i\in I\}$ be indexed families of subsets of $A,B$ respectively. Determine if the following assertions are true or false:
  \begin{enumerate}
  \item
  $f[\bigcup_{i\in I} A_i] =  \bigcup_{i\in I} f[A_i]$.
@@ -125,7 +125,7 @@ Given a  family $\{A_i \mid i\in I\}$ of sets, the \emph{generalized union} $\bi
  $f^{-1}[\bigcap_{i\in I}B_i] =  \bigcap_{i\in I} f^{-1}[B_i]$.
       \stepcounter{enumi}
  \item[(\theenumi)*] 
- For the parts above where your answer was ``false'', determine the exact condition on $f$ that is needed to make the answer ``true'' for arbitrary indexed families $\{A_i \mid i\in I\}, \{B_i \mid i\in I\}$  of subsets of $A,B$ respectively.
+ For the parts above where your answer was ``false'', determine the exact condition on $f$ that is needed to make the answer ``true'' for arbitrary indexed families $\{A_i \colon i\in I\}, \{B_i \colon i\in I\}$  of subsets of $A,B$ respectively.
 
  \end{enumerate}
  \end{exercise}
