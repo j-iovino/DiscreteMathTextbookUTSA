@@ -279,6 +279,37 @@ $R$ is transitive.
 \end{enumerate}
 \end{exercise}
 
+\begin{definition}
+\label{D:eqreq}
+Let $A$ be a set.
+\begin{enumerate}
+\item
+An \emph{equivalence relation on $A$}  is a binary relation on $A$ that is reflexive, symmetric, and transitive.
+\item
+$R$ is an equivalence relation on $A$ and $a\in A$, the \emph{equivalence class of $a$} is the set
+\[
+[a]=\{ b\in A :  bRa\}.
+\]
+\end{enumerate}
+The $\{[a] : a\in A\}$ of equivalence classes of $R$ is denoted $A/R$.
+\end{definition}
+
+\begin{definition}
+\label{D:part}
+Let $A$ be a set. A \emph{partition} of $A$ is an indexed family 
+\[
+\mathcal{P}=\{A_i : i\in I\}
+\]
+of subsets of $A$ such that for every pair of indices $i,j\in I$, we have 
+\[
+\text{either $A_i=A_j$ or $A_i\cap A_j=\emptyset$}.
+\]
+\end{definition}
+
+\begin{exercise}
+Prove that if $R$ is an equivalence relation on a set $A$, then the equivalence classes of $R$ form a partition of the set $A$.
+\end{exercise}
+
 In this section, we have discussed three representation of relations:
 
 \begin{enumerate}
