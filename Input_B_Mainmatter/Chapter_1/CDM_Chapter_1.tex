@@ -304,14 +304,19 @@ By passing from $A$ to the quotient $A/R$, we identify all the elements equivale
 
 \begin{definition}
 \label{D:part}
-Let $A$ be a set. A \emph{partition} of $A$ is an indexed family 
+Let $A$ be a nonempty set. A \emph{partition} of $A$ is an indexed family 
 \[
 \mathcal{P}=\{A_i : i\in I\}
 \]
-of subsets of $A$ such that for every pair of indices $i,j\in I$, we have 
-\[
-\text{either $A_i=A_j$ or $A_i\cap A_j=\emptyset$}.
-\]
+of subsets of $A$ such that for every pair of indices $i,j\in I$, we have:
+\begin{enumerate}
+\item
+$A_i\neq \emptyset$,
+\item
+$\bigcup_{i\in I} A_i=A$.
+\item
+If $A_i\cap A_j\neq\emptyset$, then $A_i=A_j$.
+\end{enumerate}
 \end{definition}
 
 \begin{exercise}
