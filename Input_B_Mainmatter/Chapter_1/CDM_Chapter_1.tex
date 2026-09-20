@@ -30,7 +30,7 @@ such that for  every $a\in A$ there exists  a unique $b\in B$ such that $(a,b)\i
 \[
 \forall a (\exists b\in B ((a,b) \in f) \land (\forall b',b'' \in B((a,b')\in f \land (a,b'')\in f) \to b'=b'')).
 \]
-The sets $A$ and $B$ are called, respectively, the \emph{domain} and \emph{codoman} of $f$.
+The sets $A$ and $B$ are called, respectively, the \emph{domain} and \emph{codomain} of $f$.
 The \emph{range} of $f$ is the set $\{f(a) \colon a\in A \}$.
 For each $a\in A$, the unique $b\in B$ such that $(a,b)\in f$ is called the \emph{image} of $a$, and it is denoted $f(a)$.
 
@@ -111,7 +111,7 @@ Given a  family $\{A_i \colon i\in I\}$ of sets, the \emph{generalized union} $\
 \end{align*}
 
 \begin{remark}
-Note that $\bigcap_{i\in I} A_i $ can only be defined when the index set $I$ is nonempty. If $I$ were empty, then $\bigcap_{i\in I} A_i $ would be a set that contains the universe (the set of all sets), which does exist in axiomatic set theory (due to Russell's paradox).
+Note that $\bigcap_{i\in I} A_i $ can only be defined when the index set $I$ is nonempty. If $I$ were empty, then $\bigcap_{i\in I} A_i $ would be a set that contains the universe (the set of all sets), which does not exist in axiomatic set theory (due to Russell's paradox).
 \end{remark}
 
 
@@ -294,6 +294,7 @@ $R$ is an equivalence relation on $A$ and $a\in A$, the \emph{equivalence class 
 The $\{[a] : a\in A\}$ of equivalence classes of $R$ is denoted $A/R$, and it is called the \emph{quotient} of $A$ by $R$.
 \end{definition}
 
+
 The motivating example of an equivalence relation is the equality relation $=$ (on any set). 
 For this relation, the equivalence class of $a$ has only one element:~$a$. 
 The intuition behind the notion of equivalence relation is that an equivalence relation on a set $A$ has the three distinctive properties (reflexivity, symmetry and transitivity) as the equality relation without necessarily being the equality relation.
@@ -321,6 +322,26 @@ If $A_i\cap A_j\neq\emptyset$, then $A_i=A_j$.
 
 \begin{exercise}
 Prove that if $R$ is an equivalence relation on a nonempty set $A$, then the equivalence classes of $R$ form a partition of the set $A$.
+\end{exercise}
+
+\begin{exercise}
+Let $n$ be a fixed positive integer. For $a,b\in\mathbb{Z}$, define $a \equiv b \pmod{n}$ --- read, \textit{$a$ is equivalent to $b$ modulo $n$} --- as follows:
+\[
+a \equiv b \pmod{n}
+\quad\text{if and only if}\quad
+n\mid a-b.
+\]
+The relation $ \equiv  \pmod{n}$ is called \emph{equivalence modulo $n$}.
+\begin{enumerate}
+\item
+Prove that equivalence  modulo $n$ is an equivalence relation.
+\item
+What are the equivalence classes of this relation?  Explain clearly.
+\item 
+Prove that if $a, a', b, b'$ are integers and $a \equiv b \pmod{n}$ and $a' \equiv b' \pmod{n}$, then $a+a' \equiv b+b' \pmod{n}$.
+\item 
+Prove that if $a, a', b, b'$ are integers and $a \equiv b \pmod{n}$ and $a' \equiv b' \pmod{n}$, then $aa' \equiv bb' \pmod{n}$.
+\end{enumerate}
 \end{exercise}
 
 In this section, we have discussed three representation of relations:
