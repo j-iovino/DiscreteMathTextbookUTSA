@@ -30,3 +30,19 @@
 # part of the book itself.
 .*.syncdb
 *.sage-chat
+
+# LaTeX auxiliary/build files and macOS metadata (added to match the other repositories)
+*.synctex(busy)
+*.bbl-SAVE-ERROR
+*.xdv
+*.dvi
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.loa
+auto/
+_minted*/
