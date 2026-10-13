@@ -1,4 +1,6 @@
-
+%#
+%## CHAPTER: Limits of structures
+%#
 \chapter{Limits of structures}
 
 Recall from \ref{notn:large-sets} that if $\scrF$ is a filter on a nonempty set $I$, then the elements of $\scrF$ are called \emph{$\scrF$-large} subsets of $I$.
@@ -44,6 +46,9 @@ i.e.,
   \]
 \end{definition}
 
+%#
+%### SECTION: Graph limits
+%#
 \section{Graph limits}
 
 Fix an indexed  family $(\scrG_i)_{i\in I}$  of graphs, where $\scrG_i=(G_i,R_i)$ for all $i\in I$, and an  ultrafilter filter $\scrU$.
@@ -73,6 +78,9 @@ The following is the most important definition of this chapter, and one of the c
   \]
 \end{definition}
 
+%#
+%### SECTION: The Transfer Principle for graphs
+%#
 \section{The Transfer Principle for graphs}
 
 Let $x, x', x''\dots, y, y', y'',\dots, z, z', z''\dots$ be a fixed countable set of variables.
@@ -234,6 +242,9 @@ Note that a first-order formula is a  of finite length, and therefore it contain
 We will prove the Transfer Principle as a corollary of a stronger theorem (see \cref{thm:transfer-theorem}).
 However, before engaging in the proof of the theorem, let us focus on an important application.
 
+%#
+%#### SUBSECTION: Back to Ramsey’s theorem
+%#
 \subsection{Back to Ramsey’s theorem}
 In \cref{cha:ramsey}, we proved the infinitary version of Ramsey’s theorem (see~\ref{thm:ramsey-infinitary}).
 However, we did not prove the classical finitary version~\ref{thm:ramsey-classical}.
@@ -260,6 +271,9 @@ We now show that the Transfer Principle for graph limits allows us to obtain the
   $K_{R(m,n)}$ into two colors, “black" and “white", then there is a subgraph of $K_{R(m,n)}$ isomorphic to $K_m$ all of whose edges are black, or subgraph of $K_{R(m,n)}$ isomorphic to $K_n$ all of whose edges are white.
 \end{exercise}
 
+%#
+%### SECTION: General statement and proof of the Transfer Principle for graph limits
+%#
 \section{General statement and proof of the Transfer Principle for graph limits}
 
 Recall (see Definition~\ref{D:Sentence}) that a sentence is a first-order formula where all the variables are under the scope of a quantifier.
@@ -336,11 +350,11 @@ In the proof, we will invoke the following exercise:
   Hence,
 
   \begin{align*}
-                   & \lim_{\scrU} \scrG_i \models (\alpha\land \beta) [a_1,\dots, a_n]                                                        &                                      \\
-  \text{iff \quad} & \text{$\lim_{\scrU} \scrG_i \models \alpha [a_1,\dots, a_n]$ and $\lim_{\scrU} \scrG_i \models \beta [a_1,\dots, a_n]$ } & \text{by definition of $\models$}    \\
-  \text{iff \quad} & \text{$A, B \in\scrU$}                                                                                                   & \text{by induction hypothesis}       \\
-  \text{iff \quad} & \text{$A \cap B \in\scrU$}                                                                                               & \text{by \cref{exe:lemma-los}} \\
-  \text{iff \quad} & \text{$\scrG_i \models (\alpha\land \beta)[a_1(i),\dots, a_n(i)] $, for almost every $i\in I \pmod{\scrU}$.}             &                                      \\
+                   & \lim_{\scrU} \scrG_i \models (\alpha\land \beta) [a_1,\dots, a_n]                                                        &                                   \\
+  \text{iff \quad} & \text{$\lim_{\scrU} \scrG_i \models \alpha [a_1,\dots, a_n]$ and $\lim_{\scrU} \scrG_i \models \beta [a_1,\dots, a_n]$ } & \text{by definition of $\models$} \\
+  \text{iff \quad} & \text{$A, B \in\scrU$}                                                                                                   & \text{by induction hypothesis}    \\
+  \text{iff \quad} & \text{$A \cap B \in\scrU$}                                                                                               & \text{by \cref{exe:lemma-los}}    \\
+  \text{iff \quad} & \text{$\scrG_i \models (\alpha\land \beta)[a_1(i),\dots, a_n(i)] $, for almost every $i\in I \pmod{\scrU}$.}             &                                   \\
   \end{align*}
 
   The proof for the case $\neg\alpha(x_1,\dots, x_n)$ is similar.
@@ -351,11 +365,11 @@ In the proof, we will invoke the following exercise:
   \]
   Hence,
   \begin{align*}
-                   & \lim_{\scrU} \scrG_i \models \neg\alpha [a_1,\dots, a_n]                                            &                                      \\
-  \text{iff \quad} & \text{$\lim_{\scrU} \scrG_i \not \models \alpha [a_1,\dots, a_n]$}                                  & \text{by definition of $\models$}    \\
-  \text{iff \quad} & \text{$A \notin\scrU$}                                                                              & \text{by induction hypothesis}       \\
-  \text{iff \quad} & \text{$A^c \in\scrU$}                                                                               & \text{by \cref{exe:lemma-los}} \\
-  \text{iff \quad} & \text{$\scrG_i \models \neg\alpha[a_1(i),\dots, a_n(i)] $, for almost every $i\in I \pmod{\scrU}$.} &                                      \\
+                   & \lim_{\scrU} \scrG_i \models \neg\alpha [a_1,\dots, a_n]                                            &                                   \\
+  \text{iff \quad} & \text{$\lim_{\scrU} \scrG_i \not \models \alpha [a_1,\dots, a_n]$}                                  & \text{by definition of $\models$} \\
+  \text{iff \quad} & \text{$A \notin\scrU$}                                                                              & \text{by induction hypothesis}    \\
+  \text{iff \quad} & \text{$A^c \in\scrU$}                                                                               & \text{by \cref{exe:lemma-los}}    \\
+  \text{iff \quad} & \text{$\scrG_i \models \neg\alpha[a_1(i),\dots, a_n(i)] $, for almost every $i\in I \pmod{\scrU}$.} &                                   \\
   \end{align*}
 
   The case when $\alpha$ is of the form $\exists y \beta(x_1,\dots, x_n y)$ is left as an exercise.

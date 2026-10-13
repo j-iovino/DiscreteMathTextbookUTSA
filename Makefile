@@ -7,7 +7,8 @@
 #   make clean    remove build products
 
 COLS    := 256
-TEX_SRC := $(wildcard *.tex)
+# Chapter files too; ramsey_graphs.tex is a standalone tikz figure source (its PDF is included as a figure), left untouched.
+TEX_SRC := $(wildcard *.tex) $(filter-out %/ramsey_graphs.tex,$(wildcard Input_*/*.tex Input_*/*/*.tex))
 MAIN    := $(basename $(firstword $(shell grep -l '\\documentclass' *.tex)))
 
 .PHONY: all build format reflow fashion wrap indent sep check lint clean install-hooks
