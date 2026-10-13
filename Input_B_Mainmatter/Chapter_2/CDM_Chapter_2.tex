@@ -1,10 +1,10 @@
 \chapter{Topology and limits}
 
 \section{Topological Spaces}
-\label{S:topology}
+\label{sec:topology}
 
 \begin{definition}
-  \label{D:topological space}
+  \label{def:topological-space}
   A \emph{topological space} is a structure $(X, \scrN_x)_{x\in X}$  that consists of a set $X$ and, for each point $x\in X$, a collection $\scrN_x$ of subsets of $X$ that satisfy the following properties:
 
   \begin{enumerate}
@@ -22,7 +22,7 @@ Next we introduce an immediate result from the previous definition.
 The reader should note that Property (3) and the next proposition are equivalent.
 
 \begin{proposition}
-  \label{P:basic nhoods are open}
+  \label{prop:basic-nhoods-are-open}
   Let $(X, \scrN_x)_{x\in X}$ be a topological space.
   For every $U\in \scrN_x$ and every $y\in U$, there exists $V_y\in \scrN_y$ such that \[U=\bigcup\limits_{y\in U}V_y\text{.}\]
 \end{proposition}
@@ -55,10 +55,10 @@ The reader should note that Property (3) and the next proposition are equivalent
   Note that $C$ is closed if for every $x\in X$, and every basic neighborhood of $x$ that intersects $C$, then $x\in C$.
 \end{definition}
 
-Note that, by Proposition~\ref{P:basic nhoods are open}, a subset of $X$ is open if and only it is a union of basic neighborhoods.
+Note that, by \cref{prop:basic-nhoods-are-open}, a subset of $X$ is open if and only it is a union of basic neighborhoods.
 
 \begin{proposition}
-  \label{P:properties of open sets}
+  \label{prop:properties-of-open-sets}
 
   In any topological space $(X, \scrN_x)_{x\in X}$, the following properties hold:
 
@@ -88,12 +88,12 @@ Note that, by Proposition~\ref{P:basic nhoods are open}, a subset of $X$ is open
 
   \item
     If $O_1$ and $O_2$ are open subsets of $X$, then for each $x\in O_1\cap O_2$, there are $U,V\in \scrN_x$ such that $U\subseteq O_1$ and $V\subseteq O_2$.
-    By Property (2) of Definition~\ref{D:topological space}, there’s
+    By Property (2) of \cref{def:topological-space}, there’s
     $W_x\in \scrN_x$ such that \[W_x\subseteq U\cap V\subseteq O_1\cap O_2\text{.}\] Thus, $O_1\cap O_2$ is the union of all such $W_x\in \scrN_x$ that satisfy $W_x\subseteq O_1\cap O_2$ as $x$ ranges over $O_1\cap O_2$.
   \end{enumerate}
 \end{proof}
 
-Note that an infinite intersection of open sets is not necessarily open, as will be shown in Example \ref{E:basic topological spaces}(a).
+Note that an infinite intersection of open sets is not necessarily open, as will be shown in \cref{exa:basic-topological-spaces}(a).
 
 \begin{definition}
   Let $(X, \scrN_x)_{x\in X}$ be a topological space.
@@ -110,7 +110,7 @@ Note that two different local neighborhood bases on $X$ can generate the same to
 For instance, examples (a) and (b) below generate the same topology on $\RR$.
 
 \begin{example} Basic examples
-  \label{E:basic topological spaces}
+  \label{exa:basic-topological-spaces}
 
   \begin{enumerate}[(a)]
 
@@ -146,7 +146,7 @@ For instance, examples (a) and (b) below generate the same topology on $\RR$.
 \end{example}
 
 \begin{exercise}
-  Let $(A,\le)$ be  a linearly ordered set (see Definition~\ref{D:posets} and the exercises that follow it).
+  Let $(A,\le)$ be  a linearly ordered set (see \cref{def:posets} and the exercises that follow it).
   For $a,b\in A$ with $a<b$, define the \emph{open interval} $(a, b)$ by
   \[
     (a, b)=\{x\in A \colon a<x<b\}.
@@ -157,7 +157,7 @@ For instance, examples (a) and (b) below generate the same topology on $\RR$.
   \]
   \begin{enumerate}[(a)]
   \item
-    Prove that $(A, \scrN_x )_{x\in A}$ is a topological space, i.e., show that $\scrN_x$ satisfies properties (1)--(3) of the definition of topological space, for all $x\in A$.(Definition~\ref{D:topological space}).
+    Prove that $(A, \scrN_x )_{x\in A}$ is a topological space, i.e., show that $\scrN_x$ satisfies properties (1)--(3) of the definition of topological space, for all $x\in A$.(\cref{def:topological-space}).
   \item
     Suppose above that we replace “linearly ordered” by “partially ordered.” Is $(A, \scrN_x )_{x\in A}$ a topological space?
     Why or why not?
@@ -189,7 +189,7 @@ For instance, examples (a) and (b) below generate the same topology on $\RR$.
   \[
     \scrN_f = \left\{ V_f(x_1,\dots, x_n,\varepsilon) \colon \varepsilon >0, x_1,\dots,x_n\in A, n\in\NN \right\}.
   \]
-  Prove that  $(\RR^A, \scrN_f )_{f\in \RR^A}$ is a topological space, i.e., show that $\scrN_f$ satisfies properties (1)--(3) of the definition of topological space (Definition~\ref{D:topological space}).
+  Prove that  $(\RR^A, \scrN_f )_{f\in \RR^A}$ is a topological space, i.e., show that $\scrN_f$ satisfies properties (1)--(3) of the definition of topological space (\cref{def:topological-space}).
 
 \item
   Let $(X, \scrN_x )_{x\in X }$ be a topological space, let $A$ be a set, and denote by  $X^A$ the set of all functions from $A$ into $X$.
@@ -204,7 +204,7 @@ For instance, examples (a) and (b) below generate the same topology on $\RR$.
   \[
     \scrN_f = \left\{ V_f(x_1,\dots, x_n,V_1,\dots, V_n) \colon \text{$V_i\in \scrN_{f(x_i)}$ for  $i\in \{ 1,\dots, n\}$} \right\}.
   \]
-  Prove that  $(X^A, \scrN_f )_{f\in X^A}$ is a topological space, i.e., show that $\scrN_f$ satisfies properties (1)--(3) of the definition of topological space (Definition~\ref{D:topological space}).
+  Prove that  $(X^A, \scrN_f )_{f\in X^A}$ is a topological space, i.e., show that $\scrN_f$ satisfies properties (1)--(3) of the definition of topological space (\cref{def:topological-space}).
 
 \end{enumerate}
 
@@ -220,7 +220,7 @@ that is, for every basic neighborhood $V_c\in \scrN_c$, there exists a “large�
 To clarify what is meant by “large,” we proceed by defining the notion of filter, which may be thought of as a collection of all the “large” subsets $L$ of $I$.
 
 \begin{definition}
-  \label{D: filter}
+  \label{def:filter}
 
   Fix a nonempty set $I$.
   A \emph{filter} on $I$ is a collection $\scrF$ of subsets of $I$ that satisfy the following properties:
@@ -239,7 +239,7 @@ To clarify what is meant by “large,” we proceed by defining the notion of fi
 Similarly, we may define the notion of “small” in the following way.
 
 \begin{definition}
-  \label{D: ideal}
+  \label{def:ideal}
 
   Fix a nonempty set $I$.
   An \emph{ideal} on $I$ is a collection $\scrJ$ of subsets of $I$ that satisfy the following properties:
@@ -260,7 +260,7 @@ Observe that given a filter $\scrF$ on a nonempty set $I$, we can define an idea
 Similarly, given an ideal $\scrJ$ on $I$, we see that \[\scrF = \{I\setminus A \colon A\in \scrJ\}\] is a filter on $I$.
 
 \begin{notation}
-  \label{N:Large sets}
+  \label{notn:large-sets}
   If $\scrF$ is a filter on a nonempty set $I$, then the elements of $\scrF$ are called \emph{$\scrF$-large}.
   A property of elements of $I$ is said to hold for \emph{almost every $i\in I$} or \emph{almost everywhere} in $I \pmod{\scrF}$ if the property holds for an $\scrF$-large subset of $I$.
 \end{notation}
@@ -276,7 +276,7 @@ We are now ready to define the notion of convergence.
 \end{definition}
 
 In the context of a sequence of real numbers, this is the definition we are familiar with.
-Consider Example \ref{E:basic topological spaces}(a);
+Consider \cref{exa:basic-topological-spaces}(a);
 namely, the topological space $(\RR,\scrN_x)_{x\in \RR}$ where $\scrN_x = \{(x-\varepsilon,x+\varepsilon) \colon \varepsilon>0\}$.
 Let $I=\NN$, and let $\scrF$ consist of all cofinite subsets of $\NN$.
 Then, if $(a_n)_{n\in \NN}$ is a sequence of real numbers, we see that $a_n \overset{\scrF}\to c$ if and only if for every $V_c\in\scrN_c$, we have $a_n\in V_c$ for all but finitely many $n\in\NN$;
@@ -288,7 +288,7 @@ that is, for all $\varepsilon >0$, there exists  $N\in\NN$ such that for all $n>
 
 Recall that, in the topological space $(\RR,\scrN_x)_{x\in \RR}$ mentioned above, limits are unique.
 However, this is not true in every topological space.
-Consider the indiscrete topology discussed in Example~\ref{E:basic topological spaces}(e);
+Consider the indiscrete topology discussed in \cref{exa:basic-topological-spaces}(e);
 namely, given any set $X$, the indiscrete topology on $X$ is the set $\scrT=\{\emptyset, X\}$.
 Given any indexed family $(a_i)_{i\in I}$ in $X$ and any filter $\scrF$ on $I$, since $X$ is the only basic neighborhood of any point in $X$ and \[\{i\colon a_i\in X\}=I\in\scrF\text{,}\] it follows that every point in $X$ is a limit of $(a_i)_{i\in I}$.
 
@@ -302,7 +302,7 @@ This question leads us to the following definition.
 \end{definition}
 
 \begin{proposition}
-  \label{P:Hausdorff->unique limits}
+  \label{prop:hausdorff-implies-unique-limits}
   Let $(X,\scrN_x)_{x\in X}$ be a Hausdorff topological space, let $(a_i)_{i\in I}$ be an indexed family in $X$, and let $\scrF$ be a filter on $I$.
   If $a_i\overset{\scrF}\to c$ and $a_i\overset{\scrF}\to d$, then $c=d$.
 \end{proposition}
@@ -320,11 +320,11 @@ This question leads us to the following definition.
   A & =\{i \colon a_i\in U\}\in\scrF \text{ and} \\
   B & =\{i \colon a_i\in V\}\in\scrF\text{,}
   \end{align*}
-  so by Property (3) of Definition~\ref{D: filter}, we have $A\cap B=\emptyset\in \scrF$, which contradicts Property (1).
+  so by Property (3) of \cref{def:filter}, we have $A\cap B=\emptyset\in \scrF$, which contradicts Property (1).
   We conclude $c=d$.
 \end{proof}
 
-The converse of Proposition~\ref{P:Hausdorff->unique limits} is also true.
+The converse of \cref{prop:hausdorff-implies-unique-limits} is also true.
 Although it is not needed for the material in these notes, it can be proved easily, so we have included a proof in Proposition~\ref{P:unique limits->Hausdorff}
 
 \begin{notation}
@@ -386,16 +386,16 @@ The preceding example suggests that ultrafilters represent an abstract notion of
 The preceding proposition can be re-stated as follows:
 
 \begin{proposition}
-  \label{P:nonprincipality and Frechet}
+  \label{prop:nonprincipality-and-frechet}
   An ultrafilter $\scrU$ on an infinite set $I$ is nonprincipal if and only if it extends the Fréchet filter on $I$.
 \end{proposition}
 
 In light of the preceding proposition, to prove that nonprincipal ultrafilters exist, we only have to prove that the Fréchet filter on $I$ can be extended to an ultrafilter.
 The following propositions show that, indeed,  any collection of subsets of $I$ that has the finite intersection property can be extended to an ultrafilter;
-see, in particular, Corollaries~\ref{C:ultrafilter theorem} and~\ref{C:nonprincipal ultrafilters exist}.
+see, in particular, \cref{cor:ultrafilter-theorem,cor:nonprincipal-ultrafilters-exist}.
 
 \begin{definition}
-  \label{D:fip}
+  \label{def:fip}
   A collection $\scrB$ of subsets of $I$ has the \emph{finite intersection property} (or is \emph{finitely consistent}) if whenever $A_1,\dots, A_n\in\scrB$, we have
   \[
     A_1\cap\dots\cap A_n\neq \emptyset \text{.}
@@ -406,7 +406,7 @@ The finite intersection property is ubiquitous in mathematics.
 Mathematicians often refer to it as “f.i.p."
 
 \begin{proposition}
-  \label{P:filter generated by a base}
+  \label{prop:filter-generated-by-a-base}
   Every collection of subsets of $I$ that has the finite intersection property can be extended to a filter on $I$.
 \end{proposition}
 
@@ -423,19 +423,19 @@ Mathematicians often refer to it as “f.i.p."
 \end{proof}
 
 Due to the preceding proposition, any collection $\scrB$ of subsets of $I$ with the finite intersection property is often called a \emph{base} for a filter (or a \emph{filter base}) on $I$.
-The filter $\scrF$ constructed in the proof of the Proposition~\ref{P:filter generated by a base} is called the filter \emph{generated} by $\scrB$.
+The filter $\scrF$ constructed in the proof of the \cref{prop:filter-generated-by-a-base} is called the filter \emph{generated} by $\scrB$.
 
-Now we want to improve Proposition~\ref{P:filter generated by a base} by showing that every filter can be extended to an ultrafilter on $I$.
+Now we want to improve \cref{prop:filter-generated-by-a-base} by showing that every filter can be extended to an ultrafilter on $I$.
 
 \begin{proposition}
-  \label{P:ultrafilter lemma}
+  \label{prop:ultrafilter-lemma}
   Let $\scrF$ be a filter on a set $I$.
   Then,  for every $A\subseteq I$, there exists a filter $\scrF'\supseteq \scrF$ on $I$ such that either $A\in \scrF'$ or $I\setminus A \in \scrF'$
 \end{proposition}
 
 \begin{proof}
   Fix a set $A\subseteq I$.
-  By Proposition~\ref{P:filter generated by a base}, it suffices to verify that either $\scrF\cup\{A\}$ or $\scrF\cup\{I\setminus A\}$ has the finite intersection property.
+  By \cref{prop:filter-generated-by-a-base}, it suffices to verify that either $\scrF\cup\{A\}$ or $\scrF\cup\{I\setminus A\}$ has the finite intersection property.
   But this is immediate because if $\scrF\cup\{A\}$ fails to have the finite intersection property, it is because there exist $A_1,\dots, A_n\in \scrF$ such that
   $A_1 \cap\dots \cap A_n\cap A=\emptyset$, and this means that
   $I\setminus A\supseteq A_1 \cap\dots \cap A_n$,
@@ -443,7 +443,7 @@ Now we want to improve Proposition~\ref{P:filter generated by a base} by showing
 \end{proof}
 
 \begin{corollary}[{The Ultrafilter Theorem [A. Tarski, 1930]}]
-  \label{C:ultrafilter theorem}
+  \label{cor:ultrafilter-theorem}
   Every filter on a set $I$ can be extended to an ultrafilter on $I$.
 \end{corollary}
 
@@ -472,7 +472,7 @@ Now we want to improve Proposition~\ref{P:filter generated by a base} by showing
   The construction is as follows.
   Fix $\xi<\alpha$ and that $\scrF_\zeta$ has been defined for all $\zeta<\xi$.
 
-  If $\xi$ is a successor ordinal, say $\xi=\zeta+1$, by Proposition~\ref{P:ultrafilter lemma},
+  If $\xi$ is a successor ordinal, say $\xi=\zeta+1$, by \cref{prop:ultrafilter-lemma},
   either $\scrF_\zeta \cup \{A_\zeta\}$ or $\scrF_\zeta \cup \{I\setminus A_\zeta\}$ has the finite intersection property (it is possible that both sets have the f.i.p.).
   We pick one of these sets that has the finite intersection property, and let $\scrF_\xi$ be a filter extending it.
 
@@ -485,23 +485,23 @@ Now we want to improve Proposition~\ref{P:filter generated by a base} by showing
 \end{proof}
 
 \begin{corollary}
-  \label{C:nonprincipal ultrafilters exist}
+  \label{cor:nonprincipal-ultrafilters-exist}
   Nonprincipal ultrafilters exist on any infinite set.
 \end{corollary}
 
 \begin{proof}
   Let $I$ be an infinite set.
-  By Proposition \ref{P:ultrafilter lemma}, the Fréchet filter on $I$ can be extended to an ultrafilter.
-  By Proposition~\ref{P:nonprincipality and Frechet}, such an ultrafilter must be nonprincipal.
+  By \cref{prop:ultrafilter-lemma}, the Fréchet filter on $I$ can be extended to an ultrafilter.
+  By \cref{prop:nonprincipality-and-frechet}, such an ultrafilter must be nonprincipal.
 \end{proof}
 
 \begin{corollary}
-  \label{C:base extended to ultrafilter}
+  \label{cor:base-extended-to-ultrafilter}
   Let $\scrB$ be a family of subsets of $I$ with the finite intersection property.
   Then there exists an ultrafilter $\scrU$ on $I$ such that every set in $\scrB$ is $\scrU$-large.
 \end{corollary}
 
 \begin{proof}
-  By Proposition~\ref{P:filter generated by a base} and Corollary~\ref{C:ultrafilter theorem}.
+  By \cref{prop:filter-generated-by-a-base} and \cref{cor:ultrafilter-theorem}.
 \end{proof}
 

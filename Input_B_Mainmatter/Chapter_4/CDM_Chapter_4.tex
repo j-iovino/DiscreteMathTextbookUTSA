@@ -1,7 +1,7 @@
 
 \chapter{Limits of structures}
 
-Recall from \ref{N:Large sets} that if $\scrF$ is a filter on a nonempty set $I$, then the elements of $\scrF$ are called \emph{$\scrF$-large} subsets of $I$.
+Recall from \ref{notn:large-sets} that if $\scrF$ is a filter on a nonempty set $I$, then the elements of $\scrF$ are called \emph{$\scrF$-large} subsets of $I$.
 A property of elements of $I$ is said to hold for \emph{almost every $i\in I$} or \emph{almost everywhere} in $I \pmod{\scrF}$ if the property holds for an $\scrF$-large subset of $I$.
 
 Recall also that if $(G_i)_{i\in I}$ is an indexed family of sets, then the \emph{cartesian product} of the family $(G_i)_{i\in I}$, denoted $\prod_{i\in I}G_i$, is defined as
@@ -32,7 +32,7 @@ i.e.,
 \end{exercise}
 
 \begin{definition}
-  \label{D:ultraproduct of sets}
+  \label{def:ultraproduct-of-sets}
   If $(G_i)_{i\in I}$ is an indexed family of sets and $\scrU$ is an ultrafilter on the index set $I$, then the set
   \[
     \prod_{i\in I} G_i/\sim
@@ -61,7 +61,7 @@ For any elements $a= (a_i)_{i\in I}$ and $b= (b_i)_{i\in I}$ in the cartesian pr
 The following is the most important definition of this chapter, and one of the central definitions of the course.
 
 \begin{definition}
-  \label{D:ultraproduct of graphs}
+  \label{def:ultraproduct-of-graphs}
   If $(\scrG_i)_{i\in I}$ is an indexed family of graphs, where $\scrG_i=(G_i,R_i)$ for all $i\in I$, and $\scrU$ is an ultrafilter on the index set $I$, then the graph
   \[
     \left(\prod_{\scrU}G_i, R_{\scrU}\right)
@@ -121,7 +121,7 @@ where $x$ and $y$ are any of the variables from our fixed list.
 Note that a first-order formula is a  of finite length, and therefore it contains only finitely many variables.
 
 \begin{definition}
-  \label{D:sentence}
+  \label{def:sentence}
   If $\alpha$ is a first-order formula such that all the variables of $\alpha$ are under the scope of a quantifier ($\forall$ or $\exists$), we say that $\alpha$ is a \emph{sentence}.
 \end{definition}
 
@@ -222,7 +222,7 @@ Note that a first-order formula is a  of finite length, and therefore it contain
 \end{examples}
 
 \begin{theorem}[The Transfer Principle for graph limits]
-  Let $(\scrG_i)_{i\in I}$ be an indexed family of graphs, let  $\scrU$ be an ultrafilter on the index set $I$, and let $\lim_{\scrU} \scrG_i$ denote the $\scrU$-limit of  $(\scrG_i)_{i\in I}$ (see Definition~\ref{D:ultraproduct of graphs}).
+  Let $(\scrG_i)_{i\in I}$ be an indexed family of graphs, let  $\scrU$ be an ultrafilter on the index set $I$, and let $\lim_{\scrU} \scrG_i$ denote the $\scrU$-limit of  $(\scrG_i)_{i\in I}$ (see \cref{def:ultraproduct-of-graphs}).
   Then, for any first-order sentence $\alpha$, we have
   \[
     \lim_{\scrU} \scrG_i \models \alpha
@@ -231,12 +231,12 @@ Note that a first-order formula is a  of finite length, and therefore it contain
   \]
 \end{theorem}
 
-We will prove the Transfer Principle as a corollary of a stronger theorem (see Theorem~\ref{T:Transfer theorem}).
+We will prove the Transfer Principle as a corollary of a stronger theorem (see \cref{thm:transfer-theorem}).
 However, before engaging in the proof of the theorem, let us focus on an important application.
 
 \subsection{Back to Ramsey’s theorem}
-In Chapter \ref{C:Ramsey}, we proved the infinitary version of Ramsey’s theorem (see~\ref{T:Ramsey infinitary}).
-However, we did not prove the classical finitary version~\ref{T:Ramsey classical}.
+In \cref{cha:ramsey}, we proved the infinitary version of Ramsey’s theorem (see~\ref{thm:ramsey-infinitary}).
+However, we did not prove the classical finitary version~\ref{thm:ramsey-classical}.
 We now show that the Transfer Principle for graph limits allows us to obtain the finitary version in a few lines from the infinitary one.
 
 \begin{theorem}[Ramsey’s theorem]
@@ -248,11 +248,11 @@ We now show that the Transfer Principle for graph limits allows us to obtain the
   Assume that the theorem does not hold true, and fix $n \in \NN$ for which $R(n)$ doesn’t exist.
   This means that, for each $N \in \NN$ we can fix a a graph $\scrG_N=(G_N, R_N)$ of size $> N$ that has  no monochromatic subset of size $n$.
   Fix a non-principal ultrafilter $\scrU$ on $\NN$.
-  Let $\alpha$ be the sentence of Examples \label{E:Ramsey first-order} that asserts the existence of a monochromatic subgraph of size $n$.
+  Let $\alpha$ be the sentence of Examples \label{exa:ramsey-first-order} that asserts the existence of a monochromatic subgraph of size $n$.
   Then $\scrG_N\models \neg\alpha$.
   Let $\lim_{\scrU} \scrG_N$ denote the $\scrU$-limit of  $(\scrG_N)_{N\in\NN}$.
   Then, by the Transfer Principle for graph limits, $\lim_{\scrU} \scrG_i\models\neg\alpha$.
-  But this contradicts  the infinitary version of Ramsey’s theorem (see~\ref{T:Ramsey infinitary}) since $\lim_{\scrU} \scrG_N$  is an infinite graph.
+  But this contradicts  the infinitary version of Ramsey’s theorem (see~\ref{thm:ramsey-infinitary}) since $\lim_{\scrU} \scrG_N$  is an infinite graph.
 \end{proof}
 
 \begin{exercise}
@@ -285,7 +285,7 @@ In general, if $\alpha$ includes free variables that are free, to determine whet
 Now we can state and prove the Transfer Principle for graph limits.
 
 \begin{theorem}[The Transfer Principle for graphs]
-  \label{T:Transfer theorem}
+  \label{thm:transfer-theorem}
 
   Let $(\scrG_i)_{i\in I}$ be an indexed family of graphs, let  $\scrU$ be an ultrafilter on the index set $I$, and let $\lim_{\scrU} \scrG_i$ denote the $\scrU$-limit of  $(\scrG_i)_{i\in I}$.
   Then, if $\alpha(x_1,\dots, x_n)$ is a first-order sentence and $a_1,\dots, a_n$ are elements of  $\lim_{\scrU} \scrG_i$, represented by families $a_k=(a_k(i))_{i\in I}$ for $k=1,\dots, n$, then
@@ -302,7 +302,7 @@ Now we can state and prove the Transfer Principle for graph limits.
 In the proof, we will invoke the following exercise:
 
 \begin{exercise}
-  \label{E:Lemma Los}
+  \label{exe:lemma-los}
   Let $\scrU$ be an ultrafilter on $I$, an indexed set.
   If $A,B\subseteq I$, then
   \begin{enumerate}
@@ -315,9 +315,9 @@ In the proof, we will invoke the following exercise:
   \end{enumerate}
 \end{exercise}
 
-\begin{proof}[Proof of Theorem~\ref{T:Transfer theorem}]
+\begin{proof}[Proof of \cref{thm:transfer-theorem}]
   We prove the equivalence $(*)$ by induction on the complexity of $\alpha$.
-  When $\alpha$ is an atomic formula, the equivalence holds by the very definition of $\lim_{\scrU} \scrG_i$ (see Definition~\ref{D:ultraproduct of graphs}).
+  When $\alpha$ is an atomic formula, the equivalence holds by the very definition of $\lim_{\scrU} \scrG_i$ (see \cref{def:ultraproduct-of-graphs}).
   We now assume, by induction, that the equivalence  $(*)$  holds for $\alpha$ and $\beta$, and we prove it for $(\alpha\land\beta)$ and $\neg\alpha$.
 
   First, we suppose, as induction hypothesis, that  $(*)$  holds for $\alpha(x_1,\dots, x_n)$ and $\beta(x_1,\dots, x_n)$ in order to prove it for  $(\alpha\land\beta)(x_1,\dots, x_n)$.
@@ -339,7 +339,7 @@ In the proof, we will invoke the following exercise:
                    & \lim_{\scrU} \scrG_i \models (\alpha\land \beta) [a_1,\dots, a_n]                                                        &                                      \\
   \text{iff \quad} & \text{$\lim_{\scrU} \scrG_i \models \alpha [a_1,\dots, a_n]$ and $\lim_{\scrU} \scrG_i \models \beta [a_1,\dots, a_n]$ } & \text{by definition of $\models$}    \\
   \text{iff \quad} & \text{$A, B \in\scrU$}                                                                                                   & \text{by induction hypothesis}       \\
-  \text{iff \quad} & \text{$A \cap B \in\scrU$}                                                                                               & \text{by Exercise~\ref{E:Lemma Los}} \\
+  \text{iff \quad} & \text{$A \cap B \in\scrU$}                                                                                               & \text{by \cref{exe:lemma-los}} \\
   \text{iff \quad} & \text{$\scrG_i \models (\alpha\land \beta)[a_1(i),\dots, a_n(i)] $, for almost every $i\in I \pmod{\scrU}$.}             &                                      \\
   \end{align*}
 
@@ -354,7 +354,7 @@ In the proof, we will invoke the following exercise:
                    & \lim_{\scrU} \scrG_i \models \neg\alpha [a_1,\dots, a_n]                                            &                                      \\
   \text{iff \quad} & \text{$\lim_{\scrU} \scrG_i \not \models \alpha [a_1,\dots, a_n]$}                                  & \text{by definition of $\models$}    \\
   \text{iff \quad} & \text{$A \notin\scrU$}                                                                              & \text{by induction hypothesis}       \\
-  \text{iff \quad} & \text{$A^c \in\scrU$}                                                                               & \text{by Exercise~\ref{E:Lemma Los}} \\
+  \text{iff \quad} & \text{$A^c \in\scrU$}                                                                               & \text{by \cref{exe:lemma-los}} \\
   \text{iff \quad} & \text{$\scrG_i \models \neg\alpha[a_1(i),\dots, a_n(i)] $, for almost every $i\in I \pmod{\scrU}$.} &                                      \\
   \end{align*}
 
@@ -362,7 +362,7 @@ In the proof, we will invoke the following exercise:
 \end{proof}
 
 \begin{exercise}
-  Finish the proof of Theorem~\ref{T:Transfer theorem}.
+  Finish the proof of \cref{thm:transfer-theorem}.
   [Advice:
   Treat each of the two directions separately.]
 \end{exercise}

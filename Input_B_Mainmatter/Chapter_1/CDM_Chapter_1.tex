@@ -141,7 +141,7 @@ Given a  family $\{A_i \colon i\in I\}$ of sets, the \emph{generalized union} $\
 \section{Relations}
 
 \begin{definition}
-  \label{D:Relation}
+  \label{def:relation}
   Let $A$ be a set and $n$ a nonnegative integer.
   An \emph{$n$-ary relation} on $A$ is a function $R\colon A^n\to\{0,1\}$.
 \end{definition}
@@ -150,7 +150,7 @@ Thus, a relation $R$ on $A$ takes $n$-tuples of elements of $A$ as input,  and f
 Later in the course, we will consider relations that take values more complex than the simple set $\{0,1\}$ of “truth-values.”
 
 \begin{notation}
-  \label{N:Relation}
+  \label{notn:relation}
   Clearly, a relation $R\colon A^n\to\{0,1\} $ is completely determined by its \emph{truth set}
   \[
     R^{-1}(1)=\{\, (a_1,\dots, a_n) \in A^n \colon R(a_1,\dots, a_n)=1 \,\}.
@@ -224,7 +224,7 @@ Later in the course, we will consider relations that take values more complex th
 \end{definition}
 
 \begin{definition}
-  \label{D:posets}
+  \label{def:posets}
   Let $A$ be a set.
   \begin{enumerate}
   \item
@@ -284,7 +284,7 @@ Later in the course, we will consider relations that take values more complex th
 \end{exercise}
 
 \begin{definition}
-  \label{D:eqreq}
+  \label{def:eqreq}
   Let $A$ be a set.
   \begin{enumerate}
   \item
@@ -308,7 +308,7 @@ $[a]$.
 In standard mathematical practice, we pass to the quotient $A/R$ whenever we are in contexts where want all elements of $A$ that are equivalent to $a$ through $R$ to be regarded as the same element.
 
 \begin{definition}
-  \label{D:part}
+  \label{def:part}
   Let $A$ be a nonempty set.
   A \emph{partition} of $A$ is an indexed family
   \[
@@ -355,16 +355,16 @@ In this section, we have discussed three representation of relations:
 
 \begin{enumerate}
 \item
-  The functional representation of Definition~\ref{D:Real valued relation},
+  The functional representation of \cref{def:real-valued-relation},
 \item
-  The set representation discussed in \ref{D:Real valued relation},
+  The set representation discussed in \ref{def:real-valued-relation},
 \item
   The graph representation.
 \end{enumerate}
 
 Of these, the set representation is the traditional one found in beginning textbooks.
 The graph representation is visually useful, but it is limited to binary relations.
-As we shall see in Section~\ref{S:Real valued}, the functional representation is particularly adaptable to contemporary multivalued contexts.
+As we shall see in \cref{sec:real-valued}, the functional representation is particularly adaptable to contemporary multivalued contexts.
 
 \section{Alphabets and Words}
 
@@ -381,7 +381,7 @@ A set is \emph{uncountable} if it is not countable.
 \end{exercise}
 
 \begin{proposition}
-  \label{P:countable union is countable}
+  \label{prop:countable-union-is-countable}
   If
   \[
     A_0, A_1, \dots, A_n,\dots  \qquad n\in\NN
@@ -420,14 +420,14 @@ A set is \emph{uncountable} if it is not countable.
 \end{proposition}
 
 \begin{proof}
-  This is immediate from Proposition~\ref{P:countable union is countable} since if $f,g$ are enumerations of $A$ and $B$, respectively, then
+  This is immediate from \cref{prop:countable-union-is-countable} since if $f,g$ are enumerations of $A$ and $B$, respectively, then
   \[
     A\times B=\bigcup_{n\in\NN} \{(f(m),g(n))\colon m\in \NN\}.
   \]
 \end{proof}
 
 \begin{corollary}
-  \label{C:words of fixed length}
+  \label{cor:words-of-fixed-length}
   If $A_1,\dots, A_k$ are countable, then $A_1\times\dots\times A_k$ is countable.
 \end{corollary}
 
@@ -440,8 +440,8 @@ Mathematically,  for $n\in \NN$, the words of length $n$ formed with symbols out
 \[
   A^n = \underbrace{A\times \dots \times A}_{n\ \text{times}}.
 \]
-Thus, if $A$ is countable, then by Corollary \ref{C:words of fixed length}, the number of words of length $n$ formed with symbols out of the alphabet $A$ is countable.
-Moreover, by Proposition~\ref{P:countable union is countable}, the number of words of arbitrary finite length formed with symbols from  the alphabet $A$,
+Thus, if $A$ is countable, then by \cref{cor:words-of-fixed-length}, the number of words of length $n$ formed with symbols out of the alphabet $A$ is countable.
+Moreover, by \cref{prop:countable-union-is-countable}, the number of words of arbitrary finite length formed with symbols from  the alphabet $A$,
 \[
   \bigcup_{n\in\NN} A^n,
 \]
@@ -450,7 +450,7 @@ is countable as well.
 We have proved the following important result:
 
 \begin{corollary}
-  \label{C:words of finite length}
+  \label{cor:words-of-finite-length}
   If $A$ is a countable alphabet, then the number of words of finite length formed with symbols out of  $A$ is countable.
 \end{corollary}
 
@@ -460,10 +460,10 @@ If $A$ is an alphabet, a word of countably infinite length formed from the alpha
   A^{\NN} = \hspace{-24pt} \underbrace{A\times A\times \dots }_{\text{countably infinitely many times}} \hspace{-24pt}.
 \]
 
-In sharp contrast with Corollary \ref{C:words of finite length}, we have the following theorem:
+In sharp contrast with \cref{cor:words-of-finite-length}, we have the following theorem:
 
 \begin{theorem}
-  \label{T:words of infinite length}
+  \label{thm:words-of-infinite-length}
   Let $A$ be an alphabet with at least two symbols.
   Then, the set of words of infinite length formed from the alphabet $A$ is uncountable.
 \end{theorem}
@@ -501,8 +501,8 @@ In sharp contrast with Corollary \ref{C:words of finite length}, we have the fol
 
 \end{proof}
 
-Let us reflect on what the last two results (namely, Corollary~\ref{C:words of finite length} and Theorem~\ref{T:words of infinite length}) show together.
-Corollary~\ref{C:words of finite length} shows that the set of finite strings of 0’s and 1’s  is countable, and Theorem~\ref{T:words of infinite length} shows that the set of infinite strings of 0’s and 1’s is uncountable.
+Let us reflect on what the last two results (namely, \cref{cor:words-of-finite-length} and \cref{thm:words-of-infinite-length}) show together.
+\cref{cor:words-of-finite-length} shows that the set of finite strings of 0’s and 1’s  is countable, and \cref{thm:words-of-infinite-length} shows that the set of infinite strings of 0’s and 1’s is uncountable.
 A finite string of 0’s and 1’s can be thought of as a computer program, or as a rational number written in binary form.
 An infinite string of 0’s and 1’s can be thought of as  an irrational number written in binary form.
 Thus, the set of computer programs and the set of all rational numbers are countable, while the set of irrational numbers is uncountable.
@@ -510,7 +510,7 @@ Thus, the set of computer programs and the set of all rational numbers are count
 To summarize, the size of the set of irrational numbers is much larger than the size of the set of rational numbers.
 It is then natural to ask:
 What is the difference between the two different sizes?
-As we will discuss  in Section~\ref{S:ordinals-cardinals}, this question is the famous \emph{Continuum Hypothesis} (the very first of David Hilbert’s famous list of open problems).
+As we will discuss  in \cref{sec:ordinals-cardinals}, this question is the famous \emph{Continuum Hypothesis} (the very first of David Hilbert’s famous list of open problems).
 It arose in the 20th century with the set-theoretic formalization of mathematics, and today it is known that, stunningly, it cannot be answered by the standard axioms of mathematics.
 
 \begin{exercises}\hfill
@@ -548,7 +548,7 @@ It arose in the 20th century with the set-theoretic formalization of mathematics
   \]
   where $e_1,\dots, e_k$ are nonnegative integers, $p_k>0$,  and no prime larger than $p_k$ divides $n$.
   Thus, $n$ can be seen as encoding the sequence $(e_1,\dots, e_k)$.
-  Use this to give a \emph{direct proof} of Corollary~\ref{C:words of finite length} without invoking  any of the lemmas proved in this section.
+  Use this to give a \emph{direct proof} of \cref{cor:words-of-finite-length} without invoking  any of the lemmas proved in this section.
 \end{enumerate}
 
 \item
@@ -559,7 +559,7 @@ that is $K_{\NN}$ contains countably many nodes that are connected to each other
 
 A \emph{coloring} of a graph $G$ is a function $f$ that assigns to every edge of $G$ a color from the colors in in a set $C$.
 If the range of $f$ is in $C$ is finite, we call $f$ a \emph{finite coloring} of $G$.
-Use Corollary~\ref{C:words of finite length} and Theorem~\ref{T:words of infinite length} to determine which of the following sets are countable:
+Use \cref{cor:words-of-finite-length} and \cref{thm:words-of-infinite-length} to determine which of the following sets are countable:
 \begin{enumerate}
 \item
   The set of all colorings of $K_n$, for a fixed $n\in\NN$ into two colors.
@@ -599,10 +599,10 @@ Use Corollary~\ref{C:words of finite length} and Theorem~\ref{T:words of infinit
 \end{remarks}
 
 \begin{exercises}\hfill
-\label{E:well-order}
+\label{exe:well-order}
 \begin{enumerate}
 \item
-  \label{E:initial segment}
+  \label{exe:initial-segment}
   Given a partial order $(A,\leq)$ and an element $a\in A$, define the set of \emph{predecessors of $a$} as
   \[
     \operatorname{pred}(a)= \{\, x\in A \colon x<a\,\}.
@@ -643,7 +643,7 @@ Use Corollary~\ref{C:words of finite length} and Theorem~\ref{T:words of infinit
 What makes well-ordered sets important in mathematics is the following fundamental principle:
 
 \begin{theorem}[Principle of Transfinite Induction]
-  \label{T:induction}
+  \label{thm:induction}
   Suppose that   $(A,\le)$ is well-ordered.
   Then, in order to prove that every element of $A$ satisfies a given property $P$, it suffices to prove the following condition:
   \[
@@ -662,7 +662,7 @@ What makes well-ordered sets important in mathematics is the following fundament
 \end{proof}
 
 \subsection{Ordinal and Cardinal Numbers \nopunct} \phantom{period}
-\label{S:ordinals-cardinals}
+\label{sec:ordinals-cardinals}
 
 The ordinals are standard examples of well-ordered sets.
 They can also be seen as “extended numbers.”
@@ -698,7 +698,7 @@ The first infinite ordinal is
 \[
   \omega=\{0, 1, 2, \dots\}.
 \]
-Note that $\omega$ is well-ordered by Exercise~\ref{E:initial segment}.
+Note that $\omega$ is well-ordered by Exercise~\ref{exe:initial-segment}.
 Formally, $\omega $ is defined as the union of all the preceding ordinals.
 
 So now we have a (well-ordered) chain of ordinal numbers:
@@ -718,7 +718,7 @@ More general for any ordinal, $\alpha$, we can define the \emph{successor} of $\
     \alpha+1=\alpha\cup\{\alpha\}.
   \]
 \end{definition}
-Notice that, by Exercise~\ref{E:initial segment},  $\alpha+1$ is well-ordered if $\alpha$ is well-ordered.
+Notice that, by Exercise~\ref{exe:initial-segment},  $\alpha+1$ is well-ordered if $\alpha$ is well-ordered.
 Thus we now have
 \[
   0, 1, 2, \dots,  \omega, \omega+1,\omega+2,\omega+3,\dots
@@ -728,7 +728,7 @@ We can now define
 \[
   \omega+\omega=\bigcup_{n<\omega} \omega+n.
 \]
-Note that $\omega+\omega$ is well-ordered by Exercise~\ref{E:initial segment}.
+Note that $\omega+\omega$ is well-ordered by Exercise~\ref{exe:initial-segment}.
 So, again, we have a chain
 \[
   0, 1, 2, \dots,  \omega, \omega+1,\omega+2,\omega+3,\dots \omega+\omega, \omega+\omega+1,\omega+\omega+2,\dots,
@@ -765,7 +765,7 @@ We haven’t really given a formal definition of the concept of “ordinal.” T
   \end{enumerate}
 \end{definition}
 
-Since ordinals are defined recursively, by Theorem~\ref{T:induction}, we can define ordinal addition, multiplication, and exponentiation reursively as follows.
+Since ordinals are defined recursively, by \cref{thm:induction}, we can define ordinal addition, multiplication, and exponentiation reursively as follows.
 
 Fix an ordinal $\alpha$, and by induction on $\beta$ we define $\alpha+\beta$, $\alpha\cdot\beta$, and $\alpha^\beta$ through the following definitions (note that the definition of addition is based on the definition of successor given above):
 
@@ -861,7 +861,7 @@ Not surprisingly, these cardinalities are special, so there is a particular name
 The following is one of the many equivalent forms of  the famous Axiom of Choice from set theory:
 
 \begin{fact}[The Axiom of Choice (AC)]
-  \label{F:AC}
+  \label{fact:ac}
   For every infinite set $A$ there exists an ordinal $\alpha$ such that $|A|=\aleph_\alpha$ i.e.,  the cardinality of $A$ is $\aleph_\alpha$.
 \end{fact}
 
@@ -869,12 +869,12 @@ Kurt Gödel (1937) and Paul J. Cohen (1963) proved that this axiom cannot be pro
 \footnote{Gödel proved that AC cannot be proved to be false from the axioms of set theory, and Cohen proved that that AC cannot be proved to be true from said axioms.}
 So, it is regarded as a special axiom.
 
-Now since $\aleph_\alpha$ is nothing but $\omega_\alpha$, and the latter is a well-ordered set, then Fact~\ref{F:AC} says that any set whatsoever can be put into bijective correspondence with a well-ordered set.
+Now since $\aleph_\alpha$ is nothing but $\omega_\alpha$, and the latter is a well-ordered set, then \cref{fact:ac} says that any set whatsoever can be put into bijective correspondence with a well-ordered set.
 Therefore, every set can be well-ordered.
 This is the famous Well-Ordering Principle:
 
 \begin{fact}[The Well-Ordering Principle (WOP)]
-  \label{F:WOP}
+  \label{fact:wop}
   For every set $A$ there exists a binary relation $\le$ on $A$ such that $(A,\le )$ is a well-ordered set.
 \end{fact}
 
@@ -884,17 +884,17 @@ This is the famous Well-Ordering Principle:
   \item
     We have just observed that (AC) implies (WOP).
     The opposite implication is also true, because if
-    $A$ is any set and $\le$ is a well-ordering relation on $A$, then by Exercise~\label{E:well order isomorphic to ordinal}, $(A,\le )$ is isomorphic to an ordinal, i.e., there exists an ordinal $\alpha$ such that $(A,\le )$ is isomorphic to $(\alpha,<)$.
+    $A$ is any set and $\le$ is a well-ordering relation on $A$, then by \cref{exe:well-order-isomorphic-to-ordinal}, $(A,\le )$ is isomorphic to an ordinal, i.e., there exists an ordinal $\alpha$ such that $(A,\le )$ is isomorphic to $(\alpha,<)$.
     But, then one can take the smallest such $\alpha$, and such $\alpha$ by definition must be a cardinal.
     Thus, $A$ is equipotent to a cardinal.
 
   \item
-    A useful, and rather surprising,  consequence of Fact~\ref{F:WOP} is that, by \ref{T:induction} do induction proofs on any set.
+    A useful, and rather surprising,  consequence of \cref{fact:wop} is that, by \ref{thm:induction} do induction proofs on any set.
   \end{enumerate}
 
 \end{remarks}
 
-We know (by Theorem~\ref{T:words of infinite length}) that the real line, $\RR$, is uncountable i.e., $|\RR|>\aleph_0$.
+We know (by \cref{thm:words-of-infinite-length}) that the real line, $\RR$, is uncountable i.e., $|\RR|>\aleph_0$.
 But then, what is $|\RR|$?
 Is it $\aleph_1$?
 Or maybe  $\aleph_2$?
@@ -918,10 +918,10 @@ Thus, Cantor’s Continuum Hypothesis cannot be proved or disproved from the sta
 Cohen won the Fields Medal and the National Medal of Science for his achievement, but the true size of the set of real numbers remains one of the great mysteries of mathematics.
 
 \begin{exercise}
-  \label{E:well order isomorphic to ordinal}
+  \label{exe:well-order-isomorphic-to-ordinal}
   Prove that for every well-ordered set $(A,\le)$ there is an ordinal $\alpha$ such that $(A,<)$ is isomorphic to $(\alpha,\in)$.
     [\emph{Hint}:
-      Recall the definition of $\operatorname{pred}(a)$ from Exercise~\ref{E:well-order}.
+      Recall the definition of $\operatorname{pred}(a)$ from \cref{exe:well-order}.
       Prove that for every $a\in A$ there exists an ordinal $\alpha_a$ and an isomorphism $f_a$ between $(\operatorname{pred}(a),<)$ and $(\alpha,\in)$ such that for all $b,c\in \operatorname{pred}(a)$, $b<c\Rightarrow f_a(b)\subseteq f_a(c)$.]
 \end{exercise}
 

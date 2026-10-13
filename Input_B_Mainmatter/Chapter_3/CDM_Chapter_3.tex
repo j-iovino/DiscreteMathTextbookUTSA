@@ -1,12 +1,12 @@
 \chapter{Finding Patterns in Large Networks (or Why Complete Chaos Is Impossible)}
-\label{C:Ramsey}
+\label{cha:ramsey}
 
 \section{Ramsey’s Theorem (The Classical Version)}
 
 The following is regarded as the most important principle of discrete mathematics.
 
 \begin{theorem}[Pigeonhole Principle (general form)]
-  \label{T:Pigeonhole Principle}
+  \label{thm:pigeonhole-principle}
   If $A, B$ are sets such that the cardinality of $A$ is strictly greater than the cardinality of $B$, then no function from $A$ into $B$ can be injective.
 \end{theorem}
 
@@ -16,10 +16,10 @@ It should be intuitively clear.
 The pigeonhole principle is informally stated in terms of pigeons and pigeonholes:
 If every pigeon must be given a pigeonhole, but there are more pigeons than pigeonholes, then at least one pigeonhole corresponds to more than one pigeon.
 
-An immediate corollary of Theorem~\ref{T:Pigeonhole Principle} is the following:
+An immediate corollary of \cref{thm:pigeonhole-principle} is the following:
 
 \begin{theorem}[Pigeonhole Principle (infinite form)]
-  \label{T:Infinite Pigeonhole Principle}
+  \label{thm:infinite-pigeonhole-principle}
   If $A$  is infinite and $B$ is finite, then there is $b\in B$ such that $f^{-1}(b)$ is infinite.
 \end{theorem}
 
@@ -148,7 +148,7 @@ This induces a partition of the set $A$ into $m$ mutually disjoint classes, name
 Thus, any coloring function $f$, as above, partitions the set $A$ into equivalence classes, and each “color” in the range of $f$ provides a mathematical way to place a label on one of the classes.
 
 \begin{theorem}[Ramsey’s theorem, classical version]
-  \label{T:Ramsey classical}
+  \label{thm:ramsey-classical}
   For every pair of positive integers $m,n$, there exists a least positive integer $R_m(n)$ satisfying the following property:
   For every coloring $f$ of the complete graph $K_{R_m(n)}$ into $m$ many colors, there is a copy of $K_n$ inside $K_{R_m(n)}$ that is monochromatic under $f$.
 \end{theorem}
@@ -160,7 +160,7 @@ Thus, any coloring function $f$, as above, partitions the set $A$ into equivalen
 A popular interpretation of the existence of $R(n)$ is the following:
 Given any $n$, there exists $R(n)$ such that every party of $R(n)$  people contains a set of $n$ individuals who are either mutual acquaintances  or complete strangers.
 
-Theorem~\ref{T:Ramsey classical}, proved by F. P. Ramsey
+\cref{thm:ramsey-classical}, proved by F. P. Ramsey
 (not to be confused with Michael Ramsey, his brother,
 who was the Archbishop of Canterbury, or with Arthur Ramsey,
 his father, who was a prominent mathematician and president of Magdalene College)~\cite{Ramsey:1929}, has given rise to a very active line of research in mathematics known as \emph{Ramsey theory}
@@ -249,11 +249,11 @@ is sufficiently large, then we are guaranteed to find in it a substructure (resp
 
 \section{Ramsey’s Theorem (An Infinitary Version)}
 
-In order to prove Theorem~\ref{T:Ramsey classical}, we will first prove a simple infinitary version that can be informally stated as follows:
+In order to prove \cref{thm:ramsey-classical}, we will first prove a simple infinitary version that can be informally stated as follows:
 “Every party of infinitely many people contains infinitely many individuals who are either mutual acquaintances  or complete strangers.” The formal statement is below.
 
 \begin{theorem}[Infinitary version of Ramsey’s theorem]
-  \label{T:Ramsey infinitary}
+  \label{thm:ramsey-infinitary}
   Suppose that the set of all pairs $(m,n)$ of positive integers with $m<n$ is partitioned into finitely many classes, or colors, say, Color 1, \dots,  Color $k$.
   Then there is an infinite  increasing sequence
   \[
@@ -267,18 +267,18 @@ In order to prove Theorem~\ref{T:Ramsey classical}, we will first prove a simple
   fall within the same class (color).
 \end{theorem}
 
-Before proving Theorem~\ref{T:Ramsey infinitary}, let us observe an application to the theory of partially ordered sets:
+Before proving \cref{thm:ramsey-infinitary}, let us observe an application to the theory of partially ordered sets:
 
 \begin{example}
-  Let $(P,\le)$ be a partially ordered set (see Definition~\ref{D:posets}).
+  Let $(P,\le)$ be a partially ordered set (see \cref{def:posets}).
   Two elements $a, b$ of $P$ are said to be \emph{comparable} if $a\le b$ or $b\le a$.
   A subset $C\subseteq P$ is called a \emph{chain} if any two elements of $C$ are comparable, and an \emph{antichain} if no two elements of $C$ are comparable.
-  By Theorem~\ref{T:Ramsey infinitary}, every infinite partially ordered set contains either an infinite chain or an infinite antichain.
+  By \cref{thm:ramsey-infinitary}, every infinite partially ordered set contains either an infinite chain or an infinite antichain.
 \end{example}
 
-\begin{proof}[Proof of Theorem~\ref{T:Ramsey infinitary}]
+\begin{proof}[Proof of \cref{thm:ramsey-infinitary}]
   Fix a coloring of all the pairs $(m,n)$ for $m<n$ into finitely many colors.
-  By the infinite pigeonhole principle (see \ref{T:Infinite Pigeonhole Principle}), we can fix an increasing sequence
+  By the infinite pigeonhole principle (see \ref{thm:infinite-pigeonhole-principle}), we can fix an increasing sequence
   \[
     n_0 ^0< n_1^0 < n_2^0<\dots < n_k^0<\dots
   \]
@@ -354,30 +354,30 @@ Before proving Theorem~\ref{T:Ramsey infinitary}, let us observe an application 
 \hfill
 \begin{enumerate}
 \item
-  Prove that the version of Theorem~\ref{T:Ramsey infinitary} for finite colorings follows easily from the version for two colors.
-  More precisely, prove that Theorem~\ref{T:Ramsey infinitary} as stated follows easily as a corollary from the case $k=2$.
+  Prove that the version of \cref{thm:ramsey-infinitary} for finite colorings follows easily from the version for two colors.
+  More precisely, prove that \cref{thm:ramsey-infinitary} as stated follows easily as a corollary from the case $k=2$.
 \item
-  We stated and proved Theorem~\ref{T:Ramsey infinitary} for pairs $(m,n)$ with $m<n$.
+  We stated and proved \cref{thm:ramsey-infinitary} for pairs $(m,n)$ with $m<n$.
   State a version of this theorem for finite $l$-tuples $(m_1,\dots, m_l)$ of length $l\ge 2$, and prove that this apparently stronger version follows easily from the version for $l=2$.
 \item
-  Prove that the version of Theorem~\ref{T:Ramsey classical} for finite colorings follows as a corollary of the version for two colors.
-  In other words, prove  Theorem~\ref{T:Ramsey classical} from the particular case $m=2$.
+  Prove that the version of \cref{thm:ramsey-classical} for finite colorings follows as a corollary of the version for two colors.
+  In other words, prove  \cref{thm:ramsey-classical} from the particular case $m=2$.
 
 \end{enumerate}
 
 \end{exercises}
 
 \section{Real-Valued Relations and a Real-Valued Version of Ramsey’s Theorem}
-\label{S:Real valued}
+\label{sec:real-valued}
 
 \begin{definition}
-  \label{D:Real valued relation}
+  \label{def:real-valued-relation}
   Let $A$ be a set and $n$ a nonnegative integer.
   A \emph{$[0,1]$-valued $n$-ary relation} on $A$ is a function $R\colon A^n\to[0,1]$.
 \end{definition}
 
 \begin{theorem}[Infinitary version of Ramsey’s theorem]
-  \label{T:Ramsey real-valued}
+  \label{thm:ramsey-real-valued}
   Suppose that $f$ is a function that assigns to every pair $(m,n)$ of positive integers with $m<n$ a “color” $f(m,n)\in[0,1]$.
   Then there exists a sequence
   \[
@@ -396,9 +396,9 @@ Before proving Theorem~\ref{T:Ramsey infinitary}, let us observe an application 
 \end{theorem}
 
 \begin{proof}
-  Fix $f$ as in the statement of Theorem~\ref{T:Ramsey real-valued}.
+  Fix $f$ as in the statement of \cref{thm:ramsey-real-valued}.
   Split the interval $[0,1]$ as a union of two closed subintervals, say, $[0,1]=I\cup J$, with $I$ and $J$ of length $\frac{1}{2}$.
-  By Theorem~\ref{T:Ramsey infinitary}, there exists a sequence
+  By \cref{thm:ramsey-infinitary}, there exists a sequence
   \[
     n_0^0 < n_1 ^0< n_2^0<\dots < n_k^0<\dots
   \]
@@ -443,7 +443,7 @@ Notice that in the preceding proof, the interval $[0,1]$ can be replaced by any 
 \begin{exercises}\hfill
 \begin{enumerate}
 \item
-  Show through a counterexample that Theorem~\ref{T:Ramsey real-valued} is false if the interval $[0,1]$ is replaced by $\RR$.
+  Show through a counterexample that \cref{thm:ramsey-real-valued} is false if the interval $[0,1]$ is replaced by $\RR$.
 \item
   Let $[a_0,b_0], [a_1, b_1], \dots, [a_k, b_k],\dots$ be a countable sequence of closed intervals, and
   suppose that $f$ is a function that assigns to every pair $(m,n)$ of positive integers with $m<n$ a “color” $f(m,n)\in \prod_{u\in\NN} [a_u,b_u]$.
