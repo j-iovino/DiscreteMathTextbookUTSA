@@ -134,6 +134,7 @@ Note that a first-order formula is a  of finite length, and therefore it contain
 \end{definition}
 
 \begin{remark}
+  \label{rem:sentence}
   Note that if $\alpha$ is a sentence and $\scrG$ is any graph, then either $\alpha$ is true in $\scrG$ or $\alpha$ is false in $\scrG$.
 \end{remark}
 
@@ -276,12 +277,12 @@ We now show that the Transfer Principle for graph limits allows us to obtain the
 %#
 \section{General statement and proof of the Transfer Principle for graph limits}
 
-Recall (see Definition~\ref{D:Sentence}) that a sentence is a first-order formula where all the variables are under the scope of a quantifier.
+Recall (see \cref{def:sentence}) that a sentence is a first-order formula where all the variables are under the scope of a quantifier.
 If $\alpha$ is not a sentence, then those variables in $\alpha$ that are not under the scope of a quantifier are said to occur \emph{free} in $\alpha$.
 If all the free variables that occur in $\alpha$ are in the set $\{x_1,\dots, x_n\}$, we write $\alpha$ as $\alpha(x_1,\dots, x_n)$.
 For example, if $\alpha$ is the formula $\exists y(xRy)$, then we may write $\alpha$ as $\alpha(x)$.
 
-As we indicated in Remark~\ref{R:sentence}, if $\alpha$ is a sentence and $\scrG$ is any graph, then either $\scrG\models \alpha$ or $\scrG\not\models \alpha$ .
+As we indicated in \cref{rem:sentence}, if $\alpha$ is a sentence and $\scrG$ is any graph, then either $\scrG\models \alpha$ or $\scrG\not\models \alpha$ .
 However, if $\alpha$ is not a sentence, i.e., we cannot say whether or not $\scrG\models \alpha$.
 To see an example of this, consider the formula $\alpha(x)$ defined as  $\exists y(xRy)$ and the graph $\scrG=(G,R)$ where $G=\{a, b, c\}$ and $R=(a, b)$.
 Then, we could say that $\scrG\models \alpha$ if we interpret the variable $x$ as $a$, and $\scrG\not\models \alpha$ if we interpret the variable $x$ as $c$.
