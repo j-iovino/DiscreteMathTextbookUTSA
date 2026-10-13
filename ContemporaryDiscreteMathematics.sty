@@ -1,0 +1,86 @@
+%% ContemporaryDiscreteMathematics.sty -- project style file for ContemporaryDiscreteMathematics.tex (maatext)
+%%
+%% SOLE package loaded by the main file: (1) this book's own packages, (2) shared packages
+%% vendored in _packages/ (pristine copies pinned in _packages/vendor.lock -- DO NOT edit them there),
+%% then (3) everything specific to this book. The look of the book is unchanged from the
+%% pre-template version (maatext class, Euler script calligraphic, AMS theorem styles).
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ContemporaryDiscreteMathematics}[2026/10/13 ContemporaryDiscreteMathematics project preamble]
+
+% ═══════════════════════════════════════════════════════════════════════════
+%% Packages
+% ═══════════════════════════════════════════════════════════════════════════
+\usepackage{amssymb}
+\usepackage[mathcal]{eucal}  % remaps \mathcal to Euler script
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{tikz, enumerate, tkz-graph, tkz-berge, xcolor}
+\usepackage{aliascnt}  % one counter, but a distinct counter NAME per environment (lets \cref print Lemma/Proposition/...)
+
+% natbib is deliberately NOT loaded: it is incompatible with the amsalpha bibliography
+% style (natbib expects author-year .bbl entries; amsalpha produces alpha-style entries).
+
+% ═══════════════════════════════════════════════════════════════════════════
+%% Vendored shared packages  (pristine copies in _packages/; DO NOT edit there)
+% ═══════════════════════════════════════════════════════════════════════════
+%%% Vendored: eduenez/LaTeX-shared-files/di-alphabets.sty @ b7b66bc
+\usepackage{di-alphabets}        % \NN \RR \scrB \scrF ... (one macro per symbol)
+%%% Vendored: eduenez/LaTeX-shared-files/di-cleveref.sty @ b997f82
+\usepackage{di-cleveref}         % \cref names (Theorem, Section, ...), loaded after hyperref and BEFORE the theorem environments
+
+% ═══════════════════════════════════════════════════════════════════════════
+%% Project-specific additions  (EDIT HERE)
+% ═══════════════════════════════════════════════════════════════════════════
+
+% ─── Theorem environments (maatext/amsthm styles; one shared counter as before) ──
+% \CDMSharedTheorem{env}{Name}: numbered with the `theorem' counter, but with its own counter
+% name (aliascnt), so that \cref reports the right type.
+\newcommand{\CDMSharedTheorem}[2]{%
+  \newaliascnt{#1}{theorem}%
+  \newtheorem{#1}[#1]{#2}%
+  \aliascntresetthe{#1}%
+}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{fact}{Fact}
+\CDMSharedTheorem{corollary}{Corollary}
+\CDMSharedTheorem{proposition}{Proposition}
+\CDMSharedTheorem{lemma}{Lemma}
+
+\theoremstyle{definition}
+\CDMSharedTheorem{definition}{Definition}
+\CDMSharedTheorem{example}{Example}
+\CDMSharedTheorem{examples}{Examples}
+\CDMSharedTheorem{exercise}{Exercise}
+\CDMSharedTheorem{exercises}{Exercises}
+\CDMSharedTheorem{notation}{Notation}
+
+\theoremstyle{remark}
+\CDMSharedTheorem{remark}{Remark}
+\CDMSharedTheorem{remarks}{Remarks}
+
+% cref names for the plural environments (the singular ones come from di-cleveref)
+\crefname{examples}{Example}{Examples}\Crefname{examples}{Example}{Examples}
+\crefname{exercises}{Exercise}{Exercises}\Crefname{exercises}{Exercise}{Exercises}
+\crefname{remarks}{Remark}{Remarks}\Crefname{remarks}{Remark}{Remarks}
+
+\numberwithin{section}{chapter}
+\numberwithin{equation}{chapter}
+
+% ─── Colours and tikz styles for the graph figures ───────────────────────────
+\definecolor{EdgeRed}{RGB}{220,40,40}
+\definecolor{EdgeGreen}{RGB}{20,140,20}
+\tikzset{
+  vtx/.style   = {circle, draw=black, fill=white, inner sep=2pt, minimum size=20pt, font=\bfseries},
+  ered/.style  = {line width=1.2pt, draw=EdgeRed},
+  egreen/.style= {line width=1.2pt, draw=EdgeGreen, dashed}
+}
+
+% ─── Relations ───────────────────────────────────────────────────────────────
+\newcommand{\rel}[2]{_{#1}\hspace{-3pt}\mathrel{R}_{#2}}
+\newcommand{\nrel}[2]{_{#1}\hspace{-3pt}\not\mathrel{R}_{#2}}
+
+% Single index; for multiple indexes see the "AMS Author Handbook, Monograph Classes".
+\makeindex

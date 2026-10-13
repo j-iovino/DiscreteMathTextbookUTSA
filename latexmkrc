@@ -39,3 +39,19 @@ $emulate_aux = 1;
 # Run bibtex from the paper's directory (not from inside _build/), so that
 # \bibliography{../references} resolves exactly as in a manual run.
 $bibtex_fudge = 0;
+
+# --- Project-specific (maatext/maabook class) --------------------------------
+# With maabook.cls the kernel's "No file X.bbl." message is logged as
+# "LaTeX Font Info: No file X.bbl.", which latexmk does not recognise, so it never
+# starts bibtex. Seeding an empty .bbl in $aux_dir makes latexmk run bibtex as usual.
+for my $_tex (glob("$_repo_root/*.tex")) {
+    open(my $_fh, '<', $_tex) or next;
+    my $_src = do { local $/; <$_fh> };
+    close($_fh);
+    next unless $_src =~ /\\bibliography\{/;
+    (my $_base = $_tex) =~ s{.*/}{};
+    $_base =~ s/\.tex$//;
+    mkdir("$_repo_root/$aux_dir") unless -d "$_repo_root/$aux_dir";
+    open(my $_out, '>', "$_repo_root/$aux_dir/$_base.bbl") or next unless -e "$_repo_root/$aux_dir/$_base.bbl";
+    close($_out) if $_out;
+}

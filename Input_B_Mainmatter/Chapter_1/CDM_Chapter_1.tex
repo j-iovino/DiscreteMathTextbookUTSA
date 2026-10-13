@@ -325,7 +325,7 @@ Prove that if $R$ is an equivalence relation on a nonempty set $A$, then the equ
 \end{exercise}
 
 \begin{exercise}
-Let $n$ be a fixed positive integer. For $a,b\in\mathbb{Z}$, define $a \equiv b \pmod{n}$ --- read, \textit{$a$ is equivalent to $b$ modulo $n$} --- as follows:
+Let $n$ be a fixed positive integer. For $a,b\in\ZZ$, define $a \equiv b \pmod{n}$ --- read, \textit{$a$ is equivalent to $b$ modulo $n$} --- as follows:
 \[
 a \equiv b \pmod{n}
 \quad\text{if and only if}\quad
@@ -348,9 +348,9 @@ In this section, we have discussed three representation of relations:
 
 \begin{enumerate}
 \item
-The functional representation of Definition~\ref{D:Relation},
+The functional representation of Definition~\ref{D:Real valued relation},
 \item
-The set representation discussed in \ref{D:Relation},
+The set representation discussed in \ref{D:Real valued relation},
 \item
 The graph representation.
 \end{enumerate}
@@ -361,7 +361,7 @@ Of these, the set representation is the traditional one found in beginning textb
 \section{Alphabets and Words}
 
 
-Recall that a set $A$ is \emph{countable} or \emph{enumerable} if there exists a surjective function $f:\BbN \to A$. The surjectivity of $f$ means that
+Recall that a set $A$ is \emph{countable} or \emph{enumerable} if there exists a surjective function $f:\NN \to A$. The surjectivity of $f$ means that
 \[
 A=\{ f(0), f(1), f(2), \dots \}.
 \]
@@ -369,7 +369,7 @@ We call $f$ an \emph{enumeration} of $A$.
 A set is \emph{uncountable} if it is not countable.
 
 \begin{exercise}
-Prove that an infinite set is countable if and only if there exists a bijective function $f:\BbN \to A$. 
+Prove that an infinite set is countable if and only if there exists a bijective function $f:\NN \to A$. 
 \end{exercise}
 
 
@@ -377,18 +377,18 @@ Prove that an infinite set is countable if and only if there exists a bijective 
 \label{P:countable union is countable}
 If 
 \[
-A_0, A_1, \dots, A_n,\dots  \qquad n\in\BbN
+A_0, A_1, \dots, A_n,\dots  \qquad n\in\NN
 \]
 are countable sets, then the union
 \[
-\bigcup_{n\in\BbN} A_n
+\bigcup_{n\in\NN} A_n
 \]
 is countable.
 \end{proposition}
 
 
 \begin{proof} 
-For each $n\in \BbN$, let $f_n:\BbN \to A_n$  be an enumeration of  $A_n$.
+For each $n\in \NN$, let $f_n:\NN \to A_n$  be an enumeration of  $A_n$.
 Thus,
 \begin{align*}
 A_0=&\{f_0(0), f_0(1), f_0(2), \dots\}\\
@@ -400,7 +400,7 @@ A_2=&\{f_2(0), f_2(1), f_2(2), \dots\}\\
 
 Define a function 
 \[
-g:\BbN \to \bigcup_{n\in \BbN}A_n
+g:\NN \to \bigcup_{n\in \NN}A_n
 \]
  as follows. Start with $g(0)=f_0(0)$; then let $g(1),g(2)$ list all the elements of the form $f_i(j)$ such that $i+j=1$; then  let $g(3),g(4),g(5)$ list all the elements of the form $f_i(j)$ such that $i+j=2$; and so on. Thus, the function $g$ is clearly surjective.
 \end{proof}
@@ -412,7 +412,7 @@ If $A$ and $B$ are countable sets, then $A\times B$ is countable.
 \begin{proof}
 This is immediate from Proposition~\ref{P:countable union is countable} since if $f,g$ are enumerations of $A$ and $B$, respectively, then
 \[
-A\times B=\bigcup_{n\in\BbN} \{(f(m),g(n))\colon m\in \BbN\}.
+A\times B=\bigcup_{n\in\NN} \{(f(m),g(n))\colon m\in \NN\}.
 \]
 \end{proof}
 
@@ -425,13 +425,13 @@ If $A_1,\dots, A_k$ are countable, then $A_1\times\dots\times A_k$ is countable.
 Immediate from the preceding proposition and induction.
 \end{proof}
 
-Fix a set $A$, and let's think of $A$ as an alphabet (or set of symbols) that we will use to form words. Mathematically,  for $n\in \BbN$, the words of length $n$ formed with symbols out of the alphabet $A$ are defined  as the elements of the set
+Fix a set $A$, and let's think of $A$ as an alphabet (or set of symbols) that we will use to form words. Mathematically,  for $n\in \NN$, the words of length $n$ formed with symbols out of the alphabet $A$ are defined  as the elements of the set
 \[
 A^n = \underbrace{A\times \dots \times A}_{n\ \text{times}}.
 \]
 Thus, if $A$ is countable, then by Corollary \ref{C:words of fixed length}, the number of words of length $n$ formed with symbols out of the alphabet $A$ is countable. Moreover, by Proposition~\ref{P:countable union is countable}, the number of words of arbitrary finite length formed with symbols from  the alphabet $A$, 
 \[
-\bigcup_{n\in\BbN} A^n,
+\bigcup_{n\in\NN} A^n,
 \]
 is countable as well. 
 
@@ -444,7 +444,7 @@ If $A$ is a countable alphabet, then the number of words of finite length formed
 
 Now let us switch our attention to words of infinite length. If $A$ is an alphabet, a word of countably infinite length formed from the alphabet $A$ is defined as an element of the set
 \[
-A^{\BbN} = \hspace{-24pt} \underbrace{A\times A\times \dots }_{\text{countably infinitely many times}} \hspace{-24pt}.
+A^{\NN} = \hspace{-24pt} \underbrace{A\times A\times \dots }_{\text{countably infinitely many times}} \hspace{-24pt}.
 \]
 
 
@@ -459,23 +459,23 @@ Let $A$ be an alphabet with at least two symbols. Then, the set of words of infi
 \begin{proof}
 It suffices to consider the case when $A$ consists of only two symbols, let's call them 0 and 1.  We show that
 \[
-\{0,1\}^{\BbN} =\underbrace{\{0,1\}\times \{0,1\}\times\dots }_{\text{countably many times}}.
+\{0,1\}^{\NN} =\underbrace{\{0,1\}\times \{0,1\}\times\dots }_{\text{countably many times}}.
 \]
-is uncountable. Note that $\{0,1\}^{\BbN}$ consists of all the infinite sequences of 0's and 1's, i.e.,
+is uncountable. Note that $\{0,1\}^{\NN}$ consists of all the infinite sequences of 0's and 1's, i.e.,
 \[
 \tag{*}
-\{0,1\}^{\BbN} =\{\, (a_n)_{n\in\BbN} \colon  \text{For each $n\in\BbN$, $a_n\in\{0,1\}$} \, \}.
+\{0,1\}^{\NN} =\{\, (a_n)_{n\in\NN} \colon  \text{For each $n\in\NN$, $a_n\in\{0,1\}$} \, \}.
 \]
-Suppose, by way of contradiction, that $\{0,1\}^{\BbN}$ is countable, and let $f$ be an enumeration of  $\{0,1\}^{\BbN}$; i.e., 
+Suppose, by way of contradiction, that $\{0,1\}^{\NN}$ is countable, and let $f$ be an enumeration of  $\{0,1\}^{\NN}$; i.e., 
 \[
-\{0,1\}^{\BbN} =\{ f(0), f(1), f(2), \dots \}.
+\{0,1\}^{\NN} =\{ f(0), f(1), f(2), \dots \}.
 \]
-By $(*)$, for each $m\in \BbN$ there exists a sequence $(a_n^m)_{n\in\BbN}\in \{0,1\}^{\BbN}$ such that
+By $(*)$, for each $m\in \NN$ there exists a sequence $(a_n^m)_{n\in\NN}\in \{0,1\}^{\NN}$ such that
 \[
 \tag{**}
-f(m) = (a_n^m)_{n\in\BbN}.
+f(m) = (a_n^m)_{n\in\NN}.
 \]
-Define a sequence $(a_n^*)_{n\in\BbN}\in \{0,1\}^{\BbN}$ by
+Define a sequence $(a_n^*)_{n\in\NN}\in \{0,1\}^{\NN}$ by
 \[
 a_n^*=
 \begin{cases}
@@ -483,7 +483,7 @@ a_n^*=
 1,  &\text{if  $a_n^n=0$}.
 \end{cases}
 \]
-Then the sequence $(a_n^*)_{n\in\BbN}$ is in $\{0,1\}^{\BbN}$, but by $(**)$, it is not of the form $f(m)$ for any $m\in\BbN$, contradicting the assumption that $f$ is surjective. 
+Then the sequence $(a_n^*)_{n\in\NN}$ is in $\{0,1\}^{\NN}$, but by $(**)$, it is not of the form $f(m)$ for any $m\in\NN$, contradicting the assumption that $f$ is surjective. 
 
 \end{proof}
 
@@ -508,21 +508,21 @@ Prove the following version of the Pigeonhole Principle:
 Determine which of the following sets are countable and which are uncountable.
 \begin{enumerate}
 \item
-The sets of polynomials with coefficients in $\mathbb{R}$.
+The sets of polynomials with coefficients in $\RR$.
 \item
-The sets of polynomials with coefficients in $\mathbb{Q}$.
+The sets of polynomials with coefficients in $\QQ$.
 \item
-The sets of infinite series with coefficients in $\mathbb{R}$.
+The sets of infinite series with coefficients in $\RR$.
 \item
-The sets of infinite series with coefficients in $\mathbb{Q}$.
+The sets of infinite series with coefficients in $\QQ$.
 \item
-The sets of roots of polynomials with coefficients in $\mathbb{R}$.
+The sets of roots of polynomials with coefficients in $\RR$.
 \item
-The sets of roots of polynomials with coefficients in $\mathbb{Q}$.
+The sets of roots of polynomials with coefficients in $\QQ$.
 \end{enumerate}
 
 \item
-For $k\in \BbN$, let $p_k$ denote the $k$th prime number (so $p_1=2$, $p_2=3$, $p_3=5$, etc).
+For $k\in \NN$, let $p_k$ denote the $k$th prime number (so $p_1=2$, $p_2=3$, $p_3=5$, etc).
 Every integer $n\ge2$ can be written uniquely as
 \[
 n=p_1^{e_1}\cdots p_k^{e_k},
@@ -534,18 +534,18 @@ Use this to give a \emph{direct proof} of Corollary~\ref{C:words of finite lengt
 
 \item
 Let $K_n$ denote the complete graph of $n$ nodes; that is, $K_n$ contains $n$ nodes that are connected to each other by an edge.
-The graph $K_{\BbN}$ is the complete graph of countably many nodes; that is $K_{\BbN}$ contains countably many nodes that are connected to each other by an edge.
+The graph $K_{\NN}$ is the complete graph of countably many nodes; that is $K_{\NN}$ contains countably many nodes that are connected to each other by an edge.
 
 A \emph{coloring} of a graph $G$ is a function $f$ that assigns to every edge of $G$ a color from the colors in in a set $C$.
 If the range of $f$ is in $C$ is finite, we call $f$ a \emph{finite coloring} of $G$.
 Use Corollary~\ref{C:words of finite length} and Theorem~\ref{T:words of infinite length} to determine which of the following sets are countable:
 \begin{enumerate}
 \item
-The set of all colorings of $K_n$, for a fixed $n\in\BbN$ into two colors.
+The set of all colorings of $K_n$, for a fixed $n\in\NN$ into two colors.
 \item
-The set of all colorings of $K_n$, for all  $n\in\BbN$ into two colors.
+The set of all colorings of $K_n$, for all  $n\in\NN$ into two colors.
 \item
-The set of all colorings of $K_{\BbN}$ into two colors.
+The set of all colorings of $K_{\NN}$ into two colors.
 \end{enumerate}
 
 \end{exercises}
@@ -613,7 +613,7 @@ in $A$.
 \end{proposition}
 
 \begin{proof}
-Suppose that   $(A,\le)$ is well-ordered and $A$ contains an infinite descending chain as above. Then the set $\{S_n\colon n\in \BbN\}$ is a nonempty subset of $A$ with no smallest element, contradicting the well-order assumption on   $(A,\le)$.
+Suppose that   $(A,\le)$ is well-ordered and $A$ contains an infinite descending chain as above. Then the set $\{S_n\colon n\in \NN\}$ is a nonempty subset of $A$ with no smallest element, contradicting the well-order assumption on   $(A,\le)$.
 
 Conversely, suppose that $A$ is nonempty and $(A,\le)$ is not well-ordered. Since $A$ is nonempty, fix $a_0\in A$. Since $A$ has no smallest element, then there exists $a_1<a_0$. Now, since $A$ has no smallest element, the element $a_1$ cannot be the minimum of $A$ either, so there must be $a_2<a_1$ in $A$. Iterating this process recursively, we find an infinite descending chain $a_0>a_1>a_2>\dots$ in $A$.
 \end{proof}
@@ -853,9 +853,9 @@ A useful, and rather surprising,  consequence of Fact~\ref{F:WOP} is that, by \r
 
 \end{remarks}
 
-We know (by Theorem~\ref{T:words of infinite length}) that the real line, $\mathbb{R}$, is uncountable i.e., $|\BbR|>\aleph_0$. But then, what is $|\BbR|$? Is it $\aleph_1$? Or maybe  $\aleph_2$? Or maybe something much bigger, say, $\aleph_\omega$? 
+We know (by Theorem~\ref{T:words of infinite length}) that the real line, $\RR$, is uncountable i.e., $|\RR|>\aleph_0$. But then, what is $|\RR|$? Is it $\aleph_1$? Or maybe  $\aleph_2$? Or maybe something much bigger, say, $\aleph_\omega$? 
 Georg Cantor developed  the theory of ordinal and cardinal numbers in the late 19th century in order  to settle this question (motivated by his investigations in analysis).
-He believed that $|\BbR|=\aleph_1$, i.e., the size of the real line is the smallest uncountable cardinality. This became known as Cantor's Continuum Hypothesis.  
+He believed that $|\RR|=\aleph_1$, i.e., the size of the real line is the smallest uncountable cardinality. This became known as Cantor's Continuum Hypothesis.  
 Cantor spent the rest of his life unsuccessfully trying to prove it. His inability to devise a solution led to increasingly frequent bouts  of depression, and he died in a sanatorium in 1918. However, his groundbreaking theories of transfinite ordinal and cardinal numbers transformed mathematics profoundly (it was claimed that the number of theorems proved between 1900 and 1940 was larger than the number of theorems proved between Archimedes and 1900), and became a cornerstone of the mathematics of the new century. In the words of Hilbert, the most influential mathematician of the 20th century, Cantorian set theory brought mathematicians into ``paradise.''  Naturally, Cantor's Continuum Hypothesis  became the very first problem in Hilbert's  famous list of open problems, which would shape the course of mathematics during the next 100 years and into our time. 
 
 The question is profound: What is the cardinality of the real line?  

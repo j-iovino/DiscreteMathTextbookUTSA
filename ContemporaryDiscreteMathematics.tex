@@ -1,115 +1,27 @@
-%-----------------------------------------------------------------------
-% Beginning of maatext-template.texz
-%-----------------------------------------------------------------------
+% ContemporaryDiscreteMathematics.tex -- A First Course in Contemporary Discrete Mathematics
 %
-%    This is a template file for the AMS book series Pure and Applied
-%    Undergraduate Texts, for use with AMS-LaTeX 2.0.
-%    Separate chapters should be included at the appropriate position.x
-%
-%    Templates for various common text, math and figure elements are
-%    given following the \end{document} line.
-%
-%    Remove any commented or uncommented macros you do not use.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Compile: latexmk (uses latexmkrc at the repository root) or
+%          pdflatex ContemporaryDiscreteMathematics; bibtex ContemporaryDiscreteMathematics; pdflatex ...; pdflatex ...
+% Engine:  pdfLaTeX
+% Class:   maatext (AMS Pure and Applied Undergraduate Texts; maatext.cls and maabook.cls are kept in this repository)
 
-%    Use this form if exercise blocks are only at the end of chapters.
 \documentclass{maatext}
 
-%    For use when working on individual chapters
-%\includeonly{}
+% =============================================================================
+% ALL \usepackage, macro, and environment declarations live in
+% ContemporaryDiscreteMathematics.sty (loaded below), which loads the vendored shared
+% packages from _packages/ and then this book's additions. Do NOT add
+% \usepackage / \newcommand / \newtheorem here. This preamble carries ONLY
+% the document class, that one style package, and semantic metadata. See STYLE.md.
+% =============================================================================
+% Where the vendored shared .sty files live (makes plain pdflatex work without TEXINPUTS).
+\makeatletter\def\input@path{{../_packages/}{_packages/}}\makeatother
+\usepackage{ContemporaryDiscreteMathematics}
 
-%    If you need symbols beyond the basic set, uncomment this command.
-\usepackage{amssymb}
-
-\RequirePackage[mathcal]{eucal}  % remaps \mathcal to Euler script
-\RequirePackage{mathrsfs}  
-
-%    If your book includes graphics, uncomment this command.
-\usepackage{graphicx}
-\usepackage{float}
-
-%    If you are using the author-year citation style:
-%    NOTE: natbib is disabled -- it is incompatible with the amsalpha
-%    bibliography style used below (natbib expects author-year .bbl
-%    entries; amsalpha produces alpha-style entries). Loading both
-%    together corrupts the Bibliography chapter's table-of-contents
-%    entry and crashes any second recompile after citations resolve.
-%    The document only uses plain \cite{...}, which amsalpha handles
-%    on its own, so natbib is not needed here.
-%\usepackage{natbib}
-
-%    Include other referenced packages here.
-%\usepackage{amsrefs}
-
-\usepackage{hyperref}
-
-\usepackage{tikz, enumerate, mathrsfs, tkz-graph, tkz-berge, xcolor}
-
-
-
-\newtheorem{theorem}{Theorem}[chapter]
-\newtheorem{fact}{Fact}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-
-
-\theoremstyle{definition}
-
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{examples}[theorem]{Examples}
-\newtheorem{exercise}[theorem]{Exercise}
-\newtheorem{exercises}[theorem]{Exercises}
-\newtheorem{notation}[theorem]{Notation}
-
-\theoremstyle{remark}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{remarks}[theorem]{Remarks}
-
-\numberwithin{section}{chapter}
-\numberwithin{equation}{chapter}
-
-
-
-\newcommand{\BbN}{\mathbb{N}}
-\newcommand{\BbR}{\mathbb{R}}
-
-\newcommand{\SB}{\mathscr{B}}
-\newcommand{\SF}{\mathscr{F}}
-\newcommand{\SG}{\mathscr{G}}
-\newcommand{\SP}{\mathscr{P}}
-\newcommand{\SU}{\mathscr{U}}
-
-
-
-\definecolor{EdgeRed}{RGB}{220,40,40}
-\definecolor{EdgeGreen}{RGB}{20,140,20}
-\tikzset{
-  vtx/.style   = {circle, draw=black, fill=white, inner sep=2pt, minimum size=20pt, font=\bfseries},
-  ered/.style  = {line width=1.2pt, draw=EdgeRed},
-  egreen/.style= {line width=1.2pt, draw=EdgeGreen, dashed}
-}
-
-
-% For Relations
-\newcommand{\rel}[2]{_{#1}\hspace{-3pt}\mathrel{R}_{#2}}
-\newcommand{\nrel}[2]{_{#1}\hspace{-3pt}\not\mathrel{R}_{#2}}
-
-%    For a single index; for multiple indexes, see the manual
-%    "AMS Author Handbook, Monograph Classes", included in the
-%    author package).
-\makeindex
-
-\begin{document}
-
-\frontmatter
-
+% --- Document Metadata -------------------------------------------------------
 \title{A First Course in Contemporary Discrete Mathematics}
 
 %    Remove any unused author tags.
-
 %    author one information
 \author{}
 % \thanks{}
@@ -117,6 +29,10 @@
 %    author two information
 \author{}
 % \thanks{}
+
+\begin{document}
+
+\frontmatter
 
 \maketitle
 
@@ -156,7 +72,7 @@
 %    Bibliographies can be prepared with BibTeX using amsplain,
 %    amsalpha, or (for author-year style) natbib.
 \bibliographystyle{amsalpha}
-\bibliography{CDM_Bibliography}
+\bibliography{references}
 
 %    See note above about multiple indexes.
 %\printindex
