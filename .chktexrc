@@ -1,0 +1,27 @@
+# .chktexrc — chktex configuration
+#
+# Suppress warning numbers that are too noisy for collaborative LaTeX writing.
+# See: https://www.nongnu.org/chktex/ChkTeX.pdf
+
+# 1  — Command terminated with space (too many false positives with macros)
+# 3  — Enclose 's previous/next character in group (false positive on d')
+# 8  — Wrong length of dash (stylistic, not an error)
+# 13 — Intersentence spacing (handled by texwrap.py)
+# 24 — Delete this space to maintain correct pagereferences
+# 36 — Vertical rules in tables (stylistic preference)
+# 44 — User Regex (disabled by default)
+CmdLine {
+  -n1 -n3 -n8 -n13 -n24 -n36 -n44
+}
+
+# Treat these environments as verbatim (no linting inside them)
+VerbEnvir {
+  verbatim,Verbatim,lstlisting,minted,filecontents,comment,
+  tikzpicture,tikzcd
+}
+
+# Treat these environments as math (no "missing $" warnings)
+MathEnvir {
+  equation,equation*,align,align*,gather,gather*,multline,multline*,
+  split,aligned,alignedat,gathered,cases,subequations
+}

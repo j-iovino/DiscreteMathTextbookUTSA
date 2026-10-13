@@ -1,0 +1,73 @@
+# latexindent.yaml — latexindent.pl configuration
+# Documentation: https://latexindentpl.readthedocs.io/
+#
+# Usage:
+#   latexindent -m -w -s -l latexindent.yaml file.tex   # -m: condense blank runs
+#   make indent          # via Makefile target
+#   make reflow          # wrap + indent (idempotent)
+#   make format          # fashion + reflow (do it all)
+#
+# NOTE: -m (modifyLineBreaks) is required for condenseMultipleBlankLinesInto to
+# take effect. With this config, -m ONLY condenses blank-line runs; it makes no
+# other line-break changes, so it does not disturb texwrap's semantic breaks.
+
+# ── Indentation ───────────────────────────────────────────────────────────────
+defaultIndent: "  "              # two spaces per nesting level
+
+# ── Blank lines ───────────────────────────────────────────────────────────────
+preserveBlankLines: 1
+condenseMultipleBlankLinesInto: 1
+
+# ── List items: \item flush with \begin, body one level (2 spaces) deeper ─────
+# \item sits at the SAME level as its enclosing \begin{itemize|enumerate} — so
+# item boundaries stand out, un-indented — and only the item *body* is indented,
+# by exactly one level. indentAfterItems turns body indentation on; indentRules
+# pins it to one level (latexindent's default would instead align the body to
+# the item text, a ~6-space jump). noAdditionalIndent (below) keeps \item flush.
+indentAfterItems:
+  itemize: 1
+  enumerate: 1
+  description: 1
+  list: 1
+indentRules:
+  item: "  "
+
+# ── Suppress extra indentation: document body, lists (\item stays flush),
+#    and math environments ─────────────────────────────────────────────────────
+noAdditionalIndent:
+  document: 1
+  itemize: 1
+  enumerate: 1
+  description: 1
+  list: 1
+  equation: 1
+  equation*: 1
+  align: 1
+  align*: 1
+  gather: 1
+  gather*: 1
+  multline: 1
+  multline*: 1
+  eqnarray: 1
+  eqnarray*: 1
+  split: 1
+  array: 1
+  aligned: 1
+  alignedat: 1
+  gathered: 1
+  cases: 1
+  subequations: 1
+
+# ── Verbatim environments (content is never touched) ─────────────────────────
+verbatimEnvironments:
+  verbatim: 1
+  Verbatim: 1
+  lstlisting: 1
+  minted: 1
+  filecontents: 1
+  comment: 1
+
+# ── Trailing whitespace ───────────────────────────────────────────────────────
+removeTrailingWhitespace:
+  beforeProcessing: 1
+  afterProcessing: 1

@@ -1,0 +1,94 @@
+{
+    "editor.wordWrap": "on",
+    "editor.wrappingIndent": "indent",
+    "files.eol": "\n",
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 120000,
+    "files.associations": {
+        "*.tex": "latex",
+        "*.bib": "bibtex",
+        "*.cls": "latex",
+        "*.sty": "latex"
+    },
+    "[latex]": {
+        "editor.wordWrap": "on",
+        "editor.wrappingIndent": "indent",
+        "editor.defaultFormatter": "James-Yu.latex-workshop"
+    },
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.outDir": "%DIR%",
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-r",
+                "%WORKSPACE_FOLDER%/latexmkrc",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-cd",
+                "%DOC%"
+            ],
+            "env": {}
+        }
+    ],
+    "latex-workshop.linting.chktex.enabled": true,
+    "latex-workshop.linting.run": "onType",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.clean.subfolder.enabled": true,
+    "latex-workshop.latex.autoClean.run": "onFailed",
+    "latex-workshop.latexindent.path": "latexindent",
+    "latex-workshop.latexindent.args": [
+        "-c",
+        "%DIR%/",
+        "%TMPFILE%",
+        "-l",
+        "%WORKSPACE_FOLDER%/latexindent.yaml",
+        "-y=defaultIndent: '%INDENT%'"
+    ],
+    "editor.formatOnSave": true,
+    "makefile.configureOnOpen": false,
+    "cSpell.language": "en",
+    "cSpell.enableFiletypes": [
+        "latex",
+        "bibtex"
+    ],
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": false,
+        "scminput": false,
+        "latex": true,
+        "bibtex": true
+    },
+    "latex-utilities.countWord.path": "texcount",
+    "latex-utilities.countWord.args": [
+        "%DOCFILE%"
+    ],
+    "latex-utilities.countWord.format": "${words} words total, ${wordsBody} in body",
+    "[tex]": {
+        "editor.wordWrap": "on",
+        "editor.wrappingIndent": "indent"
+    },
+    "[bibtex]": {
+        "editor.wordWrap": "on",
+        "editor.wrappingIndent": "indent"
+    },
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.wrappingIndent": "indent"
+    },
+    "latex-workshop.latex.rootFile.doNotPrompt": true,
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": true
+}

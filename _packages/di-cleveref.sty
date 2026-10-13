@@ -1,0 +1,42 @@
+%% di-cleveref.sty — cleveref configuration for papers that keep their own theorem styles
+%%
+%% PROPOSED shared package. \cref{lab} prints "Theorem 2.1" (capitalised name, always),
+%% \cref{a,b,c} prints "Theorems 2.1, 2.2 and 2.3" (no Oxford comma), as the hand-typed
+%% "Theorem~\ref{...}" did. Load AFTER hyperref (and after the theorem environments are defined).
+%% Names are given for the standard environment set; add \crefname lines for paper-specific ones.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{di-cleveref}[2026/10/13 Duenez-Iovino cleveref configuration]
+\RequirePackage[nosort]{cleveref}   % keep the order of the authors list (no sorting/compression)
+
+\newcommand{\di@crefnames}[3]{\crefname{#1}{#2}{#3}\Crefname{#1}{#2}{#3}}
+\di@crefnames{section}{Section}{Sections}
+\di@crefnames{subsection}{Section}{Sections}
+\di@crefnames{subsubsection}{Section}{Sections}
+\di@crefnames{chapter}{Chapter}{Chapters}
+\di@crefnames{part}{Part}{Parts}
+\di@crefnames{appendix}{Appendix}{Appendices}
+\di@crefnames{table}{Table}{Tables}
+\di@crefnames{figure}{Figure}{Figures}
+\di@crefnames{theorem}{Theorem}{Theorems}
+\di@crefnames{keytheorem}{Theorem}{Theorems}
+\di@crefnames{proposition}{Proposition}{Propositions}
+\di@crefnames{corollary}{Corollary}{Corollaries}
+\di@crefnames{lemma}{Lemma}{Lemmas}
+\di@crefnames{fact}{Fact}{Facts}
+\di@crefnames{conjecture}{Conjecture}{Conjectures}
+\di@crefnames{definition}{Definition}{Definitions}
+\di@crefnames{example}{Example}{Examples}
+\di@crefnames{remark}{Remark}{Remarks}
+\di@crefnames{question}{Question}{Questions}
+\di@crefnames{axiom}{Axiom}{Axioms}
+\di@crefnames{notation}{Notation}{Notations}
+\di@crefnames{exercise}{Exercise}{Exercises}
+
+% cleveref defines the conjunction macros only when the language is set up (begin of document).
+\AtBeginDocument{%
+  \renewcommand{\crefpairconjunction}{ and\nobreakspace}%
+  \renewcommand{\crefmiddleconjunction}{, }%
+  \renewcommand{\creflastconjunction}{ and\nobreakspace}% no Oxford comma
+  \renewcommand{\crefrangeconjunction}{--}%
+}

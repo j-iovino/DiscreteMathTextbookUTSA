@@ -30,3 +30,6 @@
 # part of the book itself.
 .*.syncdb
 *.sage-chat
+_build/
+*.bak[0-9]*
+indent.log
