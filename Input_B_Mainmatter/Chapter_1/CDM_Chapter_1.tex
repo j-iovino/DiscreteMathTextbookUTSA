@@ -5,17 +5,19 @@ The axioms of set theory are regarded as the foundational axioms of mathematics.
 There are many axiomatizations of set theory, but the most common and widely accepted system consists of  the Zermelo–Fraenkel axioms together with the Axiom of Choice.
 This system is known as ZFC (Zermelo-Fraenkel plus Choice).
 
-One of the axioms of Zermelo-Fraenkel is the \emph{axiom of pairs}, which states  that if $a$ and $b$ are given sets, then we can form the set $\{a,b\}$ whose elements are exactly $a$ and $b$. 
-Note that $\{a,b\}=\{b,a\}$, and if $a=b$, then the set $\{a,b\}$ contains only one element: $a$; this one-element set is denoted $\{a\}$, and it is often called a \emph{singleton}.
+One of the axioms of Zermelo-Fraenkel is the \emph{axiom of pairs}, which states  that if $a$ and $b$ are given sets, then we can form the set $\{a,b\}$ whose elements are exactly $a$ and $b$.
+Note that $\{a,b\}=\{b,a\}$, and if $a=b$, then the set $\{a,b\}$ contains only one element:
+$a$;
+this one-element set is denoted $\{a\}$, and it is often called a \emph{singleton}.
 A set of the form $\{a,b\}$ is called an \emph{unordered pair} (or, less commonly, a \emph{doubleton}).
-In mathematics, we also need the important notion of \emph{ordered pair}. 
+In mathematics, we also need the important notion of \emph{ordered pair}.
 In Zermelo-Fraenkel set theory, the ordered pair $(a,b)$ is defined as the set $\{\{a\},\{a,b\}\}$.
 Note that $(a,b)$ is not equal to $(b,a)$ (unless, of course, $a=b$, in which case $(a, b)=(a,a)=(b,b)=(b,a)$).
 
-For given sets $A$ and $B$, the set of all ordered pairs $(a,b)$  with $a\in A$ and $b\in B$ is denoted $A\times B$. 
+For given sets $A$ and $B$, the set of all ordered pairs $(a,b)$  with $a\in A$ and $b\in B$ is denoted $A\times B$.
 Symbolically,
 \[
-A\times B=\{(a,b) \colon a\in A \text{ and } b\in B\}.
+  A\times B=\{(a,b) \colon a\in A \text{ and } b\in B\}.
 \]
 
 In the same way that we defined ordered pairs, we can define ordered triples, quadruples, quintuples, and, in general, $n$-tuples $(a_1,\dots, a_n)$ for any nonnegative integer $n$.
@@ -23,849 +25,903 @@ If $A$ is a set, the set of $n$-tuples $(a_1,\dots, a_n)$ with $a_1,\dots, a_n\i
 
 Another of the fundamental concepts in mathematics is that of \emph{function}.
 For this course, we will assume that participants are familiar with the notion of function, the arrow notation $f\colon A\to B$, and the concepts of injective and surjective function;
-nevertheless, we summarize the main ideas here. If $A,B$ are sets, a function $f:A\to B$ is intuitively a ``rule'' that to every $a\in A$ assigns a unique $b\in B$. 
-The words ``rule'' and ``assign'' are not mathematically precise, but we can formalize them within the framework of set theory as follows.
-We define a function $f:A\to B$ from $A$ into $B$  as a set of pairs set of ordered pairs $(a,b)$ with $a\in A$ and $b\in B$ (that is, a subset of $A\times B$) 
+nevertheless, we summarize the main ideas here.
+If $A,B$ are sets, a function $f:A\to B$ is intuitively a “rule” that to every $a\in A$ assigns a unique $b\in B$.
+The words “rule” and “assign” are not mathematically precise, but we can formalize them within the framework of set theory as follows.
+We define a function $f:A\to B$ from $A$ into $B$  as a set of pairs set of ordered pairs $(a,b)$ with $a\in A$ and $b\in B$ (that is, a subset of $A\times B$)
 such that for  every $a\in A$ there exists  a unique $b\in B$ such that $(a,b)\in f$, i.e.,
 \[
-\forall a (\exists b\in B ((a,b) \in f) \land (\forall b',b'' \in B((a,b')\in f \land (a,b'')\in f) \to b'=b'')).
+  \forall a (\exists b\in B ((a,b) \in f) \land (\forall b',b'' \in B((a,b')\in f \land (a,b'')\in f) \to b'=b'')).
 \]
 The sets $A$ and $B$ are called, respectively, the \emph{domain} and \emph{codomain} of $f$.
 The \emph{range} of $f$ is the set $\{f(a) \colon a\in A \}$.
 For each $a\in A$, the unique $b\in B$ such that $(a,b)\in f$ is called the \emph{image} of $a$, and it is denoted $f(a)$.
 
-The set of functions from $A$. into $B$ is denoted $^AB$ or, often, $B^A$.
- 
- Given a function $f:A\to B$ , if $A_0$ is a subset of $A$, the \emph{direct image} of $A_0$ is the set 
- \[
- f[A_0]=\{b\in B \colon \exists a\in A_0( f(a)=b) \}.
- \]
-  If $B_0$ is a subset of $B$, the \emph{inverse image} of $B_0$ is the set
-  \[
- f^{-1}[B_0]= \{a\in A \colon f(a)\in B_0\}.
-  \]
-  
-  Often in the literature, the square brackets ``[''  and ``]'' are replaced by regular parentheses ``(''  and ``)". 
-  This may lead to confusion in some contexts, so one must be judicious about it, but it is done often for informality.
-  
-  A function $f: A\to B$ is \emph{surjective} if $f[A]=B$, that is, if for every $b\in B$ there exists $a\in A$ such that $f(a)=b$, that is, if
-  \[
+The set of functions from $A$.
+into $B$ is denoted $^AB$ or, often, $B^A$.
+
+Given a function $f:A\to B$ , if $A_0$ is a subset of $A$, the \emph{direct image} of $A_0$ is the set
+\[
+  f[A_0]=\{b\in B \colon \exists a\in A_0( f(a)=b) \}.
+\]
+If $B_0$ is a subset of $B$, the \emph{inverse image} of $B_0$ is the set
+\[
+  f^{-1}[B_0]= \{a\in A \colon f(a)\in B_0\}.
+\]
+
+Often in the literature, the square brackets “[”  and “]” are replaced by regular parentheses “(”  and “)".
+This may lead to confusion in some contexts, so one must be judicious about it, but it is done often for informality.
+
+A function $f: A\to B$ is \emph{surjective} if $f[A]=B$, that is, if for every $b\in B$ there exists $a\in A$ such that $f(a)=b$, that is, if
+\[
   \forall b \in B \exists a\in A ((a,b)\in f).
-  \]
-  
-  
- A function $f: A\to B$ is \emph{injective} if distinct points in $A$ have distinct images in $B$; symbolically, this is written as follows:
-   \[
+\]
+
+A function $f: A\to B$ is \emph{injective} if distinct points in $A$ have distinct images in $B$;
+symbolically, this is written as follows:
+\[
   \forall a, a'\in A  (a \neq a' \to f(a)\neq f(a')).
-    \]
+\]
 
 This definition is often written (logically equivalently) in contrapositive form:
-   \[
+\[
   \forall a, a'\in A  (f(a) = f(a') \to a =a' ).
-    \]
-    
- \begin{exercise}
- Let $f:A\to B$ be given and let $A_0, B_0$ be subsets of $A,B$ respectively. Determine if the following assertions are true or false:
- \begin{enumerate}
- \item
- $f^{-1}[f[A_0]]\subseteq A_0$.
-  \item
- $f^{-1}[f[A_0]]\supseteq A_0$.
-  \item
- $f[f^{-1}[B_0]]\subseteq B_0$.
- \item
-     \stepcounter{enumi}
- $f[f^{-1}[B_0]]\supseteq B_0$.
-\item[(\theenumi)*] 
- For the parts above where your answer was ``false'', determine the exact condition on $f$ that is needed to make the answer ``true'' for arbitrary $A_0\subseteq A$ and $B_0\subseteq B$.
- \end{enumerate}
- \end{exercise}
- 
- Recall that if $A_0$ is a subset of $A$, the complement of $A_0$ in $A$ is denoted $A\setminus A_0$. 
- The operation $\setminus$ is known as the \emph{set difference}.
- A cleaner but less precise notation is to denote the complement of $A_0$ as $A_0^{c}$. 
- (This notation is less precise because it doesn't say anything about the ambient set $A$, but it is used when $A$ is given unequivocally by the context.)
- 
-  \begin{exercise}
- Let $f:A\to B$ be given and let $A_0, B_0$ be subsets of $A,B$ respectively. Determine if the following assertions are true or false:
- \begin{enumerate}
- \item
- $f[A_0^c] = f[A_0]^c$.
-  \item
- $f^{-1}[B_0^c] = f^{-1}[B_0]^c$.
-       \stepcounter{enumi}
- \item[(\theenumi)*] 
- For the parts above where your answer was ``false'', determine the exact condition on $f$ that is needed to make the answer ``true''  for arbitrary $A_0\subseteq A$ and $B_0\subseteq B$.
+\]
 
- \end{enumerate}
- \end{exercise}
- 
+\begin{exercise}
+  Let $f:A\to B$ be given and let $A_0, B_0$ be subsets of $A,B$ respectively.
+  Determine if the following assertions are true or false:
+  \begin{enumerate}
+  \item
+    $f^{-1}[f[A_0]]\subseteq A_0$.
+  \item
+    $f^{-1}[f[A_0]]\supseteq A_0$.
+  \item
+    $f[f^{-1}[B_0]]\subseteq B_0$.
+  \item
+    \stepcounter{enumi}
+    $f[f^{-1}[B_0]]\supseteq B_0$.
+  \item[(\theenumi)*]
+    For the parts above where your answer was “false”, determine the exact condition on $f$ that is needed to make the answer “true” for arbitrary $A_0\subseteq A$ and $B_0\subseteq B$.
+  \end{enumerate}
+\end{exercise}
 
-We will also assume familiarity with the concepts of generalized union and intersection: 
+Recall that if $A_0$ is a subset of $A$, the complement of $A_0$ in $A$ is denoted $A\setminus A_0$.
+The operation $\setminus$ is known as the \emph{set difference}.
+A cleaner but less precise notation is to denote the complement of $A_0$ as $A_0^{c}$.
+(This notation is less precise because it doesn’t say anything about the ambient set $A$, but it is used when $A$ is given unequivocally by the context.)
+
+\begin{exercise}
+  Let $f:A\to B$ be given and let $A_0, B_0$ be subsets of $A,B$ respectively.
+  Determine if the following assertions are true or false:
+  \begin{enumerate}
+  \item
+    $f[A_0^c] = f[A_0]^c$.
+  \item
+    $f^{-1}[B_0^c] = f^{-1}[B_0]^c$.
+    \stepcounter{enumi}
+  \item[(\theenumi)*]
+    For the parts above where your answer was “false”, determine the exact condition on $f$ that is needed to make the answer “true”  for arbitrary $A_0\subseteq A$ and $B_0\subseteq B$.
+
+  \end{enumerate}
+\end{exercise}
+
+We will also assume familiarity with the concepts of generalized union and intersection:
 Given a  family $\{A_i \colon i\in I\}$ of sets, the \emph{generalized union} $\bigcup_{i\in I} A_i$ and \emph{generalized intersection} $\bigcap_{i\in I} A_i$ are defined, respectively, as follows:
 
-
 \begin{align*}
-\bigcup_{i\in I} A_i &=\{x \colon \exists i\in I(x\in A_i)\},\\
-\bigcap_{i\in I} A_i &=\{x \colon \forall i\in I(x\in A_i)\}.
+\bigcup_{i\in I} A_i & =\{x \colon \exists i\in I(x\in A_i)\}, \\
+\bigcap_{i\in I} A_i & =\{x \colon \forall i\in I(x\in A_i)\}.
 \end{align*}
 
 \begin{remark}
-Note that $\bigcap_{i\in I} A_i $ can only be defined when the index set $I$ is nonempty. If $I$ were empty, then $\bigcap_{i\in I} A_i $ would be a set that contains the universe (the set of all sets), which does not exist in axiomatic set theory (due to Russell's paradox).
+  Note that $\bigcap_{i\in I} A_i $ can only be defined when the index set $I$ is nonempty.
+  If $I$ were empty, then $\bigcap_{i\in I} A_i $ would be a set that contains the universe (the set of all sets), which does not exist in axiomatic set theory (due to Russell’s paradox).
 \end{remark}
 
+\begin{exercise}
+  Let $f:A\to B$ be given and let $\{A_i \colon i\in I\}, \{B_i \colon i\in I\}$ be indexed families of subsets of $A,B$ respectively.
+  Determine if the following assertions are true or false:
+  \begin{enumerate}
+  \item
+    $f[\bigcup_{i\in I} A_i] =  \bigcup_{i\in I} f[A_i]$.
+  \item
+    $f[\bigcap_{i\in I} A_i] = \bigcap_{i\in I} f[A_i]$.
+  \item
+    $f^{-1}[\bigcup_{i\in I} B_i] =  \bigcup_{i\in I} f^{-1}[B_i]$.
+  \item
+    $f^{-1}[\bigcap_{i\in I}B_i] =  \bigcap_{i\in I} f^{-1}[B_i]$.
+    \stepcounter{enumi}
+  \item[(\theenumi)*]
+    For the parts above where your answer was “false”, determine the exact condition on $f$ that is needed to make the answer “true” for arbitrary indexed families $\{A_i \colon i\in I\}, \{B_i \colon i\in I\}$  of subsets of $A,B$ respectively.
 
-    
- \begin{exercise}
- Let $f:A\to B$ be given and let $\{A_i \colon i\in I\}, \{B_i \colon i\in I\}$ be indexed families of subsets of $A,B$ respectively. Determine if the following assertions are true or false:
- \begin{enumerate}
- \item
- $f[\bigcup_{i\in I} A_i] =  \bigcup_{i\in I} f[A_i]$.
- \item
- $f[\bigcap_{i\in I} A_i] = \bigcap_{i\in I} f[A_i]$.
- \item
- $f^{-1}[\bigcup_{i\in I} B_i] =  \bigcup_{i\in I} f^{-1}[B_i]$.
- \item
- $f^{-1}[\bigcap_{i\in I}B_i] =  \bigcap_{i\in I} f^{-1}[B_i]$.
-      \stepcounter{enumi}
- \item[(\theenumi)*] 
- For the parts above where your answer was ``false'', determine the exact condition on $f$ that is needed to make the answer ``true'' for arbitrary indexed families $\{A_i \colon i\in I\}, \{B_i \colon i\in I\}$  of subsets of $A,B$ respectively.
-
- \end{enumerate}
- \end{exercise}
+  \end{enumerate}
+\end{exercise}
 
 \section{Relations}
 
 \begin{definition}
-\label{D:Relation}
-Let $A$ be a set and $n$ a nonnegative integer. An \emph{$n$-ary relation} on $A$ is a function $R\colon A^n\to\{0,1\}$.
+  \label{D:Relation}
+  Let $A$ be a set and $n$ a nonnegative integer.
+  An \emph{$n$-ary relation} on $A$ is a function $R\colon A^n\to\{0,1\}$.
 \end{definition}
 
-Thus, a relation $R$ on $A$ takes $n$-tuples of elements of $A$ as input,  and for each such input,  the possible outputs a value either 1 (intuitively meaning ``True'') or $0$ (intuitively meaning ``False'').
-Later in the course, we will consider relations that take values more complex than the simple set $\{0,1\}$ of ``truth-values.''
+Thus, a relation $R$ on $A$ takes $n$-tuples of elements of $A$ as input,  and for each such input,  the possible outputs a value either 1 (intuitively meaning “True”) or $0$ (intuitively meaning “False”).
+Later in the course, we will consider relations that take values more complex than the simple set $\{0,1\}$ of “truth-values.”
 
 \begin{notation}
-\label{N:Relation}
-Clearly, a relation $R\colon A^n\to\{0,1\} $ is completely determined by its \emph{truth set}
-\[
-R^{-1}(1)=\{\, (a_1,\dots, a_n) \in A^n \colon R(a_1,\dots, a_n)=1 \,\}.
-\]
-Hence, we may (and will) identify $R$ with this set. Thus, if $(a_1,\dots, a_n)\in A^n$, we will write
-\[
-(a_1,\dots, a_n)\in R
-\]
-in place of
-\[
-R(a_1,\dots, a_n)=1.
-\]
+  \label{N:Relation}
+  Clearly, a relation $R\colon A^n\to\{0,1\} $ is completely determined by its \emph{truth set}
+  \[
+    R^{-1}(1)=\{\, (a_1,\dots, a_n) \in A^n \colon R(a_1,\dots, a_n)=1 \,\}.
+  \]
+  Hence, we may (and will) identify $R$ with this set.
+  Thus, if $(a_1,\dots, a_n)\in A^n$, we will write
+  \[
+    (a_1,\dots, a_n)\in R
+  \]
+  in place of
+  \[
+    R(a_1,\dots, a_n)=1.
+  \]
 \end{notation}
 
 \begin{notation}
-If $R$ is a binary relation on a set $A$ and $a, b\in A$, we will write
-\[
-a\mathrel{R} b
-\]
-as a shorthand for
-\[
-R(a, b)=1.
-\]
-Similarly, we write $a\not\mathrel{R} b$ as a shorthand for $\neg(a \mathrel{R} b)$.
+  If $R$ is a binary relation on a set $A$ and $a, b\in A$, we will write
+  \[
+    a\mathrel{R} b
+  \]
+  as a shorthand for
+  \[
+    R(a, b)=1.
+  \]
+  Similarly, we write $a\not\mathrel{R} b$ as a shorthand for $\neg(a \mathrel{R} b)$.
 
-Note that this convenient notation is only possible for binary relations.
+  Note that this convenient notation is only possible for binary relations.
 \end{notation}
 
-
 \begin{definition}
-Let $R$ be a binary relation on a set $A$.
-\begin{enumerate}
-\item
-We say that $R$ is \emph{reflexive} if
-\[
-\text{for all $a\in A$, we have $a\mathrel{R} a$.}
-\]
-%An example of this relation is the less than or equal to, $\leq$ relation. This is because every number is equal to itself, so $\forall a\in A$ $a\leq a$.
-\item
-We say that $R$ is \emph{antireflexive} if
-\[
-\text{for all $a\in A$, we have $\neg(a\mathrel{R} a)$.}
-\]
-%An example of an antireflexive relation is less than, $<$. This is because a number cannot be less than itself, so $a\not < a$ $\forall a \in A$
-\item
-We say that $R$ is \emph{symmetric} if
-\[
-\text{for all $a, b\in A$, whenever $a\mathrel{R} b$, we have $b\mathrel{R} a$.}
-\]
-%An example of this type of relation is "Is married to" on the set of people, because if someone is married to their partner, their partner is also married to them.
-\item
-We say that $R$ is \emph{asymmetric} if
-\[
-\text{for all $a, b\in A$, whenever $a\mathrel{R} b$, we have $\neg(b\mathrel{R} a)$.}
-\]
-%An example of an asymmetric relation is "parent of", because if Bob is the parent of Alice, Alice cannot be the parent of Bob, meaning the relation is one way only.
-\item
-We say that $R$ is \emph{antisymmetric} if
-\[
-\text{for all $a, b\in A$, whenever $a\mathrel{R} b$ and $b\mathrel{R} a$, we have $a=b$.}
-\]
-%An example of an antisymmetric relation is the divides relation. If we have $a|b$ then the only way for $b|a$ to be true is if $a=b$, hence two elements can only be symetrically related if they are equal.
-\item
-We say that $R$ is \emph{transitive} if
-\[
-\text{for all $a, b, c\in A$, whenever $a\mathrel{R} b$ and $b\mathrel{R} c$, we also have $a\mathrel{R}c$.}
-\]
-%An example of this type of relation is the subset relation because if a set $A\subseteq B$ and $B\subseteq C$ then $A\subseteq C$ because all the elements of $A$ are contained in $B$ and all the elements of $B$ are contained in $C$, so all the elements of $A$ are contained in $C$.
-\end{enumerate}
+  Let $R$ be a binary relation on a set $A$.
+  \begin{enumerate}
+  \item
+    We say that $R$ is \emph{reflexive} if
+    \[
+      \text{for all $a\in A$, we have $a\mathrel{R} a$.}
+    \]
+    %An example of this relation is the less than or equal to, $\leq$ relation. This is because every number is equal to itself, so $\forall a\in A$ $a\leq a$.
+  \item
+    We say that $R$ is \emph{antireflexive} if
+    \[
+      \text{for all $a\in A$, we have $\neg(a\mathrel{R} a)$.}
+    \]
+    %An example of an antireflexive relation is less than, $<$. This is because a number cannot be less than itself, so $a\not < a$ $\forall a \in A$
+  \item
+    We say that $R$ is \emph{symmetric} if
+    \[
+      \text{for all $a, b\in A$, whenever $a\mathrel{R} b$, we have $b\mathrel{R} a$.}
+    \]
+    %An example of this type of relation is "Is married to" on the set of people, because if someone is married to their partner, their partner is also married to them.
+  \item
+    We say that $R$ is \emph{asymmetric} if
+    \[
+      \text{for all $a, b\in A$, whenever $a\mathrel{R} b$, we have $\neg(b\mathrel{R} a)$.}
+    \]
+    %An example of an asymmetric relation is "parent of", because if Bob is the parent of Alice, Alice cannot be the parent of Bob, meaning the relation is one way only.
+  \item
+    We say that $R$ is \emph{antisymmetric} if
+    \[
+      \text{for all $a, b\in A$, whenever $a\mathrel{R} b$ and $b\mathrel{R} a$, we have $a=b$.}
+    \]
+    %An example of an antisymmetric relation is the divides relation. If we have $a|b$ then the only way for $b|a$ to be true is if $a=b$, hence two elements can only be symetrically related if they are equal.
+  \item
+    We say that $R$ is \emph{transitive} if
+    \[
+      \text{for all $a, b, c\in A$, whenever $a\mathrel{R} b$ and $b\mathrel{R} c$, we also have $a\mathrel{R}c$.}
+    \]
+    %An example of this type of relation is the subset relation because if a set $A\subseteq B$ and $B\subseteq C$ then $A\subseteq C$ because all the elements of $A$ are contained in $B$ and all the elements of $B$ are contained in $C$, so all the elements of $A$ are contained in $C$.
+  \end{enumerate}
 
 \end{definition}
 
-
 \begin{definition}
-\label{D:posets}
-Let $A$ be a set.
-\begin{enumerate}
-\item
-A \emph{partial order on $A$}  is a binary relation on $A$ that is reflexive, antisymmetric, and transitive.
-We say that a partial order on $A$ is \emph{total} (or \emph{linear}) if
-\[
-\text{for all $a, b\in A$, we have  $a\mathrel{R}b$ or $b\mathrel{R}a$.}
-\]
-If $R$ is a partial order on $A$, then the pair $(A,R)$ is called a \emph{partially ordered} set. If $R$ is total (or linear), then we call the pair $(A,R)$ a \emph{linearly ordered}  set.
+  \label{D:posets}
+  Let $A$ be a set.
+  \begin{enumerate}
+  \item
+    A \emph{partial order on $A$}  is a binary relation on $A$ that is reflexive, antisymmetric, and transitive.
+    We say that a partial order on $A$ is \emph{total} (or \emph{linear}) if
+    \[
+      \text{for all $a, b\in A$, we have  $a\mathrel{R}b$ or $b\mathrel{R}a$.}
+    \]
+    If $R$ is a partial order on $A$, then the pair $(A,R)$ is called a \emph{partially ordered} set.
+    If $R$ is total (or linear), then we call the pair $(A,R)$ a \emph{linearly ordered}  set.
 
+  \item
+    Two partially ordered sets $(A, \le_A)$ and $(B,\le_B)$ are said to be \emph{isomorphic} if there exists a bijection $f:A\to B$ such that for all $a, a'\in A$,
+    \[
+      a\le_A a'
+      \quad\text{if and only if}\quad
+      f(a)\le_B f(a').
+    \]
 
-\item
-Two partially ordered sets $(A, \le_A)$ and $(B,\le_B)$ are said to be \emph{isomorphic} if there exists a bijection $f:A\to B$ such that for all $a, a'\in A$,
-\[
-a\le_A a'
-\quad\text{if and only if}\quad
- f(a)\le_B f(a').
-\]
-
-
-\item
-A \emph{strict order on $A$}  is a binary relation on $A$ that is antireflexive, asymmetric, and transitive.
-\end{enumerate}
+  \item
+    A \emph{strict order on $A$}  is a binary relation on $A$ that is antireflexive, asymmetric, and transitive.
+  \end{enumerate}
 \end{definition}
 
 \begin{exercise}
-Let $A$ be a set.
+  Let $A$ be a set.
 
-\begin{enumerate}
-\item
-Prove that if $\leq$ is a partial order on  $A$ and we define a new binary relation $<$ on $A$ by
-\[
-\text{$a<b$ if and only if  $a\leq b$ and $a\neq b$},
-\]
-then $<$ is a strict order on $A$.
-\item
-Prove that if $<$ is a strict order on  $A$ and we define a new binary relation $\le$ on $A$ by
-\[
-\text{$a\le b$ if and only if  $a < b$ or $a = b$},
-\]
-then $\le$ is a  partial order on $A$.
-\end{enumerate}
+  \begin{enumerate}
+  \item
+    Prove that if $\leq$ is a partial order on  $A$ and we define a new binary relation $<$ on $A$ by
+    \[
+      \text{$a<b$ if and only if  $a\leq b$ and $a\neq b$},
+    \]
+    then $<$ is a strict order on $A$.
+  \item
+    Prove that if $<$ is a strict order on  $A$ and we define a new binary relation $\le$ on $A$ by
+    \[
+      \text{$a\le b$ if and only if  $a < b$ or $a = b$},
+    \]
+    then $\le$ is a  partial order on $A$.
+  \end{enumerate}
 
 \end{exercise}
 
 \begin{exercise}
-For each of the following properties, exhibit a relation $R$ that satisfies one of the three properties but not the other two. When such an example is not possible, prove why.
-\begin{enumerate}[(i)]
-\item
-$R$ is reflexive,
-\item
-$R$ is antisymmetric,
-\item
-$R$ is transitive.
+  For each of the following properties, exhibit a relation $R$ that satisfies one of the three properties but not the other two.
+  When such an example is not possible, prove why.
+  \begin{enumerate}[(i)]
+  \item
+    $R$ is reflexive,
+  \item
+    $R$ is antisymmetric,
+  \item
+    $R$ is transitive.
 
-\end{enumerate}
+  \end{enumerate}
 \end{exercise}
 
 \begin{definition}
-\label{D:eqreq}
-Let $A$ be a set.
-\begin{enumerate}
-\item
-An \emph{equivalence relation on $A$}  is a binary relation on $A$ that is reflexive, symmetric, and transitive.
-\item
-$R$ is an equivalence relation on $A$ and $a\in A$, the \emph{equivalence class of $a$} is the set
-\[
-[a]=\{ x\in A :  xRa\}.
-\]
-\end{enumerate}
-The $\{[a] : a\in A\}$ of equivalence classes of $R$ is denoted $A/R$, and it is called the \emph{quotient} of $A$ by $R$.
+  \label{D:eqreq}
+  Let $A$ be a set.
+  \begin{enumerate}
+  \item
+    An \emph{equivalence relation on $A$}  is a binary relation on $A$ that is reflexive, symmetric, and transitive.
+  \item
+    $R$ is an equivalence relation on $A$ and $a\in A$, the \emph{equivalence class of $a$} is the set
+    \[
+      [a]=\{ x\in A :  xRa\}.
+    \]
+  \end{enumerate}
+  The $\{[a] : a\in A\}$ of equivalence classes of $R$ is denoted $A/R$, and it is called the \emph{quotient} of $A$ by $R$.
 \end{definition}
 
-
-The motivating example of an equivalence relation is the equality relation $=$ (on any set). 
-For this relation, the equivalence class of $a$ has only one element:~$a$. 
+The motivating example of an equivalence relation is the equality relation $=$ (on any set).
+For this relation, the equivalence class of $a$ has only one element:~$a$.
 The intuition behind the notion of equivalence relation is that an equivalence relation on a set $A$ has the three distinctive properties (reflexivity, symmetry and transitivity) as the equality relation without necessarily being the equality relation.
-Intuitively, if $R$ is an equivalence relation on $A$ and $a\in A$, 
+Intuitively, if $R$ is an equivalence relation on $A$ and $a\in A$,
 then the equivalence class $[a]$ consists of the elements that would be equal to a if  $R$ were true equality.
-By passing from $A$ to the quotient $A/R$, we identify all the elements equivalent to $a$ as a single element of the quotient: $[a]$. In standard mathematical practice, we pass to the quotient $A/R$ whenever we are in contexts where want all elements of $A$ that are equivalent to $a$ through $R$ to be regarded as the same element.
-
+By passing from $A$ to the quotient $A/R$, we identify all the elements equivalent to $a$ as a single element of the quotient:
+$[a]$.
+In standard mathematical practice, we pass to the quotient $A/R$ whenever we are in contexts where want all elements of $A$ that are equivalent to $a$ through $R$ to be regarded as the same element.
 
 \begin{definition}
-\label{D:part}
-Let $A$ be a nonempty set. A \emph{partition} of $A$ is an indexed family 
-\[
-\{A_i : i\in I\}
-\]
-of subsets of $A$ such that for every pair of indices $i,j\in I$, we have:
-\begin{enumerate}
-\item
-$A_i\neq \emptyset$,
-\item
-$\bigcup_{i\in I} A_i=A$,
-\item
-If $A_i\cap A_j\neq\emptyset$, then $A_i=A_j$.
-\end{enumerate}
+  \label{D:part}
+  Let $A$ be a nonempty set.
+  A \emph{partition} of $A$ is an indexed family
+  \[
+    \{A_i : i\in I\}
+  \]
+  of subsets of $A$ such that for every pair of indices $i,j\in I$, we have:
+  \begin{enumerate}
+  \item
+    $A_i\neq \emptyset$,
+  \item
+    $\bigcup_{i\in I} A_i=A$,
+  \item
+    If $A_i\cap A_j\neq\emptyset$, then $A_i=A_j$.
+  \end{enumerate}
 \end{definition}
 
 \begin{exercise}
-Prove that if $R$ is an equivalence relation on a nonempty set $A$, then the equivalence classes of $R$ form a partition of the set $A$.
+  Prove that if $R$ is an equivalence relation on a nonempty set $A$, then the equivalence classes of $R$ form a partition of the set $A$.
 \end{exercise}
 
 \begin{exercise}
-Let $n$ be a fixed positive integer. For $a,b\in\ZZ$, define $a \equiv b \pmod{n}$ --- read, \textit{$a$ is equivalent to $b$ modulo $n$} --- as follows:
-\[
-a \equiv b \pmod{n}
-\quad\text{if and only if}\quad
-n\mid a-b.
-\]
-The relation $ \equiv  \pmod{n}$ is called \emph{equivalence modulo $n$}.
-\begin{enumerate}
-\item
-Prove that equivalence  modulo $n$ is an equivalence relation.
-\item
-What are the equivalence classes of this relation?  Explain clearly.
-\item 
-Prove that if $a, a', b, b'$ are integers and $a \equiv b \pmod{n}$ and $a' \equiv b' \pmod{n}$, then $a+a' \equiv b+b' \pmod{n}$.
-\item 
-Prove that if $a, a', b, b'$ are integers and $a \equiv b \pmod{n}$ and $a' \equiv b' \pmod{n}$, then $aa' \equiv bb' \pmod{n}$.
-\end{enumerate}
+  Let $n$ be a fixed positive integer.
+  For $a,b\in\ZZ$, define $a \equiv b \pmod{n}$ --- read, \textit{$a$ is equivalent to $b$ modulo $n$} --- as follows:
+  \[
+    a \equiv b \pmod{n}
+    \quad\text{if and only if}\quad
+    n\mid a-b.
+  \]
+  The relation $ \equiv  \pmod{n}$ is called \emph{equivalence modulo $n$}.
+  \begin{enumerate}
+  \item
+    Prove that equivalence  modulo $n$ is an equivalence relation.
+  \item
+    What are the equivalence classes of this relation?
+    Explain clearly.
+  \item
+    Prove that if $a, a', b, b'$ are integers and $a \equiv b \pmod{n}$ and $a' \equiv b' \pmod{n}$, then $a+a' \equiv b+b' \pmod{n}$.
+  \item
+    Prove that if $a, a', b, b'$ are integers and $a \equiv b \pmod{n}$ and $a' \equiv b' \pmod{n}$, then $aa' \equiv bb' \pmod{n}$.
+  \end{enumerate}
 \end{exercise}
 
 In this section, we have discussed three representation of relations:
 
 \begin{enumerate}
 \item
-The functional representation of Definition~\ref{D:Real valued relation},
+  The functional representation of Definition~\ref{D:Real valued relation},
 \item
-The set representation discussed in \ref{D:Real valued relation},
+  The set representation discussed in \ref{D:Real valued relation},
 \item
-The graph representation.
+  The graph representation.
 \end{enumerate}
 
-Of these, the set representation is the traditional one found in beginning textbooks. The graph representation is visually useful, but it is limited to binary relations. As we shall see in Section~\ref{S:Real valued}, the functional representation is particularly adaptable to contemporary multivalued contexts.
-
+Of these, the set representation is the traditional one found in beginning textbooks.
+The graph representation is visually useful, but it is limited to binary relations.
+As we shall see in Section~\ref{S:Real valued}, the functional representation is particularly adaptable to contemporary multivalued contexts.
 
 \section{Alphabets and Words}
 
-
-Recall that a set $A$ is \emph{countable} or \emph{enumerable} if there exists a surjective function $f:\NN \to A$. The surjectivity of $f$ means that
+Recall that a set $A$ is \emph{countable} or \emph{enumerable} if there exists a surjective function $f:\NN \to A$.
+The surjectivity of $f$ means that
 \[
-A=\{ f(0), f(1), f(2), \dots \}.
+  A=\{ f(0), f(1), f(2), \dots \}.
 \]
 We call $f$ an \emph{enumeration} of $A$.
 A set is \emph{uncountable} if it is not countable.
 
 \begin{exercise}
-Prove that an infinite set is countable if and only if there exists a bijective function $f:\NN \to A$. 
+  Prove that an infinite set is countable if and only if there exists a bijective function $f:\NN \to A$.
 \end{exercise}
 
-
 \begin{proposition}
-\label{P:countable union is countable}
-If 
-\[
-A_0, A_1, \dots, A_n,\dots  \qquad n\in\NN
-\]
-are countable sets, then the union
-\[
-\bigcup_{n\in\NN} A_n
-\]
-is countable.
-\end{proposition}
-
-
-\begin{proof} 
-For each $n\in \NN$, let $f_n:\NN \to A_n$  be an enumeration of  $A_n$.
-Thus,
-\begin{align*}
-A_0=&\{f_0(0), f_0(1), f_0(2), \dots\}\\
-A_1=&\{f_1(0), f_1(1), f_1(2), \dots\}\\
-A_2=&\{f_2(0), f_2(1), f_2(2), \dots\}\\
-&\vdots
-\end{align*}
-
-
-Define a function 
-\[
-g:\NN \to \bigcup_{n\in \NN}A_n
-\]
- as follows. Start with $g(0)=f_0(0)$; then let $g(1),g(2)$ list all the elements of the form $f_i(j)$ such that $i+j=1$; then  let $g(3),g(4),g(5)$ list all the elements of the form $f_i(j)$ such that $i+j=2$; and so on. Thus, the function $g$ is clearly surjective.
-\end{proof}
-
-\begin{proposition}
-If $A$ and $B$ are countable sets, then $A\times B$ is countable.
+  \label{P:countable union is countable}
+  If
+  \[
+    A_0, A_1, \dots, A_n,\dots  \qquad n\in\NN
+  \]
+  are countable sets, then the union
+  \[
+    \bigcup_{n\in\NN} A_n
+  \]
+  is countable.
 \end{proposition}
 
 \begin{proof}
-This is immediate from Proposition~\ref{P:countable union is countable} since if $f,g$ are enumerations of $A$ and $B$, respectively, then
-\[
-A\times B=\bigcup_{n\in\NN} \{(f(m),g(n))\colon m\in \NN\}.
-\]
+  For each $n\in \NN$, let $f_n:\NN \to A_n$  be an enumeration of  $A_n$.
+  Thus,
+  \begin{align*}
+  A_0= & \{f_0(0), f_0(1), f_0(2), \dots\} \\
+  A_1= & \{f_1(0), f_1(1), f_1(2), \dots\} \\
+  A_2= & \{f_2(0), f_2(1), f_2(2), \dots\} \\
+       & \vdots
+  \end{align*}
+
+  Define a function
+  \[
+    g:\NN \to \bigcup_{n\in \NN}A_n
+  \]
+  as follows.
+  Start with $g(0)=f_0(0)$;
+  then let $g(1),g(2)$ list all the elements of the form $f_i(j)$ such that $i+j=1$;
+  then  let $g(3),g(4),g(5)$ list all the elements of the form $f_i(j)$ such that $i+j=2$;
+  and so on.
+  Thus, the function $g$ is clearly surjective.
+\end{proof}
+
+\begin{proposition}
+  If $A$ and $B$ are countable sets, then $A\times B$ is countable.
+\end{proposition}
+
+\begin{proof}
+  This is immediate from Proposition~\ref{P:countable union is countable} since if $f,g$ are enumerations of $A$ and $B$, respectively, then
+  \[
+    A\times B=\bigcup_{n\in\NN} \{(f(m),g(n))\colon m\in \NN\}.
+  \]
 \end{proof}
 
 \begin{corollary}
-\label{C:words of fixed length}
-If $A_1,\dots, A_k$ are countable, then $A_1\times\dots\times A_k$ is countable.
+  \label{C:words of fixed length}
+  If $A_1,\dots, A_k$ are countable, then $A_1\times\dots\times A_k$ is countable.
 \end{corollary}
 
 \begin{proof}
-Immediate from the preceding proposition and induction.
+  Immediate from the preceding proposition and induction.
 \end{proof}
 
-Fix a set $A$, and let's think of $A$ as an alphabet (or set of symbols) that we will use to form words. Mathematically,  for $n\in \NN$, the words of length $n$ formed with symbols out of the alphabet $A$ are defined  as the elements of the set
+Fix a set $A$, and let’s think of $A$ as an alphabet (or set of symbols) that we will use to form words.
+Mathematically,  for $n\in \NN$, the words of length $n$ formed with symbols out of the alphabet $A$ are defined  as the elements of the set
 \[
-A^n = \underbrace{A\times \dots \times A}_{n\ \text{times}}.
+  A^n = \underbrace{A\times \dots \times A}_{n\ \text{times}}.
 \]
-Thus, if $A$ is countable, then by Corollary \ref{C:words of fixed length}, the number of words of length $n$ formed with symbols out of the alphabet $A$ is countable. Moreover, by Proposition~\ref{P:countable union is countable}, the number of words of arbitrary finite length formed with symbols from  the alphabet $A$, 
+Thus, if $A$ is countable, then by Corollary \ref{C:words of fixed length}, the number of words of length $n$ formed with symbols out of the alphabet $A$ is countable.
+Moreover, by Proposition~\ref{P:countable union is countable}, the number of words of arbitrary finite length formed with symbols from  the alphabet $A$,
 \[
-\bigcup_{n\in\NN} A^n,
+  \bigcup_{n\in\NN} A^n,
 \]
-is countable as well. 
+is countable as well.
 
 We have proved the following important result:
 
 \begin{corollary}
-\label{C:words of finite length}
-If $A$ is a countable alphabet, then the number of words of finite length formed with symbols out of  $A$ is countable.
+  \label{C:words of finite length}
+  If $A$ is a countable alphabet, then the number of words of finite length formed with symbols out of  $A$ is countable.
 \end{corollary}
 
-Now let us switch our attention to words of infinite length. If $A$ is an alphabet, a word of countably infinite length formed from the alphabet $A$ is defined as an element of the set
+Now let us switch our attention to words of infinite length.
+If $A$ is an alphabet, a word of countably infinite length formed from the alphabet $A$ is defined as an element of the set
 \[
-A^{\NN} = \hspace{-24pt} \underbrace{A\times A\times \dots }_{\text{countably infinitely many times}} \hspace{-24pt}.
+  A^{\NN} = \hspace{-24pt} \underbrace{A\times A\times \dots }_{\text{countably infinitely many times}} \hspace{-24pt}.
 \]
-
 
 In sharp contrast with Corollary \ref{C:words of finite length}, we have the following theorem:
 
 \begin{theorem}
-\label{T:words of infinite length}
-Let $A$ be an alphabet with at least two symbols. Then, the set of words of infinite length formed from the alphabet $A$ is uncountable.
+  \label{T:words of infinite length}
+  Let $A$ be an alphabet with at least two symbols.
+  Then, the set of words of infinite length formed from the alphabet $A$ is uncountable.
 \end{theorem}
 
-
 \begin{proof}
-It suffices to consider the case when $A$ consists of only two symbols, let's call them 0 and 1.  We show that
-\[
-\{0,1\}^{\NN} =\underbrace{\{0,1\}\times \{0,1\}\times\dots }_{\text{countably many times}}.
-\]
-is uncountable. Note that $\{0,1\}^{\NN}$ consists of all the infinite sequences of 0's and 1's, i.e.,
-\[
-\tag{*}
-\{0,1\}^{\NN} =\{\, (a_n)_{n\in\NN} \colon  \text{For each $n\in\NN$, $a_n\in\{0,1\}$} \, \}.
-\]
-Suppose, by way of contradiction, that $\{0,1\}^{\NN}$ is countable, and let $f$ be an enumeration of  $\{0,1\}^{\NN}$; i.e., 
-\[
-\{0,1\}^{\NN} =\{ f(0), f(1), f(2), \dots \}.
-\]
-By $(*)$, for each $m\in \NN$ there exists a sequence $(a_n^m)_{n\in\NN}\in \{0,1\}^{\NN}$ such that
-\[
-\tag{**}
-f(m) = (a_n^m)_{n\in\NN}.
-\]
-Define a sequence $(a_n^*)_{n\in\NN}\in \{0,1\}^{\NN}$ by
-\[
-a_n^*=
-\begin{cases}
-0,  &\text{if $a_n^n=1$},\\
-1,  &\text{if  $a_n^n=0$}.
-\end{cases}
-\]
-Then the sequence $(a_n^*)_{n\in\NN}$ is in $\{0,1\}^{\NN}$, but by $(**)$, it is not of the form $f(m)$ for any $m\in\NN$, contradicting the assumption that $f$ is surjective. 
+  It suffices to consider the case when $A$ consists of only two symbols, let’s call them 0 and 1.  We show that
+  \[
+    \{0,1\}^{\NN} =\underbrace{\{0,1\}\times \{0,1\}\times\dots }_{\text{countably many times}}.
+  \]
+  is uncountable.
+  Note that $\{0,1\}^{\NN}$ consists of all the infinite sequences of 0’s and 1’s, i.e.,
+  \[
+    \tag{*}
+    \{0,1\}^{\NN} =\{\, (a_n)_{n\in\NN} \colon  \text{For each $n\in\NN$, $a_n\in\{0,1\}$} \, \}.
+  \]
+  Suppose, by way of contradiction, that $\{0,1\}^{\NN}$ is countable, and let $f$ be an enumeration of  $\{0,1\}^{\NN}$;
+  i.e.,
+  \[
+    \{0,1\}^{\NN} =\{ f(0), f(1), f(2), \dots \}.
+  \]
+  By $(*)$, for each $m\in \NN$ there exists a sequence $(a_n^m)_{n\in\NN}\in \{0,1\}^{\NN}$ such that
+  \[
+    \tag{**}
+    f(m) = (a_n^m)_{n\in\NN}.
+  \]
+  Define a sequence $(a_n^*)_{n\in\NN}\in \{0,1\}^{\NN}$ by
+  \[
+    a_n^*=
+    \begin{cases}
+    0, & \text{if $a_n^n=1$},  \\
+    1, & \text{if  $a_n^n=0$}.
+    \end{cases}
+  \]
+  Then the sequence $(a_n^*)_{n\in\NN}$ is in $\{0,1\}^{\NN}$, but by $(**)$, it is not of the form $f(m)$ for any $m\in\NN$, contradicting the assumption that $f$ is surjective.
 
 \end{proof}
 
+Let us reflect on what the last two results (namely, Corollary~\ref{C:words of finite length} and Theorem~\ref{T:words of infinite length}) show together.
+Corollary~\ref{C:words of finite length} shows that the set of finite strings of 0’s and 1’s  is countable, and Theorem~\ref{T:words of infinite length} shows that the set of infinite strings of 0’s and 1’s is uncountable.
+A finite string of 0’s and 1’s can be thought of as a computer program, or as a rational number written in binary form.
+An infinite string of 0’s and 1’s can be thought of as  an irrational number written in binary form.
+Thus, the set of computer programs and the set of all rational numbers are countable, while the set of irrational numbers is uncountable.
 
-Let us reflect on what the last two results (namely, Corollary~\ref{C:words of finite length} and Theorem~\ref{T:words of infinite length}) show together. Corollary~\ref{C:words of finite length} shows that the set of finite strings of 0's and 1's  is countable, and Theorem~\ref{T:words of infinite length} shows that the set of infinite strings of 0's and 1's is uncountable.
-A finite string of 0's and 1's can be thought of as a computer program, or as a rational number written in binary form. An infinite string of 0's and 1's can be thought of as  an irrational number written in binary form. Thus, the set of computer programs and the set of all rational numbers are countable, while the set of irrational numbers is uncountable. 
-
-To summarize, the size of the set of irrational numbers is much larger than the size of the set of rational numbers. It is then natural to ask: What is the difference between the two different sizes? As we will discuss  in Section~\ref{S:ordinals-cardinals}, this question is the famous \emph{Continuum Hypothesis} (the very first of David Hilbert's famous list of open problems). It arose in the 20th century with the set-theoretic formalization of mathematics, and today it is known that, stunningly, it cannot be answered by the standard axioms of mathematics.
-
+To summarize, the size of the set of irrational numbers is much larger than the size of the set of rational numbers.
+It is then natural to ask:
+What is the difference between the two different sizes?
+As we will discuss  in Section~\ref{S:ordinals-cardinals}, this question is the famous \emph{Continuum Hypothesis} (the very first of David Hilbert’s famous list of open problems).
+It arose in the 20th century with the set-theoretic formalization of mathematics, and today it is known that, stunningly, it cannot be answered by the standard axioms of mathematics.
 
 \begin{exercises}\hfill
 
 \begin{enumerate}
 \item
-Prove the following version of the Pigeonhole Principle:
+  Prove the following version of the Pigeonhole Principle:
 
-\begin{fact}[Pigeonhole Principle (countable/uncountable version)]
- If every pigeon must be given a pigeonhole, but the number of pigeonholes is countable and the number of pigeons is uncountable, then at least one pigeonhole corresponds to an uncountable number of pigeons. 
-\end{fact}
+  \begin{fact}[Pigeonhole Principle (countable/uncountable version)]
+    If every pigeon must be given a pigeonhole, but the number of pigeonholes is countable and the number of pigeons is uncountable, then at least one pigeonhole corresponds to an uncountable number of pigeons.
+  \end{fact}
 
 \item
-Determine which of the following sets are countable and which are uncountable.
-\begin{enumerate}
+  Determine which of the following sets are countable and which are uncountable.
+  \begin{enumerate}
+  \item
+    The sets of polynomials with coefficients in $\RR$.
+  \item
+    The sets of polynomials with coefficients in $\QQ$.
+  \item
+    The sets of infinite series with coefficients in $\RR$.
+  \item
+    The sets of infinite series with coefficients in $\QQ$.
+  \item
+    The sets of roots of polynomials with coefficients in $\RR$.
+  \item
+    The sets of roots of polynomials with coefficients in $\QQ$.
+  \end{enumerate}
+
 \item
-The sets of polynomials with coefficients in $\RR$.
-\item
-The sets of polynomials with coefficients in $\QQ$.
-\item
-The sets of infinite series with coefficients in $\RR$.
-\item
-The sets of infinite series with coefficients in $\QQ$.
-\item
-The sets of roots of polynomials with coefficients in $\RR$.
-\item
-The sets of roots of polynomials with coefficients in $\QQ$.
+  For $k\in \NN$, let $p_k$ denote the $k$th prime number (so $p_1=2$, $p_2=3$, $p_3=5$, etc).
+  Every integer $n\ge2$ can be written uniquely as
+  \[
+    n=p_1^{e_1}\cdots p_k^{e_k},
+  \]
+  where $e_1,\dots, e_k$ are nonnegative integers, $p_k>0$,  and no prime larger than $p_k$ divides $n$.
+  Thus, $n$ can be seen as encoding the sequence $(e_1,\dots, e_k)$.
+  Use this to give a \emph{direct proof} of Corollary~\ref{C:words of finite length} without invoking  any of the lemmas proved in this section.
 \end{enumerate}
 
 \item
-For $k\in \NN$, let $p_k$ denote the $k$th prime number (so $p_1=2$, $p_2=3$, $p_3=5$, etc).
-Every integer $n\ge2$ can be written uniquely as
-\[
-n=p_1^{e_1}\cdots p_k^{e_k},
-\]
-where $e_1,\dots, e_k$ are nonnegative integers, $p_k>0$,  and no prime larger than $p_k$ divides $n$. 
-Thus, $n$ can be seen as encoding the sequence $(e_1,\dots, e_k)$.
-Use this to give a \emph{direct proof} of Corollary~\ref{C:words of finite length} without invoking  any of the lemmas proved in this section.
-\end{enumerate}
-
-\item
-Let $K_n$ denote the complete graph of $n$ nodes; that is, $K_n$ contains $n$ nodes that are connected to each other by an edge.
-The graph $K_{\NN}$ is the complete graph of countably many nodes; that is $K_{\NN}$ contains countably many nodes that are connected to each other by an edge.
+Let $K_n$ denote the complete graph of $n$ nodes;
+that is, $K_n$ contains $n$ nodes that are connected to each other by an edge.
+The graph $K_{\NN}$ is the complete graph of countably many nodes;
+that is $K_{\NN}$ contains countably many nodes that are connected to each other by an edge.
 
 A \emph{coloring} of a graph $G$ is a function $f$ that assigns to every edge of $G$ a color from the colors in in a set $C$.
 If the range of $f$ is in $C$ is finite, we call $f$ a \emph{finite coloring} of $G$.
 Use Corollary~\ref{C:words of finite length} and Theorem~\ref{T:words of infinite length} to determine which of the following sets are countable:
 \begin{enumerate}
 \item
-The set of all colorings of $K_n$, for a fixed $n\in\NN$ into two colors.
+  The set of all colorings of $K_n$, for a fixed $n\in\NN$ into two colors.
 \item
-The set of all colorings of $K_n$, for all  $n\in\NN$ into two colors.
+  The set of all colorings of $K_n$, for all  $n\in\NN$ into two colors.
 \item
-The set of all colorings of $K_{\NN}$ into two colors.
+  The set of all colorings of $K_{\NN}$ into two colors.
 \end{enumerate}
 
 \end{exercises}
 
-
-
 \section{Well-Ordered Sets, Transfinite Induction, and Ordinal and Cardinal Numbers}
 
-\subsection{Well-Ordered Sets and Transfinite Induction \nopunct} 
-
+\subsection{Well-Ordered Sets and Transfinite Induction \nopunct}
 
 \begin{definition}
-Let $(A,\le)$ be a partially ordered set. If $S$ is a subset of $A$, we say that $S$ has a \emph{least} or \emph{minimum}  if there exists $m\in A$ such that 
-\[
-m\in S
-\quad\text{and}\quad
-\forall x\in S \; (m\le x).
-\]
-Note that (by the antisymmetry of the relation $\le$) if such an element $m$ exists, it must be unique; we denote it as $\min (S)$.
+  Let $(A,\le)$ be a partially ordered set.
+  If $S$ is a subset of $A$, we say that $S$ has a \emph{least} or \emph{minimum}  if there exists $m\in A$ such that
+  \[
+    m\in S
+    \quad\text{and}\quad
+    \forall x\in S \; (m\le x).
+  \]
+  Note that (by the antisymmetry of the relation $\le$) if such an element $m$ exists, it must be unique;
+  we denote it as $\min (S)$.
 
-We will say that $(A,\le)$ is a \emph{well-ordered set} if every nonempty subset of $A$ has a least element under $\leq$.
+  We will say that $(A,\le)$ is a \emph{well-ordered set} if every nonempty subset of $A$ has a least element under $\leq$.
 \end{definition}
 
-
-
-
 \begin{remarks}
-\begin{enumerate}
-\item
-Every well-ordered set is linearly ordered, but the converse is not true (e.g., the interval $(0,1)$ is linearly ordered but not well-ordered).
-\item
-Every well-ordered set has a minimum element, but the converse is not true (e.g., the interval $[0,1]$ is linearly ordered but not well-ordered).
-\end{enumerate}
+  \begin{enumerate}
+  \item
+    Every well-ordered set is linearly ordered, but the converse is not true (e.g., the interval $(0,1)$ is linearly ordered but not well-ordered).
+  \item
+    Every well-ordered set has a minimum element, but the converse is not true (e.g., the interval $[0,1]$ is linearly ordered but not well-ordered).
+  \end{enumerate}
 \end{remarks}
-
 
 \begin{exercises}\hfill
 \label{E:well-order}
 \begin{enumerate}
 \item
-\label{E:initial segment}
-Given a partial order $(A,\leq)$ and an element $a\in A$, define the set of \emph{predecessors of $a$} as
-\[
-\operatorname{pred}(a)= \{\, x\in A \colon x<a\,\}.
-\]
-Prove that $(A,\leq)$ is well-ordered if and only if $(\operatorname{pred}(a),\le)$ is well-ordered for every $a\in A$.
+  \label{E:initial segment}
+  Given a partial order $(A,\leq)$ and an element $a\in A$, define the set of \emph{predecessors of $a$} as
+  \[
+    \operatorname{pred}(a)= \{\, x\in A \colon x<a\,\}.
+  \]
+  Prove that $(A,\leq)$ is well-ordered if and only if $(\operatorname{pred}(a),\le)$ is well-ordered for every $a\in A$.
 \item
-Let $(A,\leq)$ and $(B,\trianglelefteq)$ be well-ordered sets. Define an order $\preceq$ on $A\times B$ as follows: If $(a,b), (a',b')\in A\times B$, then
-\[
-(a,b) \preceq (a',b')
-\quad\text{if and only if}\quad
-\text{$a< a'$, or $a=a'$ and $b\trianglelefteq b'$}.
-\]
-Prove that $(A\times B,\preceq)$ is a well-ordered set.
+  Let $(A,\leq)$ and $(B,\trianglelefteq)$ be well-ordered sets.
+  Define an order $\preceq$ on $A\times B$ as follows:
+  If $(a,b), (a',b')\in A\times B$, then
+  \[
+    (a,b) \preceq (a',b')
+    \quad\text{if and only if}\quad
+    \text{$a< a'$, or $a=a'$ and $b\trianglelefteq b'$}.
+  \]
+  Prove that $(A\times B,\preceq)$ is a well-ordered set.
 \end{enumerate}
 \end{exercises}
 
-
 \begin{proposition}
-A nonempty partially ordered set $(A,\le)$ is well-ordered if and only if there is no infinite descending chain
-\[
-a_0>a_1>a_2>\dots
-\]
-in $A$.
+  A nonempty partially ordered set $(A,\le)$ is well-ordered if and only if there is no infinite descending chain
+  \[
+    a_0>a_1>a_2>\dots
+  \]
+  in $A$.
 \end{proposition}
 
 \begin{proof}
-Suppose that   $(A,\le)$ is well-ordered and $A$ contains an infinite descending chain as above. Then the set $\{S_n\colon n\in \NN\}$ is a nonempty subset of $A$ with no smallest element, contradicting the well-order assumption on   $(A,\le)$.
+  Suppose that   $(A,\le)$ is well-ordered and $A$ contains an infinite descending chain as above.
+  Then the set $\{S_n\colon n\in \NN\}$ is a nonempty subset of $A$ with no smallest element, contradicting the well-order assumption on   $(A,\le)$.
 
-Conversely, suppose that $A$ is nonempty and $(A,\le)$ is not well-ordered. Since $A$ is nonempty, fix $a_0\in A$. Since $A$ has no smallest element, then there exists $a_1<a_0$. Now, since $A$ has no smallest element, the element $a_1$ cannot be the minimum of $A$ either, so there must be $a_2<a_1$ in $A$. Iterating this process recursively, we find an infinite descending chain $a_0>a_1>a_2>\dots$ in $A$.
+  Conversely, suppose that $A$ is nonempty and $(A,\le)$ is not well-ordered.
+  Since $A$ is nonempty, fix $a_0\in A$.
+  Since $A$ has no smallest element, then there exists $a_1<a_0$.
+  Now, since $A$ has no smallest element, the element $a_1$ cannot be the minimum of $A$ either, so there must be $a_2<a_1$ in $A$.
+  Iterating this process recursively, we find an infinite descending chain $a_0>a_1>a_2>\dots$ in $A$.
 \end{proof}
-
 
 What makes well-ordered sets important in mathematics is the following fundamental principle:
 
 \begin{theorem}[Principle of Transfinite Induction]
-\label{T:induction}
-Suppose that   $(A,\le)$ is well-ordered. Then, in order to prove that every element of $A$ satisfies a given property $P$, it suffices to prove the following condition:
-\[
-\tag{IH}
-\text{If $a\in A$ and every $x<a$ satisfies $P$, then $a$ satisfies $P$.}
-\]
+  \label{T:induction}
+  Suppose that   $(A,\le)$ is well-ordered.
+  Then, in order to prove that every element of $A$ satisfies a given property $P$, it suffices to prove the following condition:
+  \[
+    \tag{IH}
+    \text{If $a\in A$ and every $x<a$ satisfies $P$, then $a$ satisfies $P$.}
+  \]
 \end{theorem}
 
-
 \begin{proof}
-By contrapositive, suppose that $(A,\le)$ is well-ordered, (IH) holds, and not every element of $A$ satisfies $P$. Then the set of elements of $A$ not satisfying $P$ is nonempty, so by well-ordering, it has has a minimum element; let's call this element $a$. By the minimality of $a$, every $x<a$ satisfies $P$.  But $a$ does not. Thus, (IH) is contradicted.
+  By contrapositive, suppose that $(A,\le)$ is well-ordered, (IH) holds, and not every element of $A$ satisfies $P$.
+  Then the set of elements of $A$ not satisfying $P$ is nonempty, so by well-ordering, it has has a minimum element;
+  let’s call this element $a$.
+  By the minimality of $a$, every $x<a$ satisfies $P$.
+  But $a$ does not.
+  Thus, (IH) is contradicted.
 \end{proof}
 
-\subsection{Ordinal and Cardinal Numbers \nopunct} \phantom{period} 
+\subsection{Ordinal and Cardinal Numbers \nopunct} \phantom{period}
 \label{S:ordinals-cardinals}
 
+The ordinals are standard examples of well-ordered sets.
+They can also be seen as “extended numbers.”
 
-
-The ordinals are standard examples of well-ordered sets. They can also be seen as ``extended numbers.''
-
-The ordinals are defined recursively as follows.  The smallest ordinal is 0, which is formally defined as the empty set. The next smallest ordinal is 1, which is defined as $\{0\}$.  After 0 and 1 comes 2, which is defined as $\{0,1\}$. In general, $\{n+1\}$ is defined as $\{0,\dots, n\}$. Formally, we define
+The ordinals are defined recursively as follows.
+The smallest ordinal is 0, which is formally defined as the empty set.
+The next smallest ordinal is 1, which is defined as $\{0\}$.
+After 0 and 1 comes 2, which is defined as $\{0,1\}$.
+In general, $\{n+1\}$ is defined as $\{0,\dots, n\}$.
+Formally, we define
 
 \begin{itemize}
 \item
-$0=\emptyset$
+  $0=\emptyset$
 \item
-$n+1=n\cup\{n\}$.
+  $n+1=n\cup\{n\}$.
 \end{itemize}
 
-These are all finite. In fact, these are called the \emph{finite ordinals}. They are well-ordered sets  in a natural way. 
-
+These are all finite.
+In fact, these are called the \emph{finite ordinals}.
+They are well-ordered sets  in a natural way.
 
 Note that if $m,n$ are finite ordinals, then
 \[
-m<n 
-\quad\text{if and only if} \quad
-m\in n.
+  m<n
+  \quad\text{if and only if} \quad
+  m\in n.
 \]
 In other words, the well-ordering relation is the membership relation $\in$.
 
-There is no reason to stop at the finite ordinals. The first infinite ordinal is 
+There is no reason to stop at the finite ordinals.
+The first infinite ordinal is
 \[
-\omega=\{0, 1, 2, \dots\}.
+  \omega=\{0, 1, 2, \dots\}.
 \]
-Note that $\omega$ is well-ordered by Exercise~\ref{E:initial segment}. Formally, $\omega $ is defined as the union of all the preceding ordinals. 
+Note that $\omega$ is well-ordered by Exercise~\ref{E:initial segment}.
+Formally, $\omega $ is defined as the union of all the preceding ordinals.
 
 So now we have a (well-ordered) chain of ordinal numbers:
 \[
-0, 1, 2, \dots,  \omega.
+  0, 1, 2, \dots,  \omega.
 \]
-However, there is no reason to stop at $\omega$. We can mimic what we did with the finite ordinals and define
+However, there is no reason to stop at $\omega$.
+We can mimic what we did with the finite ordinals and define
 \[
-\omega+1=\omega\cup\{\omega\} =\{0, 1, 2, \dots,  \omega\}.
+  \omega+1=\omega\cup\{\omega\} =\{0, 1, 2, \dots,  \omega\}.
 \]
 More general for any ordinal, $\alpha$, we can define the \emph{successor} of $\alpha$ as follows:
 
 \begin{definition}
-If $\alpha$ is an ordinal, the \emph{successor} of $\alpha$ is
-\[
-\alpha+1=\alpha\cup\{\alpha\}.
-\]
+  If $\alpha$ is an ordinal, the \emph{successor} of $\alpha$ is
+  \[
+    \alpha+1=\alpha\cup\{\alpha\}.
+  \]
 \end{definition}
-Notice that, by Exercise~\ref{E:initial segment},  $\alpha+1$ is well-ordered if $\alpha$ is well-ordered. Thus we now have
+Notice that, by Exercise~\ref{E:initial segment},  $\alpha+1$ is well-ordered if $\alpha$ is well-ordered.
+Thus we now have
 \[
-0, 1, 2, \dots,  \omega, \omega+1,\omega+2,\omega+3,\dots 
+  0, 1, 2, \dots,  \omega, \omega+1,\omega+2,\omega+3,\dots
 \]
-But again, there is no reason to stop here. We can now define
+But again, there is no reason to stop here.
+We can now define
 \[
-\omega+\omega=\bigcup_{n<\omega} \omega+n.
+  \omega+\omega=\bigcup_{n<\omega} \omega+n.
 \]
-Note that $\omega+\omega$ is well-ordered by Exercise~\ref{E:initial segment}. So, again, we have a chain
+Note that $\omega+\omega$ is well-ordered by Exercise~\ref{E:initial segment}.
+So, again, we have a chain
 \[
-0, 1, 2, \dots,  \omega, \omega+1,\omega+2,\omega+3,\dots \omega+\omega, \omega+\omega+1,\omega+\omega+2,\dots,
+  0, 1, 2, \dots,  \omega, \omega+1,\omega+2,\omega+3,\dots \omega+\omega, \omega+\omega+1,\omega+\omega+2,\dots,
 \]
-and yes: We also have
+and yes:
+We also have
 \[
-\omega+\omega+\omega=\bigcup_{n<\omega} \omega+\omega+ n.
+  \omega+\omega+\omega=\bigcup_{n<\omega} \omega+\omega+ n.
 \]
 All of these sets are well-ordered by the relation $\in$.
 
-
-Note that the ordinals $\omega$, $\omega+\omega$, $\omega+\omega+\omega$  do not have immediate predecessors. Ordinals with no immediate predecessor are called \emph{limit ordinals}. The formal definition is as follows:
-
-
-\begin{definition}
-An ordinal $\alpha$ is said to be a \emph{successor ordinal} if $\alpha$ has an immediate predecessor, i.e.,  there exists an ordinal $\beta<\alpha$ such that $\alpha=\beta+1$. An ordinal that is not a successor ordinal is called a \emph{limit ordinal}.
-\end{definition}
-
-Note that the first limit ordinal is $\omega$. 
-
-We haven't really given a formal definition of the concept of ``ordinal.'' The formal definition is as follows:
+Note that the ordinals $\omega$, $\omega+\omega$, $\omega+\omega+\omega$  do not have immediate predecessors.
+Ordinals with no immediate predecessor are called \emph{limit ordinals}.
+The formal definition is as follows:
 
 \begin{definition}
-\begin{enumerate}
-\item
-$0$ is an ordinal;
-\item
-If $\alpha$ is an ordinal, then $\alpha+1=\alpha\cup\{\alpha\}$ is an ordinal;
-\item
-%If $I$ is any set and $\alpha_i$ is an ordinal for each $i\in I$, then $\bigcup_{i\in I}\alpha_i$ is an ordinal.
-A union of any chain of ordinals is an ordinal.
-\end{enumerate}
+  An ordinal $\alpha$ is said to be a \emph{successor ordinal} if $\alpha$ has an immediate predecessor, i.e.,  there exists an ordinal $\beta<\alpha$ such that $\alpha=\beta+1$.
+  An ordinal that is not a successor ordinal is called a \emph{limit ordinal}.
 \end{definition}
 
+Note that the first limit ordinal is $\omega$.
 
+We haven’t really given a formal definition of the concept of “ordinal.” The formal definition is as follows:
 
+\begin{definition}
+  \begin{enumerate}
+  \item
+    $0$ is an ordinal;
+  \item
+    If $\alpha$ is an ordinal, then $\alpha+1=\alpha\cup\{\alpha\}$ is an ordinal;
+  \item
+    %If $I$ is any set and $\alpha_i$ is an ordinal for each $i\in I$, then $\bigcup_{i\in I}\alpha_i$ is an ordinal.
+    A union of any chain of ordinals is an ordinal.
+  \end{enumerate}
+\end{definition}
 
 Since ordinals are defined recursively, by Theorem~\ref{T:induction}, we can define ordinal addition, multiplication, and exponentiation reursively as follows.
 
-
-Fix an ordinal $\alpha$, and by induction on $\beta$ we define $\alpha+\beta$, $\alpha\cdot\beta$, and $\alpha^\beta$ through the following definitions (note that the definition of addition is based on the definition of successor given above): 
+Fix an ordinal $\alpha$, and by induction on $\beta$ we define $\alpha+\beta$, $\alpha\cdot\beta$, and $\alpha^\beta$ through the following definitions (note that the definition of addition is based on the definition of successor given above):
 
 \textbf{Ordinal addition}
 \begin{itemize}
 \item
-$\alpha+0=\alpha$,
+  $\alpha+0=\alpha$,
 \item
-$\alpha+(\beta+1)=(\alpha+\beta)+1$,
+  $\alpha+(\beta+1)=(\alpha+\beta)+1$,
 \item
-If $\beta$ is a limit ordinal,
-\[
-\alpha+\beta=\bigcup_{\xi<\beta}\alpha+\xi.
-\]
+  If $\beta$ is a limit ordinal,
+  \[
+    \alpha+\beta=\bigcup_{\xi<\beta}\alpha+\xi.
+  \]
 \end{itemize}
 
 \textbf{Ordinal multiplication}
 \begin{itemize}
 \item
-$\alpha\cdot 0=0$,
+  $\alpha\cdot 0=0$,
 \item
-$\alpha\cdot(\beta+1)=(\alpha\cdot\beta)+\alpha$,
+  $\alpha\cdot(\beta+1)=(\alpha\cdot\beta)+\alpha$,
 \item
-If $\beta$ is a limit ordinal,
-\[
-\alpha\cdot\beta=\bigcup_{\xi<\beta}\alpha\cdot\xi.
-\]
+  If $\beta$ is a limit ordinal,
+  \[
+    \alpha\cdot\beta=\bigcup_{\xi<\beta}\alpha\cdot\xi.
+  \]
 \end{itemize}
 
 \textbf{Ordinal exponentiation}
 \begin{itemize}
 \item
-$\alpha^0=1$,
+  $\alpha^0=1$,
 \item
-$\alpha^{\beta+1}=\alpha^\beta\cdot\alpha$,
+  $\alpha^{\beta+1}=\alpha^\beta\cdot\alpha$,
 \item
-If $\beta$ is a limit ordinal,
-\[
-\alpha^\beta=\bigcup_{\xi<\beta}\alpha^\xi.
-\]
+  If $\beta$ is a limit ordinal,
+  \[
+    \alpha^\beta=\bigcup_{\xi<\beta}\alpha^\xi.
+  \]
 \end{itemize}
 
-
 \begin{exercise}
-Prove that ordinal addition and multiplication are not commutative;  more precisely, exhibit 
-\begin{enumerate}
-\item
-Ordinals $\alpha,\beta$ such that $\alpha+\beta\neq \beta+\alpha$.
-\item
-Ordinals $\alpha,\beta$ such that $\alpha\cdot\beta\neq \beta\cdot\alpha$.
-\end{enumerate}
+  Prove that ordinal addition and multiplication are not commutative;
+  more precisely, exhibit
+  \begin{enumerate}
+  \item
+    Ordinals $\alpha,\beta$ such that $\alpha+\beta\neq \beta+\alpha$.
+  \item
+    Ordinals $\alpha,\beta$ such that $\alpha\cdot\beta\neq \beta\cdot\alpha$.
+  \end{enumerate}
 \end{exercise}
 
 Recall that two sets $A$ and $B$ are said to have the same cardinality if there is a bijective function between them.
 
-Note that, since a countable union of countable sets is countable, all of the ordinals 
+Note that, since a countable union of countable sets is countable, all of the ordinals
 \[
-0, 1, 2, \dots \omega, \omega+1,\omega+2,\dots \omega+\omega,\dots \omega+\omega+\omega, \dots \omega^\omega,\dots
+  0, 1, 2, \dots \omega, \omega+1,\omega+2,\dots \omega+\omega,\dots \omega+\omega+\omega, \dots \omega^\omega,\dots
 \]
-are countable. However,  the axioms of set theory (which fall outside the scope of this course) ensure that there is a least ordinal, called $\omega_1$, such that there is no bijective correspondence between $\omega_1$ and any of its predecessors. In other words, the cardinality of $\omega_1$ is strictly larger than the cardinality of any ordinal $\alpha<\omega_1$. Similarly, there is an ordinal $\omega_2$ of cardinality strictly larger than that of $\omega_1$. In general, we define
+are countable.
+However,  the axioms of set theory (which fall outside the scope of this course) ensure that there is a least ordinal, called $\omega_1$, such that there is no bijective correspondence between $\omega_1$ and any of its predecessors.
+In other words, the cardinality of $\omega_1$ is strictly larger than the cardinality of any ordinal $\alpha<\omega_1$.
+Similarly, there is an ordinal $\omega_2$ of cardinality strictly larger than that of $\omega_1$.
+In general, we define
 
 \begin{itemize}
 \item
- $\omega_0=\omega$, and 
- \item
- For any ordinal $\alpha$, 
- \begin{align*}
- \omega_\alpha = &\text{ the least ordinal of cardinality larger}\\
-& \text{ than the cardinality of $\omega_\beta$, for all $\beta<\alpha$.}
- \end{align*}
- \end{itemize}
- 
+  $\omega_0=\omega$, and
+\item
+  For any ordinal $\alpha$,
+  \begin{align*}
+  \omega_\alpha = & \text{ the least ordinal of cardinality larger}                         \\
+                  & \text{ than the cardinality of $\omega_\beta$, for all $\beta<\alpha$.}
+  \end{align*}
+\end{itemize}
 
-In other words, the ordinals of the form $\omega_\alpha$ are those where a ``step up" in cardinality occurs. Not surprisingly, these cardinalities are special, so there is a particular name and nomenclature reserved for them:
-
+In other words, the ordinals of the form $\omega_\alpha$ are those where a “step up" in cardinality occurs.
+Not surprisingly, these cardinalities are special, so there is a particular name and nomenclature reserved for them:
 
 \begin{definition}
-For each ordinal $\alpha$, we let
-\[
-\aleph_\alpha =\text{The set $\omega_\alpha$}.
-\]
-In other words, $\aleph_\alpha$ is a name we give to the ordinal $\omega_\alpha$ after we strip it of its well-order relation and think of it not as a well-ordered set, but rather as a set - giving measure of size for infinite sets.
-If $A$ is an arbitrary set and there exists a bijection between $A$ and $\aleph_\alpha$ (=$\omega_\alpha$), we write
-\[
-|A|=\aleph_\alpha.
-\]
-If $A, B$ are sets and $|A|=\aleph_\alpha=|B|$, we simply write $|A|=|B|$ and say that $A$ and $B$ are \emph{equipotent}.
+  For each ordinal $\alpha$, we let
+  \[
+    \aleph_\alpha =\text{The set $\omega_\alpha$}.
+  \]
+  In other words, $\aleph_\alpha$ is a name we give to the ordinal $\omega_\alpha$ after we strip it of its well-order relation and think of it not as a well-ordered set, but rather as a set - giving measure of size for infinite sets.
+  If $A$ is an arbitrary set and there exists a bijection between $A$ and $\aleph_\alpha$ (=$\omega_\alpha$), we write
+  \[
+    |A|=\aleph_\alpha.
+  \]
+  If $A, B$ are sets and $|A|=\aleph_\alpha=|B|$, we simply write $|A|=|B|$ and say that $A$ and $B$ are \emph{equipotent}.
 \end{definition}
-
 
 The following is one of the many equivalent forms of  the famous Axiom of Choice from set theory:
 
 \begin{fact}[The Axiom of Choice (AC)]
-\label{F:AC}
-For every infinite set $A$ there exists an ordinal $\alpha$ such that $|A|=\aleph_\alpha$ i.e.,  the cardinality of $A$ is $\aleph_\alpha$. 
+  \label{F:AC}
+  For every infinite set $A$ there exists an ordinal $\alpha$ such that $|A|=\aleph_\alpha$ i.e.,  the cardinality of $A$ is $\aleph_\alpha$.
 \end{fact}
 
 Kurt Gödel (1937) and Paul J. Cohen (1963) proved that this axiom cannot be proved or disproved from the standard  axioms of set theory.%
 \footnote{Gödel proved that AC cannot be proved to be false from the axioms of set theory, and Cohen proved that that AC cannot be proved to be true from said axioms.}
 So, it is regarded as a special axiom.
 
-
-Now since $\aleph_\alpha$ is nothing but $\omega_\alpha$, and the latter is a well-ordered set, then Fact~\ref{F:AC} says that any set whatsoever can be put into bijective correspondence with a well-ordered set. Therefore, every set can be well-ordered. This is the famous Well-Ordering Principle:
-
+Now since $\aleph_\alpha$ is nothing but $\omega_\alpha$, and the latter is a well-ordered set, then Fact~\ref{F:AC} says that any set whatsoever can be put into bijective correspondence with a well-ordered set.
+Therefore, every set can be well-ordered.
+This is the famous Well-Ordering Principle:
 
 \begin{fact}[The Well-Ordering Principle (WOP)]
-\label{F:WOP}
-For every set $A$ there exists a binary relation $\le$ on $A$ such that $(A,\le )$ is a well-ordered set.
+  \label{F:WOP}
+  For every set $A$ there exists a binary relation $\le$ on $A$ such that $(A,\le )$ is a well-ordered set.
 \end{fact}
 
 \begin{remarks}
 
-\begin{enumerate}
-\item
-We have just observed that (AC) implies (WOP). The opposite implication is also true, because if $A$ is any set and $\le$ is a well-ordering relation on $A$, then by Exercise~\label{E:well order isomorphic to ordinal}, $(A,\le )$ is isomorphic to an ordinal, i.e., there exists an ordinal $\alpha$ such that $(A,\le )$ is isomorphic to $(\alpha,<)$. But, then one can take the smallest such $\alpha$, and such $\alpha$ by definition must be a cardinal. Thus, $A$ is equipotent to a cardinal. 
+  \begin{enumerate}
+  \item
+    We have just observed that (AC) implies (WOP).
+    The opposite implication is also true, because if
+    $A$ is any set and $\le$ is a well-ordering relation on $A$, then by Exercise~\label{E:well order isomorphic to ordinal}, $(A,\le )$ is isomorphic to an ordinal, i.e., there exists an ordinal $\alpha$ such that $(A,\le )$ is isomorphic to $(\alpha,<)$.
+    But, then one can take the smallest such $\alpha$, and such $\alpha$ by definition must be a cardinal.
+    Thus, $A$ is equipotent to a cardinal.
 
-\item
-A useful, and rather surprising,  consequence of Fact~\ref{F:WOP} is that, by \ref{T:induction} do induction proofs on any set.
-\end{enumerate}
+  \item
+    A useful, and rather surprising,  consequence of Fact~\ref{F:WOP} is that, by \ref{T:induction} do induction proofs on any set.
+  \end{enumerate}
 
 \end{remarks}
 
-We know (by Theorem~\ref{T:words of infinite length}) that the real line, $\RR$, is uncountable i.e., $|\RR|>\aleph_0$. But then, what is $|\RR|$? Is it $\aleph_1$? Or maybe  $\aleph_2$? Or maybe something much bigger, say, $\aleph_\omega$? 
+We know (by Theorem~\ref{T:words of infinite length}) that the real line, $\RR$, is uncountable i.e., $|\RR|>\aleph_0$.
+But then, what is $|\RR|$?
+Is it $\aleph_1$?
+Or maybe  $\aleph_2$?
+Or maybe something much bigger, say, $\aleph_\omega$?
 Georg Cantor developed  the theory of ordinal and cardinal numbers in the late 19th century in order  to settle this question (motivated by his investigations in analysis).
-He believed that $|\RR|=\aleph_1$, i.e., the size of the real line is the smallest uncountable cardinality. This became known as Cantor's Continuum Hypothesis.  
-Cantor spent the rest of his life unsuccessfully trying to prove it. His inability to devise a solution led to increasingly frequent bouts  of depression, and he died in a sanatorium in 1918. However, his groundbreaking theories of transfinite ordinal and cardinal numbers transformed mathematics profoundly (it was claimed that the number of theorems proved between 1900 and 1940 was larger than the number of theorems proved between Archimedes and 1900), and became a cornerstone of the mathematics of the new century. In the words of Hilbert, the most influential mathematician of the 20th century, Cantorian set theory brought mathematicians into ``paradise.''  Naturally, Cantor's Continuum Hypothesis  became the very first problem in Hilbert's  famous list of open problems, which would shape the course of mathematics during the next 100 years and into our time. 
+He believed that $|\RR|=\aleph_1$, i.e., the size of the real line is the smallest uncountable cardinality.
+This became known as Cantor’s Continuum Hypothesis.
+Cantor spent the rest of his life unsuccessfully trying to prove it.
+His inability to devise a solution led to increasingly frequent bouts  of depression, and he died in a sanatorium in 1918. However, his groundbreaking theories of transfinite ordinal and cardinal numbers transformed mathematics profoundly
+(it was claimed that the number of theorems proved between 1900 and 1940 was larger than the number of theorems proved between Archimedes and 1900), and became a cornerstone of the mathematics of the new century.
+In the words of Hilbert, the most influential mathematician of the 20th century,
+Cantorian set theory brought mathematicians into “paradise.”  Naturally,
+Cantor’s Continuum Hypothesis  became the very first problem in Hilbert’s  famous list of open problems, which would shape the course of mathematics during the next 100 years and into our time.
 
-The question is profound: What is the cardinality of the real line?  
+The question is profound:
+What is the cardinality of the real line?
 
-In 1937, Kurt Gödel constructed universes of mathematics where the Continuum Hypothesis is true (that is, the cardinality of the continuum is the smallest uncountable cardinality), and in 1963, Paul J. Cohen constructed universes of mathematics where it is false. Thus, Cantor's Continuum Hypothesis cannot be proved or disproved from the standard axioms of set theory.  Cohen won the Fields Medal and the National Medal of Science for his achievement, but the true size of the set of real numbers remains one of the great mysteries of mathematics.
-
+In 1937, Kurt Gödel constructed universes of mathematics where the Continuum Hypothesis is true
+(that is, the cardinality of the continuum is the smallest uncountable cardinality), and in 1963, Paul J. Cohen constructed universes of mathematics where it is false.
+Thus, Cantor’s Continuum Hypothesis cannot be proved or disproved from the standard axioms of set theory.
+Cohen won the Fields Medal and the National Medal of Science for his achievement, but the true size of the set of real numbers remains one of the great mysteries of mathematics.
 
 \begin{exercise}
-\label{E:well order isomorphic to ordinal}
-Prove that for every well-ordered set $(A,\le)$ there is an ordinal $\alpha$ such that $(A,<)$ is isomorphic to $(\alpha,\in)$. [\emph{Hint}: Recall the definition of $\operatorname{pred}(a)$ from Exercise~\ref{E:well-order}. Prove that for every $a\in A$ there exists an ordinal $\alpha_a$ and an isomorphism $f_a$ between $(\operatorname{pred}(a),<)$ and $(\alpha,\in)$ such that for all $b,c\in \operatorname{pred}(a)$, $b<c\Rightarrow f_a(b)\subseteq f_a(c)$.]
+  \label{E:well order isomorphic to ordinal}
+  Prove that for every well-ordered set $(A,\le)$ there is an ordinal $\alpha$ such that $(A,<)$ is isomorphic to $(\alpha,\in)$.
+    [\emph{Hint}:
+      Recall the definition of $\operatorname{pred}(a)$ from Exercise~\ref{E:well-order}.
+      Prove that for every $a\in A$ there exists an ordinal $\alpha_a$ and an isomorphism $f_a$ between $(\operatorname{pred}(a),<)$ and $(\alpha,\in)$ such that for all $b,c\in \operatorname{pred}(a)$, $b<c\Rightarrow f_a(b)\subseteq f_a(c)$.]
 \end{exercise}
-
 
